@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace petStore
 {
@@ -19,7 +20,7 @@ namespace petStore
         #region thao tác với form
         private void vbtnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult messagebox = MessageBox.Show("Bạn có chắc chắn muốn thoát?", 
+            DialogResult messagebox = MessageBox.Show("Bạn có chắc chắn muốn thoát?",
                 "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (messagebox == DialogResult.Yes)
                 this.Close();
@@ -70,6 +71,8 @@ namespace petStore
         #region Đăng nhập
         private void vbtnDangnhap_Click(object sender, EventArgs e)
         {
+            string user = txtUser.Text;
+            string pass = txtPass.Text;
             if (txtUser.Text == "")
             {
                 DialogResult messagebox = MessageBox.Show("Tên đăng nhập không được bỏ trống!",
@@ -86,12 +89,34 @@ namespace petStore
             }
             else
             {
-                Manager m = new Manager();
-                this.Hide();
-                m.ShowDialog();
-                this.Show();
+                if (Kiemtra(user, pass))
+                {
+                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    QuanLyChinh f = new QuanLyChinh();
+                    this.Hide();
+                    f.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại! Tài khoản hoặc mật khẩu không đúng. ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
         #endregion
+        public bool Kiemtra(string user, string pass)
+        {
+            ConnectData dataTable = new ConnectData();
+            dataTable.OpenConnection();
+            string s = "SELECT * FROM ACCOUNT " +
+                       "WHERE userName = '" + user + "' and passWord = '" + pass + "'";
+            SqlCommand cmd = new SqlCommand(s,dataTable.connection);
+            dataTable.Fill(cmd);
+            SqlDataReader read = cmd.ExecuteReader();
+            if (read.Read())
+                return true;
+            else
+                return false;
+        }
     }
 }
