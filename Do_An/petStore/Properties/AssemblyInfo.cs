@@ -1,16 +1,17 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("petStore")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Quản lý cửa hàng vật dụng cho thú cưng")]
+[assembly: AssemblyDescription("Phần mềm giúp ích cho bạn rất nhiều trong việc quản lý cửa hàng vật dụng cho thú cưng.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Pet Store - ĐH An Giang")]
 [assembly: AssemblyProduct("petStore")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyCopyright("Bản quyền ©  2021 bởi nhóm gồm 3 thành viên ( Hoàng - An - Trâm)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +35,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("yav-CM")]

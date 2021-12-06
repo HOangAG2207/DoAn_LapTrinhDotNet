@@ -7,5 +7,7 @@ D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.cspro
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.exe
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.pdb
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.AssemblyReference.cache
-D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.DangNhap.resources
-D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.QuanLyChinh.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fDangNhap.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fQuanLyChinh.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fTaiKhoanVaNhanVien.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fAbout.resources

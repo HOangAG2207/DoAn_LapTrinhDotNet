@@ -2,29 +2,28 @@
 go 
 use QLPetShop
 go
-
--- Tao bang Nguoi dung he thong
-create table ACCOUNT(
-	MaAC varchar(5),
-	TEN Nvarchar(50) not null,
+--Tao bang NHANVIEN
+create table NHANVIEN(
+	MANV varchar(5),
+	TENNV Nvarchar(50) not null,
 	CCCD varchar(12) not null unique,
-	GioiTinh Nvarchar(3) not null check(GioiTinh = N'Nam' or GioiTinh = N'Nữ'),
-	NgaySinh date,
+	GIOITINH bit not null,
+	NGAYSINH date,
 	SDT varchar(12) not null,
-	userName varchar(32) not null unique,
-	passWord varchar(12) not null,
-	Anh image,
-	LoaiAC varchar(3) not null check(LoaiAC ='ad' or LoaiAC = 'nv'),
+	ANH image,
 
-	primary key(MaAC)
+	primary key(MANV)
 )
 go
---Tao bang hang hoa
-create table LOAIHH(
-	MaLoai varchar(5),
-	TenLoai Nvarchar(30) not null,
+-- Tao bang Nguoi dung he thong
+create table ACCOUNT(
+	USERNAME varchar(32),
+	PASSWORD varchar(12) not null,
+	QUYEN varchar(3) not null check(QUYEN ='ad' or QUYEN = 'nv'),
+	MANV varchar(5),
 
-	primary key(MaLoai)
+	primary key(USERNAME),
+	foreign key(MANV) references NHANVIEN(MANV)
 )
 go
 --Tao bang nha cung cap hang hoa
@@ -37,6 +36,14 @@ create table NHACUNGCAP(
 	primary key(MaNCC)
 )
 go 
+--Tao bang hang hoa
+create table LOAIHH(
+	MaLoai varchar(5),
+	TenLoai Nvarchar(30) not null,
+
+	primary key(MaLoai)
+)
+go
 --Tao bang hang hoa
 create table HANGHOA(
 	MaHH varchar(5),
@@ -69,13 +76,13 @@ go
 -- Tao bang hoa don ban va chi tiet HD
 create table HOADONBAN(
 	MaHDban varchar(9),
-	MaAC varchar(5),
+	MANV varchar(5),
 	MaKH varchar(5),
 	NgayLap datetime not null,
 	ThanhTien smallmoney
 
 	primary key(MaHDban),
-	foreign key(MaAC) references ACCOUNT(MaAC),
+	foreign key(MANV) references NHANVIEN(MANV),
 	foreign key(MaKH) references KHACHHANG(MaKH)
 )
 go
@@ -93,13 +100,13 @@ go
 --Tao bang hoa don nhap va chi tiet HD
 create table HOADONNHAP(
 	MaHDnhap varchar(9),
-	MaAC varchar(5),
+	MANV varchar(5),
 	MaNCC varchar(5),
 	NgayLap datetime not null,
 	ThanhTien smallmoney
 
 	primary key(MaHDnhap),
-	foreign key(MaAC) references ACCOUNT(MaAC),
+	foreign key(MANV) references NHANVIEN(MANV),
 	foreign key(MaNCC) references NHACUNGCAP(MaNCC)
 )
 go

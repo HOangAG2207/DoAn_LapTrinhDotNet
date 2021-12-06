@@ -49,28 +49,46 @@
     <Compile Include="ConnectData.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DangNhap.cs">
+    <Compile Include="FormChuongTrinh\fAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DangNhap.Designer.cs">
-      <DependentUpon>DangNhap.cs</DependentUpon>
+    <Compile Include="FormChuongTrinh\fAbout.Designer.cs">
+      <DependentUpon>fAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyChinh.cs">
+    <Compile Include="FormChuongTrinh\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLyChinh.Designer.cs">
-      <DependentUpon>QuanLyChinh.cs</DependentUpon>
+    <Compile Include="FormChuongTrinh\fDangNhap.Designer.cs">
+      <DependentUpon>fDangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fQuanLyChinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fQuanLyChinh.Designer.cs">
+      <DependentUpon>fQuanLyChinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fTaiKhoanVaNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fTaiKhoanVaNhanVien.Designer.cs">
+      <DependentUpon>fTaiKhoanVaNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DieuChinhForm\VBbutton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="DangNhap.resx">
-      <DependentUpon>DangNhap.cs</DependentUpon>
+    <EmbeddedResource Include="FormChuongTrinh\fAbout.resx">
+      <DependentUpon>fAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyChinh.resx">
-      <DependentUpon>QuanLyChinh.cs</DependentUpon>
+    <EmbeddedResource Include="FormChuongTrinh\fDangNhap.resx">
+      <DependentUpon>fDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fQuanLyChinh.resx">
+      <DependentUpon>fQuanLyChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fTaiKhoanVaNhanVien.resx">
+      <DependentUpon>fTaiKhoanVaNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,8 +117,15 @@
     <None Include="Resources\loginBG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Maximum.png" />
+    <None Include="Resources\save16.png" />
     <None Include="Resources\openEye.jpg" />
     <None Include="Resources\closeEye.jpg" />
+    <None Include="Resources\add16.png" />
+    <None Include="Resources\delete16.png" />
+    <None Include="Resources\exit16.png" />
+    <None Include="Resources\edit16.png" />
+    <None Include="Resources\3gach.png" />
     <Content Include="Resources\icon1.ico" />
     <None Include="Resources\logoAgu.png" />
   </ItemGroup>
