@@ -61,6 +61,30 @@
     <Compile Include="FormChuongTrinh\fDangNhap.Designer.cs">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fHangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fHangHoa.Designer.cs">
+      <DependentUpon>fHangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fKhachHang.Designer.cs">
+      <DependentUpon>fKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fLoaiHangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fLoaiHangHoa.Designer.cs">
+      <DependentUpon>fLoaiHangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fNhaCungCap.Designer.cs">
+      <DependentUpon>fNhaCungCap.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh\fQuanLyChinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +107,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fHangHoa.resx">
+      <DependentUpon>fHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fKhachHang.resx">
+      <DependentUpon>fKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fLoaiHangHoa.resx">
+      <DependentUpon>fLoaiHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fNhaCungCap.resx">
+      <DependentUpon>fNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fQuanLyChinh.resx">
       <DependentUpon>fQuanLyChinh.cs</DependentUpon>
@@ -117,6 +153,7 @@
     <None Include="Resources\loginBG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\view16.png" />
     <None Include="Resources\Maximum.png" />
     <None Include="Resources\save16.png" />
     <None Include="Resources\openEye.jpg" />

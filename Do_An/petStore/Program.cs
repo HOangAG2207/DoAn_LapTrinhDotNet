@@ -17,6 +17,12 @@ namespace petStore
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new fDangNhap());
+            //Application.Run(new fQuanLyChinh());
+            //Application.Run(new FormChuongTrinh.fTaiKhoanVaNhanVien());
+            //Application.Run(new FormChuongTrinh.fKhachHang());
+            //Application.Run(new FormChuongTrinh.fNhaCungCap());
+            //Application.Run(new FormChuongTrinh.fLoaiHangHoa());
+            //Application.Run(new FormChuongTrinh.fHangHoa());
         }
     }
 }

@@ -11,3 +11,7 @@ D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fDang
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fQuanLyChinh.resources
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fTaiKhoanVaNhanVien.resources
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fAbout.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fHangHoa.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fLoaiHangHoa.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fNhaCungCap.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fKhachHang.resources
