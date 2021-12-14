@@ -112,12 +112,13 @@ namespace petStore
                        "WHERE userName = '" + user +
                        "'" +
                        " and passWord = '" + pass +
-                       "'";*/
-            string s = "SELECT * FROM ACCOUNT " +
-                       "WHERE USERNAME = '" + user + 
+                       "'";
+            */
+            string s = "SELECT * FROM TAIKHOAN " +
+                       "WHERE TENDANGNHAP = '" + user +
                        "'COLLATE SQL_Latin1_General_CP1_CS_AS" +
-                       " and PASSWORD = '" + pass + 
-                       "' COLLATE SQL_Latin1_General_CP1_CS_AS";
+                       " and MATKHAU = '" + pass +
+                       "'COLLATE SQL_Latin1_General_CP1_CS_AS";
             SqlCommand cmd = new SqlCommand(s,dataTable.connection);
             dataTable.Fill(cmd);
             SqlDataReader read = cmd.ExecuteReader();

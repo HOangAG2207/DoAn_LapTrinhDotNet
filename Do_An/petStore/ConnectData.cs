@@ -22,8 +22,9 @@ namespace petStore
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder["Server"] = ".\\SQLEXPRESS02";
             builder["Database"] = "QLPetShop";
-            builder["Uid"] = "sa";
-            builder["Pwd"] = "123456";
+            builder["Integrated Security"] = "True";
+            //builder["Uid"] = "sa";
+            //builder["Pwd"] = "123456";
             return builder.ConnectionString;
         }
         // mở kêt nối

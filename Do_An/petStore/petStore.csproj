@@ -153,6 +153,7 @@
     <None Include="Resources\loginBG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\refresh16.png" />
     <None Include="Resources\view16.png" />
     <None Include="Resources\Maximum.png" />
     <None Include="Resources\save16.png" />

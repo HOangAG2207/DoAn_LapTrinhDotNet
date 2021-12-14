@@ -110,7 +110,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.97297F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.02703F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 134F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tableLayoutPanel1.Controls.Add(this.pnlLeft, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlRight, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlAnh, 2, 0);
@@ -139,7 +139,7 @@ namespace petStore.FormChuongTrinh
             this.pnlLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlLeft.Location = new System.Drawing.Point(3, 3);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(371, 166);
+            this.pnlLeft.Size = new System.Drawing.Size(370, 166);
             this.pnlLeft.TabIndex = 0;
             // 
             // cboLoai
@@ -149,7 +149,7 @@ namespace petStore.FormChuongTrinh
             this.cboLoai.FormattingEnabled = true;
             this.cboLoai.Location = new System.Drawing.Point(100, 69);
             this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(247, 21);
+            this.cboLoai.Size = new System.Drawing.Size(246, 21);
             this.cboLoai.TabIndex = 5;
             // 
             // txtDonGiaBan
@@ -158,7 +158,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDonGiaBan.Location = new System.Drawing.Point(100, 126);
             this.txtDonGiaBan.Name = "txtDonGiaBan";
-            this.txtDonGiaBan.Size = new System.Drawing.Size(247, 20);
+            this.txtDonGiaBan.Size = new System.Drawing.Size(246, 20);
             this.txtDonGiaBan.TabIndex = 4;
             // 
             // txtSoLuong
@@ -167,7 +167,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoLuong.Location = new System.Drawing.Point(100, 99);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(247, 20);
+            this.txtSoLuong.Size = new System.Drawing.Size(246, 20);
             this.txtSoLuong.TabIndex = 4;
             // 
             // txtTenHH
@@ -176,7 +176,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenHH.Location = new System.Drawing.Point(100, 38);
             this.txtTenHH.Name = "txtTenHH";
-            this.txtTenHH.Size = new System.Drawing.Size(247, 20);
+            this.txtTenHH.Size = new System.Drawing.Size(246, 20);
             this.txtTenHH.TabIndex = 4;
             // 
             // txtMaHH
@@ -185,7 +185,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaHH.Location = new System.Drawing.Point(100, 9);
             this.txtMaHH.Name = "txtMaHH";
-            this.txtMaHH.Size = new System.Drawing.Size(247, 20);
+            this.txtMaHH.Size = new System.Drawing.Size(246, 20);
             this.txtMaHH.TabIndex = 4;
             // 
             // label7
@@ -248,9 +248,9 @@ namespace petStore.FormChuongTrinh
             this.pnlRight.Controls.Add(this.txtDonGiaNhap);
             this.pnlRight.Controls.Add(this.label6);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRight.Location = new System.Drawing.Point(380, 3);
+            this.pnlRight.Location = new System.Drawing.Point(379, 3);
             this.pnlRight.Name = "pnlRight";
-            this.pnlRight.Size = new System.Drawing.Size(328, 166);
+            this.pnlRight.Size = new System.Drawing.Size(327, 166);
             this.pnlRight.TabIndex = 1;
             // 
             // cboNhaCungCap
@@ -260,7 +260,7 @@ namespace petStore.FormChuongTrinh
             this.cboNhaCungCap.FormattingEnabled = true;
             this.cboNhaCungCap.Location = new System.Drawing.Point(98, 9);
             this.cboNhaCungCap.Name = "cboNhaCungCap";
-            this.cboNhaCungCap.Size = new System.Drawing.Size(218, 21);
+            this.cboNhaCungCap.Size = new System.Drawing.Size(217, 21);
             this.cboNhaCungCap.TabIndex = 5;
             // 
             // label9
@@ -290,7 +290,7 @@ namespace petStore.FormChuongTrinh
             this.txtMoTa.Location = new System.Drawing.Point(98, 69);
             this.txtMoTa.Multiline = true;
             this.txtMoTa.Name = "txtMoTa";
-            this.txtMoTa.Size = new System.Drawing.Size(218, 77);
+            this.txtMoTa.Size = new System.Drawing.Size(217, 77);
             this.txtMoTa.TabIndex = 4;
             // 
             // txtDonGiaNhap
@@ -299,7 +299,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDonGiaNhap.Location = new System.Drawing.Point(98, 38);
             this.txtDonGiaNhap.Name = "txtDonGiaNhap";
-            this.txtDonGiaNhap.Size = new System.Drawing.Size(218, 20);
+            this.txtDonGiaNhap.Size = new System.Drawing.Size(217, 20);
             this.txtDonGiaNhap.TabIndex = 4;
             // 
             // label6
@@ -318,9 +318,9 @@ namespace petStore.FormChuongTrinh
             this.pnlAnh.Controls.Add(this.btnChonAnh);
             this.pnlAnh.Controls.Add(this.pictHangHoa);
             this.pnlAnh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAnh.Location = new System.Drawing.Point(714, 3);
+            this.pnlAnh.Location = new System.Drawing.Point(712, 3);
             this.pnlAnh.Name = "pnlAnh";
-            this.pnlAnh.Size = new System.Drawing.Size(129, 166);
+            this.pnlAnh.Size = new System.Drawing.Size(131, 166);
             this.pnlAnh.TabIndex = 2;
             // 
             // btnChonAnh

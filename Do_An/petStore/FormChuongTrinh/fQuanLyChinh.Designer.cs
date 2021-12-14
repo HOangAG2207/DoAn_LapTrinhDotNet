@@ -46,9 +46,6 @@ namespace petStore
             this.mnuKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNhaCungCap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTraCuu = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTCHangHoa = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTCKhachHang = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTCNhaCungCap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThongKe = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,10 +56,11 @@ namespace petStore
             this.mnuNhanVien = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLoaiHangHoa = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pnlTop1 = new System.Windows.Forms.Panel();
+            this.mnuHoaDon = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlTop2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pnlTop1 = new System.Windows.Forms.Panel();
             this.vbtnDangXuat = new petStore.VBbutton();
             this.vbtnMinimize = new petStore.VBbutton();
             this.vbtnMaximum = new petStore.VBbutton();
@@ -71,9 +69,9 @@ namespace petStore
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.pnlTop1.SuspendLayout();
             this.pnlTop2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.pnlTop1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -87,7 +85,7 @@ namespace petStore
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(596, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(916, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -148,7 +146,7 @@ namespace petStore
             this.pnlLeft.Location = new System.Drawing.Point(0, 31);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(192, 619);
+            this.pnlLeft.Size = new System.Drawing.Size(192, 648);
             this.pnlLeft.TabIndex = 4;
             // 
             // label2
@@ -232,31 +230,9 @@ namespace petStore
             // 
             // mnuTraCuu
             // 
-            this.mnuTraCuu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuTCHangHoa,
-            this.mnuTCKhachHang,
-            this.mnuTCNhaCungCap});
             this.mnuTraCuu.Name = "mnuTraCuu";
             this.mnuTraCuu.Size = new System.Drawing.Size(64, 21);
             this.mnuTraCuu.Text = "Tra cứu";
-            // 
-            // mnuTCHangHoa
-            // 
-            this.mnuTCHangHoa.Name = "mnuTCHangHoa";
-            this.mnuTCHangHoa.Size = new System.Drawing.Size(160, 22);
-            this.mnuTCHangHoa.Text = "Hàng hóa";
-            // 
-            // mnuTCKhachHang
-            // 
-            this.mnuTCKhachHang.Name = "mnuTCKhachHang";
-            this.mnuTCKhachHang.Size = new System.Drawing.Size(160, 22);
-            this.mnuTCKhachHang.Text = "Khách hàng";
-            // 
-            // mnuTCNhaCungCap
-            // 
-            this.mnuTCNhaCungCap.Name = "mnuTCNhaCungCap";
-            this.mnuTCNhaCungCap.Size = new System.Drawing.Size(160, 22);
-            this.mnuTCNhaCungCap.Text = "Nhà cung cấp";
             // 
             // mnuBaocaoThongKe
             // 
@@ -326,33 +302,27 @@ namespace petStore
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.BackColor = System.Drawing.Color.PeachPuff;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuDanhMuc,
             this.mnuTraCuu,
             this.mnuBaocaoThongKe,
+            this.mnuHoaDon,
             this.mnuTroGiup,
             this.mnuAdmin});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(596, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(916, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // pnlTop1
+            // mnuHoaDon
             // 
-            this.pnlTop1.BackColor = System.Drawing.Color.DarkCyan;
-            this.pnlTop1.Controls.Add(this.vbtnMinimize);
-            this.pnlTop1.Controls.Add(this.vbtnMaximum);
-            this.pnlTop1.Controls.Add(this.vbtnExit);
-            this.pnlTop1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop1.Location = new System.Drawing.Point(0, 0);
-            this.pnlTop1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pnlTop1.Name = "pnlTop1";
-            this.pnlTop1.Size = new System.Drawing.Size(788, 31);
-            this.pnlTop1.TabIndex = 5;
+            this.mnuHoaDon.Name = "mnuHoaDon";
+            this.mnuHoaDon.Size = new System.Drawing.Size(73, 21);
+            this.mnuHoaDon.Text = "Hóa đơn";
             // 
             // pnlTop2
             // 
@@ -362,7 +332,7 @@ namespace petStore
             this.pnlTop2.Location = new System.Drawing.Point(192, 31);
             this.pnlTop2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlTop2.Name = "pnlTop2";
-            this.pnlTop2.Size = new System.Drawing.Size(596, 51);
+            this.pnlTop2.Size = new System.Drawing.Size(916, 51);
             this.pnlTop2.TabIndex = 6;
             // 
             // tabControl1
@@ -373,7 +343,7 @@ namespace petStore
             this.tabControl1.Location = new System.Drawing.Point(192, 82);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(596, 568);
+            this.tabControl1.Size = new System.Drawing.Size(916, 597);
             this.tabControl1.TabIndex = 8;
             this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
@@ -385,9 +355,22 @@ namespace petStore
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(588, 542);
+            this.tabPage1.Size = new System.Drawing.Size(908, 571);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
+            // 
+            // pnlTop1
+            // 
+            this.pnlTop1.BackColor = System.Drawing.Color.DarkCyan;
+            this.pnlTop1.Controls.Add(this.vbtnMinimize);
+            this.pnlTop1.Controls.Add(this.vbtnMaximum);
+            this.pnlTop1.Controls.Add(this.vbtnExit);
+            this.pnlTop1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop1.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlTop1.Name = "pnlTop1";
+            this.pnlTop1.Size = new System.Drawing.Size(1108, 31);
+            this.pnlTop1.TabIndex = 5;
             // 
             // vbtnDangXuat
             // 
@@ -400,7 +383,7 @@ namespace petStore
             this.vbtnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbtnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vbtnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.vbtnDangXuat.Location = new System.Drawing.Point(53, 567);
+            this.vbtnDangXuat.Location = new System.Drawing.Point(53, 596);
             this.vbtnDangXuat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.vbtnDangXuat.Name = "vbtnDangXuat";
             this.vbtnDangXuat.Size = new System.Drawing.Size(116, 30);
@@ -420,7 +403,7 @@ namespace petStore
             this.vbtnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbtnMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vbtnMinimize.ForeColor = System.Drawing.Color.White;
-            this.vbtnMinimize.Location = new System.Drawing.Point(687, 3);
+            this.vbtnMinimize.Location = new System.Drawing.Point(1007, 3);
             this.vbtnMinimize.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.vbtnMinimize.Name = "vbtnMinimize";
             this.vbtnMinimize.Size = new System.Drawing.Size(30, 25);
@@ -441,7 +424,7 @@ namespace petStore
             this.vbtnMaximum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vbtnMaximum.ForeColor = System.Drawing.Color.White;
             this.vbtnMaximum.Image = global::petStore.Properties.Resources.Maximum;
-            this.vbtnMaximum.Location = new System.Drawing.Point(723, 3);
+            this.vbtnMaximum.Location = new System.Drawing.Point(1043, 3);
             this.vbtnMaximum.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.vbtnMaximum.Name = "vbtnMaximum";
             this.vbtnMaximum.Size = new System.Drawing.Size(30, 25);
@@ -460,7 +443,7 @@ namespace petStore
             this.vbtnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbtnExit.Font = new System.Drawing.Font("Road Rage", 8.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vbtnExit.ForeColor = System.Drawing.Color.White;
-            this.vbtnExit.Location = new System.Drawing.Point(759, 0);
+            this.vbtnExit.Location = new System.Drawing.Point(1079, 0);
             this.vbtnExit.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.vbtnExit.Name = "vbtnExit";
             this.vbtnExit.Size = new System.Drawing.Size(25, 25);
@@ -474,13 +457,12 @@ namespace petStore
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(788, 650);
+            this.ClientSize = new System.Drawing.Size(1108, 679);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pnlTop2);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.pnlTop1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -489,7 +471,6 @@ namespace petStore
             this.Name = "fQuanLyChinh";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HỆ THỐNG QUẢN LÝ";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fQuanLyChinh_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -498,10 +479,10 @@ namespace petStore
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.pnlTop1.ResumeLayout(false);
             this.pnlTop2.ResumeLayout(false);
             this.pnlTop2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.pnlTop1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -521,20 +502,13 @@ namespace petStore
         private System.Windows.Forms.ToolStripMenuItem mnuAdmin;
         private System.Windows.Forms.ToolStripMenuItem mnuNhanVien;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Panel pnlTop1;
         private System.Windows.Forms.Button btnPnlShowHide;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private VBbutton vbtnDangXuat;
         private System.Windows.Forms.Panel pnlTop2;
-        private VBbutton vbtnExit;
-        private VBbutton vbtnMaximum;
-        private VBbutton vbtnMinimize;
         private System.Windows.Forms.ToolStripMenuItem mnuHangHoa;
-        private System.Windows.Forms.ToolStripMenuItem mnuTCHangHoa;
-        private System.Windows.Forms.ToolStripMenuItem mnuTCKhachHang;
-        private System.Windows.Forms.ToolStripMenuItem mnuTCNhaCungCap;
         private System.Windows.Forms.ToolStripMenuItem mnuBaoCao;
         private System.Windows.Forms.ToolStripMenuItem mnuThongKe;
         private System.Windows.Forms.ToolStripMenuItem mnuHuongDan;
@@ -544,5 +518,10 @@ namespace petStore
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiHangHoa;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ToolStripMenuItem mnuHoaDon;
+        private VBbutton vbtnExit;
+        private VBbutton vbtnMaximum;
+        private VBbutton vbtnMinimize;
+        private System.Windows.Forms.Panel pnlTop1;
     }
 }

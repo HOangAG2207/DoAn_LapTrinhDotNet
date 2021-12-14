@@ -6,7 +6,7 @@ go
 create table NHANVIEN(
 	MANV varchar(5),
 	TENNV Nvarchar(50) not null,
-	CCCD varchar(12) not null unique,
+	CCCD varchar(12) not null,
 	GIOITINH bit not null,
 	NGAYSINH date,
 	SDT varchar(12) not null,
@@ -16,22 +16,23 @@ create table NHANVIEN(
 )
 go
 -- Tao bang Nguoi dung he thong
-create table ACCOUNT(
-	USERNAME varchar(32),
-	PASSWORD varchar(12) not null,
-	QUYEN varchar(3) not null,
-	MANV varchar(5),
+create table TAIKHOAN(
+	TENDANGNHAP varchar(32) not null,
+	MATKHAU varchar(12) not null,
+	QUYENHAN varchar(10) not null,
+	GHICHU Nvarchar (30),
+	MANV varchar(5), 
 
-	primary key(USERNAME),
+	primary key(TENDANGNHAP),
 	foreign key(MANV) references NHANVIEN(MANV)
 )
 go
 --Tao bang nha cung cap hang hoa
 create table NHACUNGCAP(
-	MaNCC varchar(5),
-	TenNCC Nvarchar(30) not null,
+	MANCC varchar(5),
+	TENNCC Nvarchar(30) not null,
 	SDT varchar(12) not null,
-	DiaChi Ntext,
+	DIACHI Ntext,
 
 	primary key(MaNCC)
 )
@@ -63,11 +64,11 @@ create table HANGHOA(
 go
 --Tao bang khach hang
 create table KHACHHANG(
-	MaKH varchar(5),
-	TenKH Nvarchar(30) not null,
-	GioiTinh bit not null,
+	MAKH varchar(5),
+	TENKH Nvarchar(30) not null,
+	GIOITINH bit not null,
 	SDT varchar(12) not null,
-	DiaChi Ntext,
+	DIACHI Ntext,
 
 	primary key(MaKH)
 )
@@ -123,17 +124,38 @@ create table HOADONNHAP_CHITIET(
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('ad1', N'Quản lý', '123456789', 0, '2021-12-07', '0123456789')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('ad2', N'Quản lý 2', '12345678', 1, '2021-12-07', '0123456789')
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv001', N'Nguyễn Huy Hoàng', '123456780', 0, '1997-07-22', '0123456780')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv002', N'Huỳnh Nguyễn Thái An', '123456700', 0, '2001-07-11', '0123456700')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv003', N'Nguyễn Thị Bích Trâm', '123456000', 1, '2001-09-16', '0123456000')
---insert values to table ACCOUNT
-insert into ACCOUNT
-values ('admin', '123', 'ad','ad1')
-insert into ACCOUNT
-values ('huyhoang', '123', 'nv','nv001')
-insert into ACCOUNT
-values ('anhuynh', '123', 'nv','nv002')
-insert into ACCOUNT
-values ('bichtram', '123', 'nv','nv003')
+--insert values to table TAIKHOAN
+insert into TAIKHOAN
+values ('admin', '123', 'ad', N'Quản Lý','ad1')
+insert into TAIKHOAN
+values ('huyhoang', '123', 'ad', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('anhuynh', '123', 'nv', N'Nhân viên','nv002')
+insert into TAIKHOAN
+values ('bichtram', '123', 'nv', N'Nhân viên','nv003')
+--insert values to table LOAIHH
+insert into LOAIHH
+values ('TAC', N'Thức ăn cho Chó')
+insert into LOAIHH
+values ('TAM', N'Thức ăn cho Mèo')
+insert into LOAIHH
+values ('QAC', N'Quần áo cho Chó')
+insert into LOAIHH
+values ('QAM', N'Quần áo cho Mèo')
+insert into LOAIHH
+values ('VS', N'Dụng cụ vệ sinh')
+insert into LOAIHH
+values ('PKC', N'Phụ kiện và đồ chơi cho Chó')
+insert into LOAIHH
+values ('PKM', N'Phụ kiện và đồ chơi cho Mèo')
+insert into LOAIHH
+values ('YTT', N'Vật dụng Y tế và Thuốc')
+insert into LOAIHH
+values ('KH', N'Vật dụng khác')
