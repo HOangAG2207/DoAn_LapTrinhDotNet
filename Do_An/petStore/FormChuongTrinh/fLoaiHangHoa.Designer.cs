@@ -29,8 +29,8 @@ namespace petStore.FormChuongTrinh
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvLoaiHangHoa = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,7 +44,6 @@ namespace petStore.FormChuongTrinh
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnHuyBo = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pbTimKiem = new System.Windows.Forms.PictureBox();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -53,6 +52,7 @@ namespace petStore.FormChuongTrinh
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiHangHoa)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,7 +61,6 @@ namespace petStore.FormChuongTrinh
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTimKiem)).BeginInit();
             this.pnlTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +74,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 195F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(595, 361);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -90,21 +89,21 @@ namespace petStore.FormChuongTrinh
             this.dgvLoaiHangHoa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLoaiHangHoa.BackgroundColor = System.Drawing.Color.White;
             this.dgvLoaiHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLoaiHangHoa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLoaiHangHoa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvLoaiHangHoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLoaiHangHoa.Location = new System.Drawing.Point(3, 198);
+            this.dgvLoaiHangHoa.Location = new System.Drawing.Point(3, 204);
             this.dgvLoaiHangHoa.MultiSelect = false;
             this.dgvLoaiHangHoa.Name = "dgvLoaiHangHoa";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvLoaiHangHoa.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLoaiHangHoa.Size = new System.Drawing.Size(589, 160);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvLoaiHangHoa.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvLoaiHangHoa.Size = new System.Drawing.Size(589, 154);
             this.dgvLoaiHangHoa.TabIndex = 0;
             // 
             // panel1
@@ -114,7 +113,7 @@ namespace petStore.FormChuongTrinh
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(589, 189);
+            this.panel1.Size = new System.Drawing.Size(589, 195);
             this.panel1.TabIndex = 1;
             // 
             // pnlCenter
@@ -124,7 +123,7 @@ namespace petStore.FormChuongTrinh
             this.pnlCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCenter.Location = new System.Drawing.Point(0, 29);
             this.pnlCenter.Name = "pnlCenter";
-            this.pnlCenter.Size = new System.Drawing.Size(589, 160);
+            this.pnlCenter.Size = new System.Drawing.Size(589, 166);
             this.pnlCenter.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -139,7 +138,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(589, 160);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(589, 166);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // panel2
@@ -151,7 +150,7 @@ namespace petStore.FormChuongTrinh
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(295, 154);
+            this.panel2.Size = new System.Drawing.Size(295, 160);
             this.panel2.TabIndex = 0;
             // 
             // txtTenLoai
@@ -204,7 +203,7 @@ namespace petStore.FormChuongTrinh
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(304, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(282, 154);
+            this.panel3.Size = new System.Drawing.Size(282, 160);
             this.panel3.TabIndex = 1;
             // 
             // btnHuyBo
@@ -214,7 +213,7 @@ namespace petStore.FormChuongTrinh
             this.btnHuyBo.Image = global::petStore.Properties.Resources.refresh16;
             this.btnHuyBo.Location = new System.Drawing.Point(122, 23);
             this.btnHuyBo.Name = "btnHuyBo";
-            this.btnHuyBo.Size = new System.Drawing.Size(145, 30);
+            this.btnHuyBo.Size = new System.Drawing.Size(145, 36);
             this.btnHuyBo.TabIndex = 5;
             this.btnHuyBo.Text = "   Hủy bỏ";
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -227,23 +226,12 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.pbTimKiem);
             this.panel4.Controls.Add(this.txtTimKiem);
+            this.panel4.Controls.Add(this.btnTimKiem);
             this.panel4.Location = new System.Drawing.Point(15, 124);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(252, 22);
+            this.panel4.Size = new System.Drawing.Size(252, 30);
             this.panel4.TabIndex = 4;
-            // 
-            // pbTimKiem
-            // 
-            this.pbTimKiem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pbTimKiem.Image = global::petStore.Properties.Resources.view16;
-            this.pbTimKiem.Location = new System.Drawing.Point(228, 0);
-            this.pbTimKiem.Name = "pbTimKiem";
-            this.pbTimKiem.Size = new System.Drawing.Size(22, 20);
-            this.pbTimKiem.TabIndex = 5;
-            this.pbTimKiem.TabStop = false;
-            this.pbTimKiem.Click += new System.EventHandler(this.pbTimKiem_Click);
             // 
             // txtTimKiem
             // 
@@ -251,9 +239,11 @@ namespace petStore.FormChuongTrinh
             this.txtTimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTimKiem.Location = new System.Drawing.Point(0, 0);
+            this.txtTimKiem.Multiline = true;
             this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(250, 22);
+            this.txtTimKiem.Size = new System.Drawing.Size(220, 28);
             this.txtTimKiem.TabIndex = 1;
+            this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnXoa
             // 
@@ -262,7 +252,7 @@ namespace petStore.FormChuongTrinh
             this.btnXoa.Image = global::petStore.Properties.Resources.delete16;
             this.btnXoa.Location = new System.Drawing.Point(26, 71);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 30);
+            this.btnXoa.Size = new System.Drawing.Size(90, 36);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "   Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -276,7 +266,7 @@ namespace petStore.FormChuongTrinh
             this.btnLuu.Image = global::petStore.Properties.Resources.save16;
             this.btnLuu.Location = new System.Drawing.Point(122, 59);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(145, 30);
+            this.btnLuu.Size = new System.Drawing.Size(145, 36);
             this.btnLuu.TabIndex = 3;
             this.btnLuu.Text = "  lưu vào CSDL";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -290,7 +280,7 @@ namespace petStore.FormChuongTrinh
             this.btnSua.Image = global::petStore.Properties.Resources.edit16;
             this.btnSua.Location = new System.Drawing.Point(26, 39);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 30);
+            this.btnSua.Size = new System.Drawing.Size(90, 36);
             this.btnSua.TabIndex = 3;
             this.btnSua.Text = "   Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -304,7 +294,7 @@ namespace petStore.FormChuongTrinh
             this.btnThem.Image = global::petStore.Properties.Resources.add16;
             this.btnThem.Location = new System.Drawing.Point(26, 7);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(90, 30);
+            this.btnThem.Size = new System.Drawing.Size(90, 36);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -343,6 +333,18 @@ namespace petStore.FormChuongTrinh
             this.label1.TabIndex = 0;
             this.label1.Text = "LOẠI HÀNG HÓA";
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTimKiem.Image = global::petStore.Properties.Resources.view16;
+            this.btnTimKiem.Location = new System.Drawing.Point(220, 0);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(30, 28);
+            this.btnTimKiem.TabIndex = 6;
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // fLoaiHangHoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,7 +368,6 @@ namespace petStore.FormChuongTrinh
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTimKiem)).EndInit();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             this.ResumeLayout(false);
@@ -394,8 +395,8 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pbTimKiem;
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.TextBox txtTenLoai;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }

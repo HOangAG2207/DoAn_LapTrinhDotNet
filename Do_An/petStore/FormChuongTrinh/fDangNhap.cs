@@ -13,6 +13,8 @@ namespace petStore
 {
     public partial class fDangNhap : Form
     {
+        public static string user;
+        string pass;
         public fDangNhap()
         {
             InitializeComponent();
@@ -71,16 +73,16 @@ namespace petStore
         #region Đăng nhập
         private void vbtnDangnhap_Click(object sender, EventArgs e)
         {
-            string user = txtUser.Text;
-            string pass = txtPass.Text;
-            if (txtUser.Text == "")
+            user = txtUser.Text;
+            pass = txtPass.Text;
+            if (txtUser.Text.Trim() == "")
             {
                 DialogResult messagebox = MessageBox.Show("Tên đăng nhập không được bỏ trống!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (messagebox == DialogResult.OK)
                     txtUser.Focus();
             }
-            else if (txtPass.Text == "")
+            else if (txtPass.Text.Trim() == "")
             {
                 DialogResult messagebox = MessageBox.Show("Mật khẩu không được bỏ trống!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -92,10 +94,12 @@ namespace petStore
                 if (Kiemtra(user, pass))
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    fQuanLyChinh f = new fQuanLyChinh(user);
+                    fQuanLyChinh f = new fQuanLyChinh();
                     this.Hide();
                     f.ShowDialog();
                     this.Show();
+                    txtPass.Text = "";
+                    txtUser.Focus();
                 }
                 else
                 {

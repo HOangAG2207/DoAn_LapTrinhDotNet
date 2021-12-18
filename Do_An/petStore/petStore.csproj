@@ -67,6 +67,12 @@
     <Compile Include="FormChuongTrinh\fHangHoa.Designer.cs">
       <DependentUpon>fHangHoa.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fHoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fHoaDonBan.Designer.cs">
+      <DependentUpon>fHoaDonBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh\fKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,24 @@
     <Compile Include="FormChuongTrinh\fQuanLyChinh.Designer.cs">
       <DependentUpon>fQuanLyChinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fShowLoaiHH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowLoaiHH.Designer.cs">
+      <DependentUpon>fShowLoaiHH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowNhaCungCap.Designer.cs">
+      <DependentUpon>fShowNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowNhanVien.Designer.cs">
+      <DependentUpon>fShowNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh\fTaiKhoanVaNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +135,9 @@
     <EmbeddedResource Include="FormChuongTrinh\fHangHoa.resx">
       <DependentUpon>fHangHoa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fHoaDonBan.resx">
+      <DependentUpon>fHoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fKhachHang.resx">
       <DependentUpon>fKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +149,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fQuanLyChinh.resx">
       <DependentUpon>fQuanLyChinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fShowLoaiHH.resx">
+      <DependentUpon>fShowLoaiHH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fShowNhaCungCap.resx">
+      <DependentUpon>fShowNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fShowNhanVien.resx">
+      <DependentUpon>fShowNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fTaiKhoanVaNhanVien.resx">
       <DependentUpon>fTaiKhoanVaNhanVien.cs</DependentUpon>

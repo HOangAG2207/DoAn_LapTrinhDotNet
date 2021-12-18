@@ -320,7 +320,6 @@ namespace petStore
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlButton;
         private System.Windows.Forms.TextBox txtPass;
-        private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -333,6 +332,7 @@ namespace petStore
         private System.Windows.Forms.PictureBox picLogoAgu;
         private System.Windows.Forms.PictureBox picOpenEye;
         private System.Windows.Forms.PictureBox picCloseEye;
+        public System.Windows.Forms.TextBox txtUser;
     }
 }
 

@@ -13,17 +13,16 @@ namespace petStore
 {
     public partial class fQuanLyChinh : Form
     {
-        public fQuanLyChinh(string userName)
+        string userDisplay = fDangNhap.user;
+        ConnectData dataTable = new ConnectData();
+        public static string HovaTen = "";
+        public fQuanLyChinh()
         {
             InitializeComponent();
-            label2.Text = userName;
-            if(userName != "admin")
-            {
-                mnuAdmin.Visible = false;
-            }
+            pnlLeft.Width = 50;
         }
         #region Biến toàn cục
-        bool flag = false;
+        bool flag = true;
         bool maximum = false;
         FormChuongTrinh.fTaiKhoanVaNhanVien TKvaNV = null;
         FormChuongTrinh.fAbout about = null;
@@ -31,9 +30,39 @@ namespace petStore
         FormChuongTrinh.fLoaiHangHoa loaihanghoa = null;
         FormChuongTrinh.fKhachHang khachhang = null;
         FormChuongTrinh.fNhaCungCap nhacungcap = null;
+
+        FormChuongTrinh.fShowLoaiHH showloaihh = null;
+        FormChuongTrinh.fShowNhaCungCap showncc = null;
+        FormChuongTrinh.fShowNhanVien shownv = null;
+
+        FormChuongTrinh.fHoaDonBan HDban = null;
         #endregion
         private void fQuanLyChinh_Load(object sender, EventArgs e)
         {
+            DangNhap();
+        }
+        public void QuanTriVien()
+        {
+            
+            label2.Text = "Quản trị viên: \n( " + HovaTen + " )";
+        }
+        public void NhanVien()
+        {
+            mnuAdmin.Visible = false;
+            label2.Text = "Nhân viên: \n( " + HovaTen + " )";
+        }
+        private void DangNhap()
+        {
+            dataTable.OpenConnection();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN tk, NHANVIEN nv WHERE tk.TENDANGNHAP = @TDN and tk.MANV = nv.MANV");
+            cmd.Parameters.Add("@TDN", SqlDbType.VarChar).Value = userDisplay;
+            dataTable.Fill(cmd);
+                HovaTen = dataTable.Rows[0]["TENNV"].ToString();
+                string quyenHan = dataTable.Rows[0]["QUYENHAN"].ToString();
+                if (quyenHan == "ad")
+                    QuanTriVien();
+                else if (quyenHan == "nv")
+                    NhanVien();
         }
         #region Thao tác với Menu admin
         private void mnuNhanVien_Click(object sender, EventArgs e)
@@ -57,7 +86,7 @@ namespace petStore
         private void mnuLoaiHangHoa_Click(object sender, EventArgs e)
         {
             loaihanghoa = new FormChuongTrinh.fLoaiHangHoa();
-            TabCreating(tabControl1, "Loại hàng hóa", loaihanghoa);
+            TabCreating(tabControl1, "Thêm loại hàng hóa", loaihanghoa);
             /*
             if (loaihanghoa == null || loaihanghoa.IsDisposed)
             {
@@ -90,10 +119,10 @@ namespace petStore
             }
             */
         }
-        private void mnuKhachHang_Click(object sender, EventArgs e)
+        private void mnuThemKhachHang_Click(object sender, EventArgs e)
         {
             khachhang = new FormChuongTrinh.fKhachHang();
-            TabCreating(tabControl1, "Thông tin khách hàng", khachhang);
+            TabCreating(tabControl1, "Thêm khách hàng", khachhang);
             /*
             if (khachhang == null || khachhang.IsDisposed)
             {
@@ -108,10 +137,10 @@ namespace petStore
             */
         }
 
-        private void mnuNhaCungCap_Click(object sender, EventArgs e)
+        private void mnuThemNhaCungCap_Click(object sender, EventArgs e)
         {
             nhacungcap = new FormChuongTrinh.fNhaCungCap();
-            TabCreating(tabControl1, "Thông tin nhà cung cấp", nhacungcap);
+            TabCreating(tabControl1, "Thêm nhà cung cấp", nhacungcap);
             /*
             if (nhacungcap == null || nhacungcap.IsDisposed)
             {
@@ -124,6 +153,28 @@ namespace petStore
                 nhacungcap.Activate();
             }
             */
+        }
+        private void mnuBanHang_Click(object sender, EventArgs e)
+        {
+            HDban = new FormChuongTrinh.fHoaDonBan();
+            TabCreating(tabControl1, "Lập HD bán", HDban);
+        }
+        #endregion
+        #region Thao tác với Menu Tra cứu
+        private void mnuShowLoaiHH_Click(object sender, EventArgs e)
+        {
+            showloaihh = new FormChuongTrinh.fShowLoaiHH();
+            TabCreating(tabControl1, "Tra cứu Loại hàng hóa", showloaihh);
+        }
+        private void mnuShowNCC_Click(object sender, EventArgs e)
+        {
+            showncc = new FormChuongTrinh.fShowNhaCungCap();
+            TabCreating(tabControl1, "Tra cứu Nhà cung cấp", showncc);
+        }
+        private void mnuShowNhanVien_Click(object sender, EventArgs e)
+        {
+            shownv = new FormChuongTrinh.fShowNhanVien();
+            TabCreating(tabControl1, "Tra cứu Nhân viên", shownv);
         }
         #endregion
         #region Thao tác với Menu Trợ giúp
@@ -149,7 +200,7 @@ namespace petStore
         {
             if (flag)
             {
-                pnlLeft.Width = 220;
+                pnlLeft.Width = 250;
             }
             else
             {
@@ -186,17 +237,16 @@ namespace petStore
             this.Close();
         }
 
-
         #endregion
         #region tabcontrol
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
             Graphics g = e.Graphics;
-            Font drawFont = new Font("Arial", 9);
-            g.FillRectangle(new SolidBrush(Color.Silver), e.Bounds);
-            e.Graphics.DrawString("x", drawFont, Brushes.Gray, e.Bounds.Right - 15, e.Bounds.Top + 4);
-            e.Graphics.DrawString(this.tabControl1.TabPages[e.Index].Text, e.Font, Brushes.White, e.Bounds.Left + 1, e.Bounds.Top + 4);
+            Font drawFont = new Font("Arial", 10, FontStyle.Bold);
+            g.FillRectangle(new SolidBrush(Color.PeachPuff), e.Bounds);
+            e.Graphics.DrawString("x", drawFont, Brushes.DarkSlateGray, e.Bounds.Right - 15, e.Bounds.Top + 4);
+            e.Graphics.DrawString(this.tabControl1.TabPages[e.Index].Text, e.Font, Brushes.DarkCyan, e.Bounds.Left + 1, e.Bounds.Top + 4);
             e.DrawFocusRectangle();
         }
 
@@ -250,6 +300,8 @@ namespace petStore
                 Form.Dock = DockStyle.Fill;
             }
         }
+
         #endregion
+
     }
 }

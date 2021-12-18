@@ -75,19 +75,20 @@ create table KHACHHANG(
 go
 -- Tao bang hoa don ban va chi tiet HD
 create table HOADONBAN(
-	MaHDban varchar(9),
+	MAHDBAN varchar(20),
 	MANV varchar(5),
-	MaKH varchar(5),
-	NgayLap datetime not null,
-	ThanhTien smallmoney
+	MAKH varchar(5),
+	NGAYLAP datetime not null,
+	THANHTIEN smallmoney
 
-	primary key(MaHDban),
+	primary key(MAHDBAN),
 	foreign key(MANV) references NHANVIEN(MANV),
-	foreign key(MaKH) references KHACHHANG(MaKH)
+	foreign key(MAKH) references KHACHHANG(MAKH)
 )
 go
 create table HOADONBAN_CHITIET(
-	MaHDban varchar(9),
+	STT smallint,
+	MaHDban varchar(20),
 	MaHH varchar(5),
 	SoLuong tinyint,
 	DGban smallmoney,
@@ -99,7 +100,7 @@ create table HOADONBAN_CHITIET(
 go
 --Tao bang hoa don nhap va chi tiet HD
 create table HOADONNHAP(
-	MaHDnhap varchar(9),
+	MaHDnhap varchar(20),
 	MANV varchar(5),
 	MaNCC varchar(5),
 	NgayLap datetime not null,
@@ -111,7 +112,7 @@ create table HOADONNHAP(
 )
 go
 create table HOADONNHAP_CHITIET(
-	MaHDnhap varchar(9),
+	MaHDnhap varchar(20),
 	MaHH varchar(5),
 	SoLuong tinyint,
 	DGnhap smallmoney,
@@ -124,13 +125,22 @@ create table HOADONNHAP_CHITIET(
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('ad1', N'Quản lý', '123456789', 0, '2021-12-07', '0123456789')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('ad2', N'Quản lý 2', '12345678', 1, '2021-12-07', '0123456789')
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv001', N'Nguyễn Huy Hoàng', '123456780', 0, '1997-07-22', '0123456780')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv002', N'Huỳnh Nguyễn Thái An', '123456700', 0, '2001-07-11', '0123456700')
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv003', N'Nguyễn Thị Bích Trâm', '123456000', 1, '2001-09-16', '0123456000')
+
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('nv004', N'Nguyễn Thị Bích Trâm', '1', 1, '2001-09-16', '0123456000')
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('nv005', N'Nguyễn Thị Bích Trâm', '2', 1, '2001-09-16', '0123456000')
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('nv006', N'Nguyễn Thị Bích Trâm', '3', 1, '2001-09-16', '0123456000')
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('nv007', N'Nguyễn Thị Bích Trâm', '4', 1, '2001-09-16', '0123456000')
+insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+values ('nv008', N'Nguyễn Thị Bích Trâm', '5', 1, '2001-09-16', '0123456000')
 --insert values to table TAIKHOAN
 insert into TAIKHOAN
 values ('admin', '123', 'ad', N'Quản Lý','ad1')
@@ -140,6 +150,24 @@ insert into TAIKHOAN
 values ('anhuynh', '123', 'nv', N'Nhân viên','nv002')
 insert into TAIKHOAN
 values ('bichtram', '123', 'nv', N'Nhân viên','nv003')
+
+insert into TAIKHOAN
+values ('hoang1', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang2', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang3', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang4', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang5', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang6', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang7', '123', 'nv', N'Nhân viên','nv001')
+insert into TAIKHOAN
+values ('hoang8', '123', 'nv', N'Nhân viên','nv001')
+
 --insert values to table LOAIHH
 insert into LOAIHH
 values ('TAC', N'Thức ăn cho Chó')
@@ -159,3 +187,24 @@ insert into LOAIHH
 values ('YTT', N'Vật dụng Y tế và Thuốc')
 insert into LOAIHH
 values ('KH', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH1', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH2', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH3', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH4', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH5', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH6', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH7', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH8', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH9', N'Vật dụng khác')
+insert into LOAIHH
+values ('KH10', N'Vật dụng khác')
+

@@ -139,7 +139,7 @@ namespace petStore.FormChuongTrinh
         // Định dạng lại mật khẩu trong dgvTaiKhoan để tăng tính bảo mật
         private void dgvTaiKhoan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvTaiKhoan.Columns[e.ColumnIndex].Name == "PASSWORD")
+            if (dgvTaiKhoan.Columns[e.ColumnIndex].Name == "MATKHAU")
             {
                 e.Value = "••••••••••";
             }

@@ -23,6 +23,10 @@ namespace petStore
             //Application.Run(new FormChuongTrinh.fNhaCungCap());
             //Application.Run(new FormChuongTrinh.fLoaiHangHoa());
             //Application.Run(new FormChuongTrinh.fHangHoa());
+            //Application.Run(new FormChuongTrinh.fShowLoaiHH());
+            //Application.Run(new FormChuongTrinh.fShowNhaCungCap());
+            //Application.Run(new FormChuongTrinh.fShowNhanVien());
+            //Application.Run(new FormChuongTrinh.fHoaDonBan());
         }
     }
 }

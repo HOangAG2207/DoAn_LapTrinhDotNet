@@ -84,10 +84,7 @@ namespace petStore.FormChuongTrinh
             dgvKhachHang.DataSource = binding;
         }
         #endregion
-        private void pbTimKiem_Click(object sender, EventArgs e)
-        {
-            LayDuLieu_TimKiem(txtTimKiem.Text);
-        }
+
         #region sự kiện của các nút
         // nút thêm mới
         private void btnThem_Click(object sender, EventArgs e)
@@ -224,7 +221,13 @@ namespace petStore.FormChuongTrinh
                     }
                 }
             }
-            #endregion
+
+        }
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LayDuLieu_TimKiem(txtTimKiem.Text);
         }
     }
 }

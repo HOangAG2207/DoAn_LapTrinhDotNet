@@ -64,7 +64,6 @@ namespace petStore.FormChuongTrinh
             this.dgvNhanVien = new System.Windows.Forms.DataGridView();
             this.pnlTop3 = new System.Windows.Forms.Panel();
             this.tlpTaiKhoan = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.gbTaiKhoan = new System.Windows.Forms.GroupBox();
             this.pnl4 = new System.Windows.Forms.Panel();
@@ -84,6 +83,7 @@ namespace petStore.FormChuongTrinh
             this.btnLuu2 = new System.Windows.Forms.Button();
             this.btnSua2 = new System.Windows.Forms.Button();
             this.btnThem2 = new System.Windows.Forms.Button();
+            this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.pnlTop1.SuspendLayout();
             this.tlpNhanVien.SuspendLayout();
             this.gbNhanVien.SuspendLayout();
@@ -97,11 +97,11 @@ namespace petStore.FormChuongTrinh
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).BeginInit();
             this.pnlTop3.SuspendLayout();
             this.tlpTaiKhoan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.gbTaiKhoan.SuspendLayout();
             this.pnl4.SuspendLayout();
             this.pnl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTop1
@@ -149,7 +149,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31507F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68493F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 114F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
             this.tableLayoutPanel1.Controls.Add(this.pnl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl6, 2, 0);
@@ -173,7 +173,7 @@ namespace petStore.FormChuongTrinh
             this.pnl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl1.Location = new System.Drawing.Point(3, 3);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(219, 139);
+            this.pnl1.Size = new System.Drawing.Size(218, 139);
             this.pnl1.TabIndex = 0;
             // 
             // txtCCCD
@@ -184,7 +184,7 @@ namespace petStore.FormChuongTrinh
             this.txtCCCD.ForeColor = System.Drawing.Color.Black;
             this.txtCCCD.Location = new System.Drawing.Point(109, 78);
             this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(95, 21);
+            this.txtCCCD.Size = new System.Drawing.Size(94, 21);
             this.txtCCCD.TabIndex = 3;
             // 
             // txtTenNV
@@ -195,7 +195,7 @@ namespace petStore.FormChuongTrinh
             this.txtTenNV.ForeColor = System.Drawing.Color.Black;
             this.txtTenNV.Location = new System.Drawing.Point(109, 46);
             this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(95, 21);
+            this.txtTenNV.Size = new System.Drawing.Size(94, 21);
             this.txtTenNV.TabIndex = 2;
             // 
             // txtMaNV
@@ -206,7 +206,7 @@ namespace petStore.FormChuongTrinh
             this.txtMaNV.ForeColor = System.Drawing.Color.Black;
             this.txtMaNV.Location = new System.Drawing.Point(109, 14);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(95, 21);
+            this.txtMaNV.Size = new System.Drawing.Size(94, 21);
             this.txtMaNV.TabIndex = 1;
             // 
             // label4
@@ -252,9 +252,9 @@ namespace petStore.FormChuongTrinh
             this.pnl2.Controls.Add(this.label5);
             this.pnl2.Controls.Add(this.label2);
             this.pnl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl2.Location = new System.Drawing.Point(228, 3);
+            this.pnl2.Location = new System.Drawing.Point(227, 3);
             this.pnl2.Name = "pnl2";
-            this.pnl2.Size = new System.Drawing.Size(225, 139);
+            this.pnl2.Size = new System.Drawing.Size(224, 139);
             this.pnl2.TabIndex = 1;
             // 
             // txtSDT
@@ -265,7 +265,7 @@ namespace petStore.FormChuongTrinh
             this.txtSDT.ForeColor = System.Drawing.Color.Black;
             this.txtSDT.Location = new System.Drawing.Point(117, 78);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(97, 21);
+            this.txtSDT.Size = new System.Drawing.Size(96, 21);
             this.txtSDT.TabIndex = 3;
             // 
             // dtpNgaySinh
@@ -277,7 +277,7 @@ namespace petStore.FormChuongTrinh
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(117, 46);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(97, 21);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(96, 21);
             this.dtpNgaySinh.TabIndex = 2;
             // 
             // chkbNu
@@ -333,9 +333,9 @@ namespace petStore.FormChuongTrinh
             this.pnl6.Controls.Add(this.pictureBox1);
             this.pnl6.Controls.Add(this.btnUpAnh);
             this.pnl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl6.Location = new System.Drawing.Point(459, 3);
+            this.pnl6.Location = new System.Drawing.Point(457, 3);
             this.pnl6.Name = "pnl6";
-            this.pnl6.Size = new System.Drawing.Size(109, 139);
+            this.pnl6.Size = new System.Drawing.Size(111, 139);
             this.pnl6.TabIndex = 2;
             // 
             // pictureBox1
@@ -449,6 +449,7 @@ namespace petStore.FormChuongTrinh
             // 
             // pnlTop2
             // 
+            this.pnlTop2.BackColor = System.Drawing.Color.White;
             this.pnlTop2.Controls.Add(this.dgvNhanVien);
             this.pnlTop2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTop2.Location = new System.Drawing.Point(0, 172);
@@ -460,9 +461,11 @@ namespace petStore.FormChuongTrinh
             // 
             this.dgvNhanVien.AllowUserToAddRows = false;
             this.dgvNhanVien.AllowUserToDeleteRows = false;
+            this.dgvNhanVien.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvNhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNhanVien.BackgroundColor = System.Drawing.Color.White;
-            this.dgvNhanVien.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -472,16 +475,14 @@ namespace petStore.FormChuongTrinh
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNhanVien.Location = new System.Drawing.Point(0, 0);
+            this.dgvNhanVien.Location = new System.Drawing.Point(3, 3);
             this.dgvNhanVien.MultiSelect = false;
             this.dgvNhanVien.Name = "dgvNhanVien";
             this.dgvNhanVien.ReadOnly = true;
-            this.dgvNhanVien.RowHeadersWidth = 50;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvNhanVien.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvNhanVien.Size = new System.Drawing.Size(728, 378);
+            this.dgvNhanVien.Size = new System.Drawing.Size(722, 97);
             this.dgvNhanVien.TabIndex = 0;
             // 
             // pnlTop3
@@ -501,8 +502,8 @@ namespace petStore.FormChuongTrinh
             this.tlpTaiKhoan.ColumnCount = 2;
             this.tlpTaiKhoan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.21733F));
             this.tlpTaiKhoan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.78267F));
-            this.tlpTaiKhoan.Controls.Add(this.dgvTaiKhoan, 1, 0);
             this.tlpTaiKhoan.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tlpTaiKhoan.Controls.Add(this.dgvTaiKhoan, 1, 0);
             this.tlpTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpTaiKhoan.Location = new System.Drawing.Point(0, 0);
             this.tlpTaiKhoan.Name = "tlpTaiKhoan";
@@ -511,34 +512,6 @@ namespace petStore.FormChuongTrinh
             this.tlpTaiKhoan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpTaiKhoan.Size = new System.Drawing.Size(728, 276);
             this.tlpTaiKhoan.TabIndex = 0;
-            // 
-            // dgvTaiKhoan
-            // 
-            this.dgvTaiKhoan.AllowUserToAddRows = false;
-            this.dgvTaiKhoan.AllowUserToDeleteRows = false;
-            this.dgvTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTaiKhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTaiKhoan.BackgroundColor = System.Drawing.Color.White;
-            this.dgvTaiKhoan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTaiKhoan.Location = new System.Drawing.Point(340, 4);
-            this.dgvTaiKhoan.MultiSelect = false;
-            this.dgvTaiKhoan.Name = "dgvTaiKhoan";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvTaiKhoan.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(384, 268);
-            this.dgvTaiKhoan.TabIndex = 0;
-            this.dgvTaiKhoan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTaiKhoan_CellFormatting);
             // 
             // tableLayoutPanel2
             // 
@@ -785,6 +758,35 @@ namespace petStore.FormChuongTrinh
             this.btnThem2.UseVisualStyleBackColor = true;
             this.btnThem2.Click += new System.EventHandler(this.btnThem2_Click);
             // 
+            // dgvTaiKhoan
+            // 
+            this.dgvTaiKhoan.AllowUserToAddRows = false;
+            this.dgvTaiKhoan.AllowUserToDeleteRows = false;
+            this.dgvTaiKhoan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTaiKhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTaiKhoan.BackgroundColor = System.Drawing.Color.White;
+            this.dgvTaiKhoan.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(340, 4);
+            this.dgvTaiKhoan.MultiSelect = false;
+            this.dgvTaiKhoan.Name = "dgvTaiKhoan";
+            this.dgvTaiKhoan.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTaiKhoan.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(384, 268);
+            this.dgvTaiKhoan.TabIndex = 0;
+            this.dgvTaiKhoan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTaiKhoan_CellFormatting);
+            // 
             // fTaiKhoanVaNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,12 +815,12 @@ namespace petStore.FormChuongTrinh
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanVien)).EndInit();
             this.pnlTop3.ResumeLayout(false);
             this.tlpTaiKhoan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.gbTaiKhoan.ResumeLayout(false);
             this.pnl4.ResumeLayout(false);
             this.pnl4.PerformLayout();
             this.pnl5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -830,7 +832,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Panel pnlTop3;
         private System.Windows.Forms.TableLayoutPanel tlpTaiKhoan;
         private System.Windows.Forms.DataGridView dgvTaiKhoan;
-        private System.Windows.Forms.DataGridView dgvNhanVien;
         private System.Windows.Forms.TableLayoutPanel tlpNhanVien;
         private System.Windows.Forms.GroupBox gbNhanVien;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -876,5 +877,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Button btnHuyBo1;
         private System.Windows.Forms.Button btnHuyBo2;
+        private System.Windows.Forms.DataGridView dgvNhanVien;
     }
 }

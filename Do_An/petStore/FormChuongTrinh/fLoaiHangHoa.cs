@@ -175,7 +175,7 @@ namespace petStore.FormChuongTrinh
                                            VALUES(@ml, @tl)";
                             SqlCommand cmd = new SqlCommand(sql);
                             cmd.Parameters.Add("@ml", SqlDbType.VarChar).Value = txtMaLoai.Text;
-                            cmd.Parameters.Add("@tl", SqlDbType.VarChar).Value = txtTenLoai.Text;
+                            cmd.Parameters.Add("@tl", SqlDbType.NVarChar).Value = txtTenLoai.Text;
                             datahanghoa.Update(cmd);
                         }
 
@@ -190,7 +190,8 @@ namespace petStore.FormChuongTrinh
             }
         }
         #endregion
-        private void pbTimKiem_Click(object sender, EventArgs e)
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LayDuLieu_TimKiem(txtTimKiem.Text);
         }
