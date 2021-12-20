@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace petStore
 {
@@ -43,7 +44,6 @@ namespace petStore
         }
         public void QuanTriVien()
         {
-            
             label2.Text = "Quản trị viên: \n( " + HovaTen + " )";
         }
         public void NhanVien()
@@ -51,14 +51,20 @@ namespace petStore
             mnuAdmin.Visible = false;
             label2.Text = "Nhân viên: \n( " + HovaTen + " )";
         }
+        byte[] text;
         private void DangNhap()
         {
             dataTable.OpenConnection();
             SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN tk, NHANVIEN nv WHERE tk.TENDANGNHAP = @TDN and tk.MANV = nv.MANV");
             cmd.Parameters.Add("@TDN", SqlDbType.VarChar).Value = userDisplay;
             dataTable.Fill(cmd);
-                HovaTen = dataTable.Rows[0]["TENNV"].ToString();
-                string quyenHan = dataTable.Rows[0]["QUYENHAN"].ToString();
+            HovaTen = dataTable.Rows[0]["TENNV"].ToString();
+            if (dataTable.Rows[0]["ANH"].ToString() != "")
+            {
+                text = (byte[])dataTable.Rows[0]["ANH"];
+                pictureBox1.Image = chuyenBytethanhImage(text);
+            }
+            string quyenHan = dataTable.Rows[0]["QUYENHAN"].ToString();
                 if (quyenHan == "ad")
                     QuanTriVien();
                 else if (quyenHan == "nv")
@@ -99,6 +105,13 @@ namespace petStore
                 loaihanghoa.Activate();
             }
             */
+        }
+        // Chuyển Byte sang dạng Ảnh
+        private Image chuyenBytethanhImage(byte[] byteArr)
+        {
+            MemoryStream ms = new MemoryStream(byteArr);
+            Image img = Image.FromStream(ms);
+            return img;
         }
         #endregion
         #region Thao tác mới Menu Danh mục

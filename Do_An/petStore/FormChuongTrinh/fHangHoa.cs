@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace petStore.FormChuongTrinh
 {
@@ -34,13 +35,12 @@ namespace petStore.FormChuongTrinh
             txtMaHH.DataBindings.Clear();
             txtTenHH.DataBindings.Clear();
             cboLoai.DataBindings.Clear();
-            cboLoai.Text = "";
             txtSoLuong.DataBindings.Clear();
             txtDonGiaBan.DataBindings.Clear();
             txtDonGiaNhap.DataBindings.Clear();
             cboNhaCungCap.DataBindings.Clear();
-            cboNhaCungCap.Text = "";
             txtMoTa.DataBindings.Clear();
+            pictHangHoa.DataBindings.Clear();
 
             txtMaHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "MAHH", false, DataSourceUpdateMode.Never);
             txtTenHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "TENHH", false, DataSourceUpdateMode.Never);
@@ -50,16 +50,17 @@ namespace petStore.FormChuongTrinh
             txtDonGiaNhap.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIANHAP", false, DataSourceUpdateMode.Never);
             cboNhaCungCap.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
             txtMoTa.DataBindings.Add("Text", dgvHangHoa.DataSource, "MOTA", false, DataSourceUpdateMode.Never);
+            pictHangHoa.DataBindings.Add("Image", dgvHangHoa.DataSource, "ANH", true, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvHangHoa
-            dgvHangHoa.Columns["MAHH"].HeaderText = "Mã hàng hóa";
-            dgvHangHoa.Columns["TENHH"].HeaderText = "Tên hàng hóa";
-            dgvHangHoa.Columns["MALOAI"].HeaderText = "Loại hàng hóa";
-            dgvHangHoa.Columns["SOLUONG"].HeaderText = "Số lượng";
-            dgvHangHoa.Columns["DONGIABAN"].HeaderText = "Đơn giá nhập";
-            dgvHangHoa.Columns["DONGIANHAP"].HeaderText = "Đơn giá bán";
-            dgvHangHoa.Columns["MANCC"].HeaderText = "Nhà cung cấp";
-            dgvHangHoa.Columns["MOTA"].HeaderText = "Mô tả";
-            dgvHangHoa.Columns["ANH"].HeaderText = "Ảnh";
+            dgvHangHoa.Columns["MAHH"].HeaderText = "MÃ HÀNG HÓA";
+            dgvHangHoa.Columns["TENHH"].HeaderText = "TÊN HÀNG HÓA";
+            dgvHangHoa.Columns["MALOAI"].HeaderText = "LOẠI HÀNG HÓA";
+            dgvHangHoa.Columns["SOLUONG"].HeaderText = "SỐ LƯỢNG";
+            dgvHangHoa.Columns["DONGIABAN"].HeaderText = "ĐƠN GIÁ BÁN";
+            dgvHangHoa.Columns["DONGIANHAP"].HeaderText = "ĐƠN GIÁ NHẬP";
+            dgvHangHoa.Columns["MANCC"].HeaderText = "NHÀ CUNG CẤP";
+            dgvHangHoa.Columns["MOTA"].HeaderText = "MÔ TẢ";
+            dgvHangHoa.Columns["ANH"].HeaderText = "ẢNH";
 
             // Làm sáng nút Thêm mới, Sửa và Xóa
             btnThem.Enabled = true;
@@ -68,6 +69,8 @@ namespace petStore.FormChuongTrinh
             //Làm mờ nút lưu và bỏ qua
             btnLuu.Enabled = false;
             btnHuyBo.Enabled = false;
+            btnChonAnh.Enabled = false;
+            btnXoaAnh.Enabled = false;
             // làm mờ các trường nhập dữ liệu
             //NHANVIEN
             txtMaHH.Enabled = false;
@@ -78,12 +81,18 @@ namespace petStore.FormChuongTrinh
             txtDonGiaNhap.Enabled = false;
             cboNhaCungCap.Enabled = false;
             txtMoTa.Enabled = false;
+            // điều chỉnh lại cột ảnh trong datagridview
+            DataGridViewImageColumn pic = new DataGridViewImageColumn();
+            pic = (DataGridViewImageColumn)dgvHangHoa.Columns["ANH"];
+            pic.ImageLayout = DataGridViewImageCellLayout.Zoom;
         }
         #region button của dgvNhanVien
         // Sự kiện Click của nút Thêm:
         private void btnThem_Click(object sender, EventArgs e)
         {
             capNhat = false;
+            LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
+            LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
             // làm trống các trường nhập dữ liệu
             txtMaHH.Clear();
             txtTenHH.Clear();
@@ -93,6 +102,8 @@ namespace petStore.FormChuongTrinh
             txtDonGiaNhap.Clear();
             cboNhaCungCap.Text = "";
             txtMoTa.Clear();
+            
+            pictHangHoa.Image = null;
             txtMaHH.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem.Enabled = false;
@@ -110,6 +121,8 @@ namespace petStore.FormChuongTrinh
             //làm sáng nút Lưu và Bỏ qua
             btnLuu.Enabled = true;
             btnHuyBo.Enabled = true;
+            btnChonAnh.Enabled = true;
+            btnXoaAnh.Enabled = true;
         }
         // Sự kiện nút sửa
         private void btnSua_Click(object sender, EventArgs e)
@@ -117,7 +130,8 @@ namespace petStore.FormChuongTrinh
             // Đánh dấu là Cập nhật
             capNhat = true;
             mahh = txtMaHH.Text;
-
+            LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
+            LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
             // Làm mờ nút Thêm mới, Sửa và Xóa
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -126,6 +140,8 @@ namespace petStore.FormChuongTrinh
             // Làm sáng nút Lưu và Bỏ qua
             btnLuu.Enabled = true;
             btnHuyBo.Enabled = true;
+            btnChonAnh.Enabled = true;
+            btnXoaAnh.Enabled = true;
 
             // làm sáng các trường nhập dữ liệu
             txtMaHH.Enabled = true;
@@ -186,7 +202,7 @@ namespace petStore.FormChuongTrinh
                     {
                         if (capNhat)
                         {
-                            string sql = @"UPDATE   HANGHOA
+                            string sql1 = @"UPDATE   HANGHOA
                                            SET      MAHH = @mahh,
                                                     TENHH = @tenhh,
                                                     MALOAI = @maloai,
@@ -194,33 +210,82 @@ namespace petStore.FormChuongTrinh
                                                     DONGIABAN = @dgb,
                                                     DONGIANHAP = @dgn,
                                                     MANCC = @ncc,
-                                                    MOTA = @mt
+                                                    MOTA = @mt,
+                                                    ANH = @anh
                                            WHERE    MAHH = @mahhcu";
-                            SqlCommand cmd = new SqlCommand(sql);
-                            cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
-                            cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
-                            cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                            cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                            cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                            cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
-                            cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
-                            cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
-                            cmd.Parameters.Add("@mahhcu", SqlDbType.VarChar).Value = mahh;
+                            string sql2 = @"UPDATE   HANGHOA
+                                           SET      MAHH = @mahh,
+                                                    TENHH = @tenhh,
+                                                    MALOAI = @maloai,
+                                                    SOLUONG = @sl,
+                                                    DONGIABAN = @dgb,
+                                                    DONGIANHAP = @dgn,
+                                                    MANCC = @ncc,
+                                                    MOTA = @mt,
+                                                    ANH = NULL
+                                           WHERE    MAHH = @mahhcu";
+                            SqlCommand cmd;
+                            if (pictHangHoa.Image != null)
+                            {
+                                cmd = new SqlCommand(sql1);
+                                cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
+                                cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
+                                cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
+                                cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictHangHoa));
+                                cmd.Parameters.Add("@mahhcu", SqlDbType.VarChar).Value = mahh;
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand(sql2);
+                                cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
+                                cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
+                                cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
+                                cmd.Parameters.Add("@mahhcu", SqlDbType.VarChar).Value = mahh;
+                            }
                             dataHangHoa.Update(cmd);
                         }
                         else
                         {
-                            string sql = @"INSERT INTO HANGHOA (MAHH, TENHH, MALOAI, SOLUONG, DONGIABAN, DONGIANHAP, MANCC, MOTA)
+                            string sql1 = @"INSERT INTO HANGHOA (MAHH, TENHH, MALOAI, SOLUONG, DONGIABAN, DONGIANHAP, MANCC, MOTA, ANH)
+                                           VALUES(@mahh, @tenhh, @maloai, @sl, @dgb, @dgn, @ncc, @mt, @anh)";
+                            string sql2 = @"INSERT INTO HANGHOA (MAHH, TENHH, MALOAI, SOLUONG, DONGIABAN, DONGIANHAP, MANCC, MOTA)
                                            VALUES(@mahh, @tenhh, @maloai, @sl, @dgb, @dgn, @ncc, @mt)";
-                            SqlCommand cmd = new SqlCommand(sql);
-                            cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
-                            cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
-                            cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                            cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                            cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                            cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
-                            cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
-                            cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
+                            SqlCommand cmd;
+                            if (pictHangHoa.Image != null)
+                            {
+                                cmd = new SqlCommand(sql1);
+                                cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
+                                cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
+                                cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
+                                cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictHangHoa));
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand(sql2);
+                                cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
+                                cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
+                                cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
+                                cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
+                            }
                             dataHangHoa.Update(cmd);
                         }
 
@@ -275,10 +340,43 @@ namespace petStore.FormChuongTrinh
         }
 
         #endregion
+        #region Xử lý ảnh
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LayDuLieu_TimKiem(txtTimKiem.Text);
         }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.Filter = "JPG files (*.jpg)|*.jpg|png files(*.jpg)|*.jpg|ALL files(*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                
+                txtLocationIMG.Text = openFileDialog1.FileName;
+                pictHangHoa.ImageLocation = txtLocationIMG.Text;
+            }
+        }
+
+        private void btnXoaAnh_Click(object sender, EventArgs e)
+        {
+            pictHangHoa.Image = null;
+        }
+        // Chuyển ảnh sang dạng Byte
+        private byte[] chuyenAnhthanhByte(PictureBox ptb)
+        {
+            MemoryStream ms = new MemoryStream();
+            ptb.Image.Save(ms, ptb.Image.RawFormat);
+            return ms.ToArray();
+        }
+        // Chuyển Byte sang dạng Ảnh
+        private Image chuyenBytethanhImage(byte[] byteArr)
+        {
+            MemoryStream ms = new MemoryStream(byteArr);
+            Image img = Image.FromStream(ms);
+            return img;
+        }
+        #endregion
     }
 }

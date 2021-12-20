@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 using System.Data.SqlClient;
+
 
 namespace petStore.FormChuongTrinh
 {
@@ -43,6 +45,8 @@ namespace petStore.FormChuongTrinh
             chkbNu.DataBindings.Clear();
             dtpNgaySinh.DataBindings.Clear();
             txtSDT.DataBindings.Clear();
+            pictureBox1.DataBindings.Clear();
+            
 
             txtMaNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "MANV", false, DataSourceUpdateMode.Never);
             txtTenNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "TENNV", false, DataSourceUpdateMode.Never);
@@ -50,14 +54,15 @@ namespace petStore.FormChuongTrinh
             chkbNu.DataBindings.Add("Checked", dgvNhanVien.DataSource, "GIOITINH", false, DataSourceUpdateMode.Never);
             dtpNgaySinh.DataBindings.Add("Value", dgvNhanVien.DataSource, "NGAYSINH", false, DataSourceUpdateMode.Never);
             txtSDT.DataBindings.Add("Text", dgvNhanVien.DataSource, "SDT", false, DataSourceUpdateMode.Never);
+            pictureBox1.DataBindings.Add("Image", dgvNhanVien.DataSource, "ANH", true, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvNhanVien
-            dgvNhanVien.Columns["MANV"].HeaderText = "Mã nhân viên";
-            dgvNhanVien.Columns["TENNV"].HeaderText = "Tên nhân viên";
-            dgvNhanVien.Columns["CCCD"].HeaderText = "Căn cước công dân";
-            dgvNhanVien.Columns["GIOITINH"].HeaderText = "Giới tính";
-            dgvNhanVien.Columns["NGAYSINH"].HeaderText = "Ngày sinh";
-            dgvNhanVien.Columns["SDT"].HeaderText = "Số điện thoại";
-            dgvNhanVien.Columns["ANH"].HeaderText = "Ảnh";
+            dgvNhanVien.Columns["MANV"].HeaderText = "MÃ NHÂN VIÊN";
+            dgvNhanVien.Columns["TENNV"].HeaderText = "TÊN NHÂN VIÊN";
+            dgvNhanVien.Columns["CCCD"].HeaderText = "CĂN CƯỚC CÔNG DÂN";
+            dgvNhanVien.Columns["GIOITINH"].HeaderText = "GIỚI TÍNH";
+            dgvNhanVien.Columns["NGAYSINH"].HeaderText = "NGÀY SINH";
+            dgvNhanVien.Columns["SDT"].HeaderText = "SỐ ĐIỆN THOẠI";
+            dgvNhanVien.Columns["ANH"].HeaderText = "ẢNH";
 
             // Khi click vào dgvTaiKhoan thì hiển thị dữ liệu của dòng được chọn lên các control
             cboMaNV.DataBindings.Clear();
@@ -71,11 +76,11 @@ namespace petStore.FormChuongTrinh
             cboQuyen.DataBindings.Add("SelectedValue", dgvTaiKhoan.DataSource, "QUYENHAN", false, DataSourceUpdateMode.Never);
             txtGhiChu.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "GHICHU", false, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvTaiKhoan
-            dgvTaiKhoan.Columns["MANV"].HeaderText = "Mã nhân viên";
-            dgvTaiKhoan.Columns["TENDANGNHAP"].HeaderText = "Tên đăng nhập";
-            dgvTaiKhoan.Columns["MATKHAU"].HeaderText = "Mật khẩu";
-            dgvTaiKhoan.Columns["QUYENHAN"].HeaderText = "Quyền hạn";
-            dgvTaiKhoan.Columns["GHICHU"].HeaderText = "Ghi chú";
+            dgvTaiKhoan.Columns["MANV"].HeaderText = "MÃ NV";
+            dgvTaiKhoan.Columns["TENDANGNHAP"].HeaderText = "TÊN ĐĂNG NHẬP";
+            dgvTaiKhoan.Columns["MATKHAU"].HeaderText = "MẬT KHẨU";
+            dgvTaiKhoan.Columns["QUYENHAN"].HeaderText = "QUYỀN HẠN";
+            dgvTaiKhoan.Columns["GHICHU"].HeaderText = "GHI CHÚ";
 
             // Làm sáng nút Thêm mới, Sửa và Xóa
             btnThem1.Enabled = true;
@@ -84,11 +89,14 @@ namespace petStore.FormChuongTrinh
             btnThem2.Enabled = true;
             btnSua2.Enabled = true;
             btnXoa2.Enabled = true;
+            
             //Làm mờ nút lưu và bỏ qua
             btnLuu1.Enabled = false;
             btnHuyBo1.Enabled = false;
             btnLuu2.Enabled = false;
             btnHuyBo2.Enabled = false;
+            btnUpAnh.Enabled = false;
+            btnXoaAnh.Enabled = false;
 
             // làm mờ các trường nhập dữ liệu
             //NHANVIEN
@@ -104,6 +112,10 @@ namespace petStore.FormChuongTrinh
             txtPass.Enabled = false;
             cboQuyen.Enabled = false;
             txtGhiChu.Enabled = false;
+            // điều chỉnh lại cột ảnh trong datagridview
+            DataGridViewImageColumn pic = new DataGridViewImageColumn();
+            pic = (DataGridViewImageColumn)dgvNhanVien.Columns["ANH"];
+            pic.ImageLayout = DataGridViewImageCellLayout.Zoom;
         }
         #region Lấy dữ liệu
         // lấy dữ liệu nhân viên
@@ -136,34 +148,13 @@ namespace petStore.FormChuongTrinh
             comboBox.ValueMember = value;
         }
         #endregion
-        // Định dạng lại mật khẩu trong dgvTaiKhoan để tăng tính bảo mật
-        private void dgvTaiKhoan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (dgvTaiKhoan.Columns[e.ColumnIndex].Name == "MATKHAU")
-            {
-                e.Value = "••••••••••";
-            }
-        }
-        /*Hàm kiểm tra dữ liệu trên DataGridView:
-        public bool KiemTra(string columnName)
-        {
-            foreach (DataGridViewRow row in dgvTaiKhoan.Rows)
-            {
-                string value = row.Cells[columnName].Value.ToString();
-                if (string.IsNullOrEmpty(value))
-                {
-                    MessageBox.Show("Giá trị của ô không được rỗng!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-            }
-            return true;
-        }*/
         #region button của dgvNhanVien
         // Sự kiện Click của nút Thêm:
         private void btnThem1_Click(object sender, EventArgs e)
         {
             capNhat1 = false;
+            LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
+            LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
             // làm trống các trường nhập dữ liệu
             txtMaNV.Clear();
             txtTenNV.Clear();
@@ -171,6 +162,9 @@ namespace petStore.FormChuongTrinh
             chkbNu.Checked = false;
             dtpNgaySinh.Value = DateTime.Today;
             txtSDT.Text = "";
+            txtLocationIMG.Clear();
+            
+            pictureBox1.Image = null;
             txtMaNV.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem1.Enabled = false;
@@ -186,6 +180,8 @@ namespace petStore.FormChuongTrinh
             //làm sáng nút Lưu và Bỏ qua
             btnLuu1.Enabled = true;
             btnHuyBo1.Enabled = true;
+            btnUpAnh.Enabled = true;
+            btnXoaAnh.Enabled = true;
         }
         // Sự kiện Click của nút Xóa:
         private void btnSua1_Click(object sender, EventArgs e)
@@ -193,7 +189,8 @@ namespace petStore.FormChuongTrinh
             // Đánh dấu là Cập nhật
             capNhat1 = true;
             maNV = txtMaNV.Text;
-
+            LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
+            LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
             // Làm mờ nút Thêm mới, Sửa và Xóa
             btnThem1.Enabled = false;
             btnSua1.Enabled = false;
@@ -202,6 +199,8 @@ namespace petStore.FormChuongTrinh
             // Làm sáng nút Lưu và Bỏ qua
             btnLuu1.Enabled = true;
             btnHuyBo1.Enabled = true;
+            btnUpAnh.Enabled = true;
+            btnXoaAnh.Enabled = true;
 
             // làm sáng các trường nhập dữ liệu
             txtMaNV.Enabled = true;
@@ -255,36 +254,80 @@ namespace petStore.FormChuongTrinh
                     {
                         if (capNhat1)
                         {
-                            string sql = @"UPDATE   NHANVIEN
-                                           SET      MANV = @manv,
-                                                    TENNV = @tennv,
-                                                    CCCD = @cccd,
-                                                    GIOITINH = @gioitinh,
-                                                    NGAYSINH = @ngaysinh,
-                                                    SDT = @sdt
-                                           WHERE    MANV = @manvcu";
-                            SqlCommand cmd = new SqlCommand(sql);
-                            cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
-                            cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
-                            cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                            cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
-                            cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
-                            cmd.Parameters.Add("@sdt", SqlDbType.NVarChar, 10).Value = txtSDT.Text;
-                            cmd.Parameters.Add("@manvcu", SqlDbType.VarChar).Value = maNV;
+                            string sql1 = @"UPDATE   NHANVIEN
+                                               SET      MANV = @manv,
+                                                        TENNV = @tennv,
+                                                        CCCD = @cccd,
+                                                        GIOITINH = @gioitinh,
+                                                        NGAYSINH = @ngaysinh,
+                                                        SDT = @sdt,
+                                                        ANH = @anh
+                                               WHERE    MANV = @manvcu";
+                            string sql2 = @"UPDATE   NHANVIEN
+                                               SET      MANV = @manv,
+                                                        TENNV = @tennv,
+                                                        CCCD = @cccd,
+                                                        GIOITINH = @gioitinh,
+                                                        NGAYSINH = @ngaysinh,
+                                                        SDT = @sdt,
+                                                        ANH = NULL
+                                               WHERE    MANV = @manvcu";
+                            SqlCommand cmd;
+                            if (pictureBox1.Image != null)
+                            {
+                                cmd = new SqlCommand(sql1);
+                                cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
+                                cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
+                                cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
+                                cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
+                                cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictureBox1));
+                                cmd.Parameters.Add("@manvcu", SqlDbType.VarChar).Value = maNV;
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand(sql2);
+                                cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
+                                cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
+                                cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
+                                cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
+                                cmd.Parameters.Add("@manvcu", SqlDbType.VarChar).Value = maNV;
+                            }
                             dataTable1.Update(cmd);
                         }
                         else
                         {
-                            string sql = @"INSERT INTO NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
+                            string sql1 = @"INSERT INTO NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT, ANH)
+                                           VALUES(@manv, @tennv, @cccd, @gioitinh, @ngaysinh, @sdt, @anh)";
+                            string sql2 = @"INSERT INTO NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
                                            VALUES(@manv, @tennv, @cccd, @gioitinh, @ngaysinh, @sdt)";
-                            SqlCommand cmd = new SqlCommand(sql);
-                            cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
-                            cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
-                            cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                            cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
-                            cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
-                            cmd.Parameters.Add("@sdt", SqlDbType.NVarChar, 10).Value = txtSDT.Text;
+                            SqlCommand cmd;
+                            if (pictureBox1.Image != null)
+                            {
+                                cmd = new SqlCommand(sql1);
+                                cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
+                                cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
+                                cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
+                                cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
+                                cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictureBox1));
+                            }
+                            else
+                            {
+                                cmd = new SqlCommand(sql2);
+                                cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
+                                cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
+                                cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
+                                cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
+                            }
                             dataTable1.Update(cmd);
+                            
                         }
 
                         // Tải lại form
@@ -438,5 +481,68 @@ namespace petStore.FormChuongTrinh
             fTaiKhoanVaNhanVien_Load(sender, e);
         }
         #endregion
+        #region Xử lý ảnh
+        private void btnUpAnh_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.Filter = "JPG files (*.jpg)|*.jpg|png files(*.jpg)|*.jpg|ALL files(*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                txtLocationIMG.Text = openFileDialog1.FileName;
+                pictureBox1.ImageLocation = txtLocationIMG.Text;
+            }
+        }
+        private void btnXoaAnh_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+        }
+        // Chuyển ảnh sang dạng Byte
+        private byte[] chuyenAnhthanhByte(PictureBox ptb)
+        {
+            MemoryStream ms = new MemoryStream();
+            ptb.Image.Save(ms, ptb.Image.RawFormat);
+            return ms.ToArray();
+            /*
+            FileStream fs;
+            fs = new FileStream(txtLocationIMG.Text, FileMode.Open, FileAccess.Read);
+            byte[] anhByte = new byte[fs.Length];
+            fs.Read(anhByte, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+            return anhByte;
+            */
+        }
+        // Chuyển Byte sang dạng Ảnh
+        private Image chuyenBytethanhImage(byte[] byteArr)
+        {
+            MemoryStream ms = new MemoryStream(byteArr);
+            Image img = Image.FromStream(ms);
+            return img;
+        }
+        #endregion
+        // Định dạng lại mật khẩu trong dgvTaiKhoan để tăng tính bảo mật
+        private void dgvTaiKhoan_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvTaiKhoan.Columns[e.ColumnIndex].Name == "MATKHAU")
+            {
+                e.Value = "••••••••••";
+            }
+        }
+
+        
+        /*Hàm kiểm tra dữ liệu trên DataGridView:
+public bool KiemTra(string columnName)
+{
+   foreach (DataGridViewRow row in dgvTaiKhoan.Rows)
+   {
+       string value = row.Cells[columnName].Value.ToString();
+       if (string.IsNullOrEmpty(value))
+       {
+           MessageBox.Show("Giá trị của ô không được rỗng!", "Lỗi",
+           MessageBoxButtons.OK, MessageBoxIcon.Error);
+           return false;
+       }
+   }
+   return true;
+}*/
     }
 }

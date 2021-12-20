@@ -133,6 +133,16 @@ namespace petStore.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imageNV {
+            get {
+                object obj = ResourceManager.GetObject("imageNV", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loginBG {
             get {
                 object obj = ResourceManager.GetObject("loginBG", resourceCulture);

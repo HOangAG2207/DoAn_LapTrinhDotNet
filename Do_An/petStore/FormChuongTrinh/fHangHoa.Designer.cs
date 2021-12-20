@@ -29,9 +29,11 @@ namespace petStore.FormChuongTrinh
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnlLeft = new System.Windows.Forms.Panel();
@@ -64,12 +66,15 @@ namespace petStore.FormChuongTrinh
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvHangHoa = new System.Windows.Forms.DataGridView();
+            this.btnXoaAnh = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtLocationIMG = new System.Windows.Forms.TextBox();
             this.pnlTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.pnlLeft.SuspendLayout();
@@ -101,7 +106,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.97297F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.02703F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 138F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanel1.Controls.Add(this.pnlLeft, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlRight, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnlAnh, 2, 0);
@@ -130,7 +135,7 @@ namespace petStore.FormChuongTrinh
             this.pnlLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlLeft.Location = new System.Drawing.Point(3, 3);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(369, 166);
+            this.pnlLeft.Size = new System.Drawing.Size(368, 166);
             this.pnlLeft.TabIndex = 0;
             // 
             // cboLoai
@@ -140,7 +145,7 @@ namespace petStore.FormChuongTrinh
             this.cboLoai.FormattingEnabled = true;
             this.cboLoai.Location = new System.Drawing.Point(100, 69);
             this.cboLoai.Name = "cboLoai";
-            this.cboLoai.Size = new System.Drawing.Size(245, 21);
+            this.cboLoai.Size = new System.Drawing.Size(244, 21);
             this.cboLoai.TabIndex = 5;
             // 
             // txtDonGiaBan
@@ -149,7 +154,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDonGiaBan.Location = new System.Drawing.Point(100, 126);
             this.txtDonGiaBan.Name = "txtDonGiaBan";
-            this.txtDonGiaBan.Size = new System.Drawing.Size(245, 20);
+            this.txtDonGiaBan.Size = new System.Drawing.Size(244, 20);
             this.txtDonGiaBan.TabIndex = 4;
             // 
             // txtSoLuong
@@ -158,7 +163,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSoLuong.Location = new System.Drawing.Point(100, 99);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(245, 20);
+            this.txtSoLuong.Size = new System.Drawing.Size(244, 20);
             this.txtSoLuong.TabIndex = 4;
             // 
             // txtTenHH
@@ -167,7 +172,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTenHH.Location = new System.Drawing.Point(100, 38);
             this.txtTenHH.Name = "txtTenHH";
-            this.txtTenHH.Size = new System.Drawing.Size(245, 20);
+            this.txtTenHH.Size = new System.Drawing.Size(244, 20);
             this.txtTenHH.TabIndex = 4;
             // 
             // txtMaHH
@@ -176,7 +181,7 @@ namespace petStore.FormChuongTrinh
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaHH.Location = new System.Drawing.Point(100, 9);
             this.txtMaHH.Name = "txtMaHH";
-            this.txtMaHH.Size = new System.Drawing.Size(245, 20);
+            this.txtMaHH.Size = new System.Drawing.Size(244, 20);
             this.txtMaHH.TabIndex = 4;
             // 
             // label7
@@ -232,6 +237,7 @@ namespace petStore.FormChuongTrinh
             // pnlRight
             // 
             this.pnlRight.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlRight.Controls.Add(this.txtLocationIMG);
             this.pnlRight.Controls.Add(this.cboNhaCungCap);
             this.pnlRight.Controls.Add(this.label9);
             this.pnlRight.Controls.Add(this.label8);
@@ -239,7 +245,7 @@ namespace petStore.FormChuongTrinh
             this.pnlRight.Controls.Add(this.txtDonGiaNhap);
             this.pnlRight.Controls.Add(this.label6);
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRight.Location = new System.Drawing.Point(378, 3);
+            this.pnlRight.Location = new System.Drawing.Point(377, 3);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(326, 166);
             this.pnlRight.TabIndex = 1;
@@ -306,12 +312,13 @@ namespace petStore.FormChuongTrinh
             // pnlAnh
             // 
             this.pnlAnh.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlAnh.Controls.Add(this.btnXoaAnh);
             this.pnlAnh.Controls.Add(this.btnChonAnh);
             this.pnlAnh.Controls.Add(this.pictHangHoa);
             this.pnlAnh.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlAnh.Location = new System.Drawing.Point(710, 3);
+            this.pnlAnh.Location = new System.Drawing.Point(709, 3);
             this.pnlAnh.Name = "pnlAnh";
-            this.pnlAnh.Size = new System.Drawing.Size(133, 166);
+            this.pnlAnh.Size = new System.Drawing.Size(134, 166);
             this.pnlAnh.TabIndex = 2;
             // 
             // btnChonAnh
@@ -321,18 +328,22 @@ namespace petStore.FormChuongTrinh
             this.btnChonAnh.ForeColor = System.Drawing.Color.Black;
             this.btnChonAnh.Location = new System.Drawing.Point(13, 124);
             this.btnChonAnh.Name = "btnChonAnh";
-            this.btnChonAnh.Size = new System.Drawing.Size(101, 31);
+            this.btnChonAnh.Size = new System.Drawing.Size(79, 31);
             this.btnChonAnh.TabIndex = 1;
             this.btnChonAnh.Text = "Chọn ảnh";
             this.btnChonAnh.UseVisualStyleBackColor = false;
+            this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
             // pictHangHoa
             // 
             this.pictHangHoa.BackColor = System.Drawing.SystemColors.Control;
+            this.pictHangHoa.BackgroundImage = global::petStore.Properties.Resources.imageNV;
+            this.pictHangHoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictHangHoa.Location = new System.Drawing.Point(13, 9);
             this.pictHangHoa.Name = "pictHangHoa";
-            this.pictHangHoa.Size = new System.Drawing.Size(101, 106);
+            this.pictHangHoa.Size = new System.Drawing.Size(112, 106);
+            this.pictHangHoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictHangHoa.TabIndex = 0;
             this.pictHangHoa.TabStop = false;
             // 
@@ -455,18 +466,6 @@ namespace petStore.FormChuongTrinh
             this.panel3.Size = new System.Drawing.Size(846, 219);
             this.panel3.TabIndex = 1;
             // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnTimKiem.Image = global::petStore.Properties.Resources.view16;
-            this.btnTimKiem.Location = new System.Drawing.Point(633, 0);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(30, 28);
-            this.btnTimKiem.TabIndex = 2;
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -503,6 +502,18 @@ namespace petStore.FormChuongTrinh
             this.txtTimKiem.TabIndex = 1;
             this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTimKiem.Image = global::petStore.Properties.Resources.view16;
+            this.btnTimKiem.Location = new System.Drawing.Point(633, 0);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(30, 28);
+            this.btnTimKiem.TabIndex = 2;
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -517,32 +528,77 @@ namespace petStore.FormChuongTrinh
             // 
             this.dgvHangHoa.AllowUserToAddRows = false;
             this.dgvHangHoa.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvHangHoa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvHangHoa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvHangHoa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHangHoa.BackgroundColor = System.Drawing.Color.White;
             this.dgvHangHoa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHangHoa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvHangHoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHangHoa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvHangHoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHangHoa.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvHangHoa.EnableHeadersVisualStyles = false;
             this.dgvHangHoa.Location = new System.Drawing.Point(3, 45);
             this.dgvHangHoa.MultiSelect = false;
             this.dgvHangHoa.Name = "dgvHangHoa";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvHangHoa.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvHangHoa.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MediumTurquoise;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHangHoa.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvHangHoa.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvHangHoa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHangHoa.Size = new System.Drawing.Size(840, 162);
             this.dgvHangHoa.TabIndex = 0;
+            // 
+            // btnXoaAnh
+            // 
+            this.btnXoaAnh.Image = global::petStore.Properties.Resources.delete16;
+            this.btnXoaAnh.Location = new System.Drawing.Point(94, 124);
+            this.btnXoaAnh.Name = "btnXoaAnh";
+            this.btnXoaAnh.Size = new System.Drawing.Size(31, 31);
+            this.btnXoaAnh.TabIndex = 2;
+            this.btnXoaAnh.UseVisualStyleBackColor = true;
+            this.btnXoaAnh.Click += new System.EventHandler(this.btnXoaAnh_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // txtLocationIMG
+            // 
+            this.txtLocationIMG.Location = new System.Drawing.Point(12, 126);
+            this.txtLocationIMG.Name = "txtLocationIMG";
+            this.txtLocationIMG.Size = new System.Drawing.Size(65, 20);
+            this.txtLocationIMG.TabIndex = 6;
+            this.txtLocationIMG.Visible = false;
             // 
             // fHangHoa
             // 
@@ -551,6 +607,7 @@ namespace petStore.FormChuongTrinh
             this.ClientSize = new System.Drawing.Size(846, 488);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pnlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fHangHoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fHangHoa";
@@ -616,5 +673,8 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.Button btnXoaAnh;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox txtLocationIMG;
     }
 }
