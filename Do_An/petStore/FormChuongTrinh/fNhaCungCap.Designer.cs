@@ -41,6 +41,7 @@ namespace petStore.FormChuongTrinh
             this.label3 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -128,7 +129,7 @@ namespace petStore.FormChuongTrinh
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.txtTimKiem);
             this.panel4.Controls.Add(this.button1);
-            this.panel4.Location = new System.Drawing.Point(12, 159);
+            this.panel4.Location = new System.Drawing.Point(12, 182);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(262, 30);
             this.panel4.TabIndex = 4;
@@ -166,6 +167,7 @@ namespace petStore.FormChuongTrinh
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtDiaChi);
@@ -177,8 +179,19 @@ namespace petStore.FormChuongTrinh
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(388, 192);
+            this.panel2.Size = new System.Drawing.Size(388, 215);
             this.panel2.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(141, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "label7";
             // 
             // label6
             // 
@@ -208,6 +221,7 @@ namespace petStore.FormChuongTrinh
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(224, 20);
             this.txtSDT.TabIndex = 1;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // label5
             // 
@@ -231,7 +245,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(692, 198);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(692, 221);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // panel3
@@ -246,7 +260,7 @@ namespace petStore.FormChuongTrinh
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(397, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(292, 192);
+            this.panel3.Size = new System.Drawing.Size(292, 215);
             this.panel3.TabIndex = 1;
             // 
             // btnHuyBo
@@ -256,7 +270,7 @@ namespace petStore.FormChuongTrinh
             this.btnHuyBo.Image = global::petStore.Properties.Resources.refresh16;
             this.btnHuyBo.Location = new System.Drawing.Point(127, 35);
             this.btnHuyBo.Name = "btnHuyBo";
-            this.btnHuyBo.Size = new System.Drawing.Size(145, 30);
+            this.btnHuyBo.Size = new System.Drawing.Size(145, 53);
             this.btnHuyBo.TabIndex = 5;
             this.btnHuyBo.Text = "    Hủy bỏ";
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -270,7 +284,7 @@ namespace petStore.FormChuongTrinh
             this.btnXoa.Image = global::petStore.Properties.Resources.delete16;
             this.btnXoa.Location = new System.Drawing.Point(31, 99);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 30);
+            this.btnXoa.Size = new System.Drawing.Size(90, 53);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "   Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -284,7 +298,7 @@ namespace petStore.FormChuongTrinh
             this.btnLuu.Image = global::petStore.Properties.Resources.save16;
             this.btnLuu.Location = new System.Drawing.Point(127, 78);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(145, 30);
+            this.btnLuu.Size = new System.Drawing.Size(145, 53);
             this.btnLuu.TabIndex = 3;
             this.btnLuu.Text = "  lưu vào CSDL";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -298,7 +312,7 @@ namespace petStore.FormChuongTrinh
             this.btnSua.Image = global::petStore.Properties.Resources.edit16;
             this.btnSua.Location = new System.Drawing.Point(31, 57);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 30);
+            this.btnSua.Size = new System.Drawing.Size(90, 53);
             this.btnSua.TabIndex = 3;
             this.btnSua.Text = "   Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -312,7 +326,7 @@ namespace petStore.FormChuongTrinh
             this.btnThem.Image = global::petStore.Properties.Resources.add16;
             this.btnThem.Location = new System.Drawing.Point(31, 15);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(90, 30);
+            this.btnThem.Size = new System.Drawing.Size(90, 53);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -324,7 +338,7 @@ namespace petStore.FormChuongTrinh
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Teal;
-            this.label4.Location = new System.Drawing.Point(9, 142);
+            this.label4.Location = new System.Drawing.Point(9, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 15);
             this.label4.TabIndex = 0;
@@ -337,7 +351,7 @@ namespace petStore.FormChuongTrinh
             this.pnlCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCenter.Location = new System.Drawing.Point(0, 29);
             this.pnlCenter.Name = "pnlCenter";
-            this.pnlCenter.Size = new System.Drawing.Size(692, 198);
+            this.pnlCenter.Size = new System.Drawing.Size(692, 221);
             this.pnlCenter.TabIndex = 3;
             // 
             // panel1
@@ -347,7 +361,7 @@ namespace petStore.FormChuongTrinh
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(692, 227);
+            this.panel1.Size = new System.Drawing.Size(692, 250);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -360,7 +374,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 233F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 256F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(698, 406);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -381,7 +395,7 @@ namespace petStore.FormChuongTrinh
             this.dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNhaCungCap.Location = new System.Drawing.Point(3, 236);
+            this.dgvNhaCungCap.Location = new System.Drawing.Point(3, 259);
             this.dgvNhaCungCap.MultiSelect = false;
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.ReadOnly = true;
@@ -389,7 +403,7 @@ namespace petStore.FormChuongTrinh
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvNhaCungCap.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvNhaCungCap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(692, 167);
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(692, 144);
             this.dgvNhaCungCap.TabIndex = 2;
             // 
             // fNhaCungCap
@@ -398,6 +412,7 @@ namespace petStore.FormChuongTrinh
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 406);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fNhaCungCap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fNhaCungCap";
@@ -447,5 +462,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.DataGridView dgvNhaCungCap;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
     }
 }

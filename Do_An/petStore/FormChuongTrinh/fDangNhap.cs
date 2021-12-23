@@ -118,12 +118,12 @@ namespace petStore
                        " and passWord = '" + pass +
                        "'";
             */
-            string s = "SELECT * FROM TAIKHOAN " +
+            string sql = "SELECT * FROM TAIKHOAN " +
                        "WHERE TENDANGNHAP = '" + user +
                        "'COLLATE SQL_Latin1_General_CP1_CS_AS" +
                        " and MATKHAU = '" + pass +
                        "'COLLATE SQL_Latin1_General_CP1_CS_AS";
-            SqlCommand cmd = new SqlCommand(s,dataTable.connection);
+            SqlCommand cmd = new SqlCommand(sql);
             dataTable.Fill(cmd);
             SqlDataReader read = cmd.ExecuteReader();
             if (read.Read())
@@ -131,5 +131,6 @@ namespace petStore
             else
                 return false;
         }
+
     }
 }

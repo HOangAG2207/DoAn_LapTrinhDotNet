@@ -51,8 +51,8 @@ create table HANGHOA(
 	TENHH Nvarchar(30) not null,
 	MALOAI varchar(5) not null,
 	SOLUONG tinyint,
-	DONGIANHAP smallmoney,
-	DONGIABAN smallmoney,
+	DONGIANHAP money,
+	DONGIABAN money,
 	MANCC varchar(5),
 	MOTA Ntext,
 	ANH image,
@@ -79,7 +79,7 @@ create table HOADONBAN(
 	MANV varchar(5),
 	MAKH varchar(5),
 	NGAYLAP datetime not null,
-	THANHTIEN smallmoney
+	THANHTIEN money
 
 	primary key(MAHDBAN),
 	foreign key(MANV) references NHANVIEN(MANV),
@@ -91,8 +91,8 @@ create table HOADONBAN_CHITIET(
 	MaHDban varchar(20),
 	MaHH varchar(5),
 	SoLuong tinyint,
-	DGban smallmoney,
-	ThanhTien smallmoney
+	DGban money,
+	ThanhTien money
 
 	foreign key(MaHDban) references HOADONBAN(MaHDban),
 	foreign key(MaHH) references HANGHOA(MaHH)
@@ -104,7 +104,7 @@ create table HOADONNHAP(
 	MANV varchar(5),
 	MaNCC varchar(5),
 	NgayLap datetime not null,
-	ThanhTien smallmoney
+	ThanhTien money
 
 	primary key(MaHDnhap),
 	foreign key(MANV) references NHANVIEN(MANV),
@@ -115,8 +115,8 @@ create table HOADONNHAP_CHITIET(
 	MaHDnhap varchar(20),
 	MaHH varchar(5),
 	SoLuong tinyint,
-	DGnhap smallmoney,
-	ThanhTien smallmoney
+	DGnhap money,
+	ThanhTien money
 
 	foreign key(MaHDnhap) references HOADONBAN(MaHDban),
 	foreign key(MaHH) references HANGHOA(MaHH)
@@ -131,16 +131,6 @@ values ('nv002', N'Huỳnh Nguyễn Thái An', '123456700', 0, '2001-07-11', '01
 insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
 values ('nv003', N'Nguyễn Thị Bích Trâm', '123456000', 1, '2001-09-16', '0123456000')
 
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('nv004', N'Nguyễn Thị Bích Trâm', '1', 1, '2001-09-16', '0123456000')
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('nv005', N'Nguyễn Thị Bích Trâm', '2', 1, '2001-09-16', '0123456000')
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('nv006', N'Nguyễn Thị Bích Trâm', '3', 1, '2001-09-16', '0123456000')
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('nv007', N'Nguyễn Thị Bích Trâm', '4', 1, '2001-09-16', '0123456000')
-insert into NHANVIEN (MANV, TENNV, CCCD, GIOITINH, NGAYSINH, SDT)
-values ('nv008', N'Nguyễn Thị Bích Trâm', '5', 1, '2001-09-16', '0123456000')
 --insert values to table TAIKHOAN
 insert into TAIKHOAN
 values ('admin', '123', 'ad', N'Quản Lý','ad1')
@@ -150,23 +140,6 @@ insert into TAIKHOAN
 values ('anhuynh', '123', 'nv', N'Nhân viên','nv002')
 insert into TAIKHOAN
 values ('bichtram', '123', 'nv', N'Nhân viên','nv003')
-
-insert into TAIKHOAN
-values ('hoang1', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang2', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang3', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang4', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang5', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang6', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang7', '123', 'nv', N'Nhân viên','nv001')
-insert into TAIKHOAN
-values ('hoang8', '123', 'nv', N'Nhân viên','nv001')
 
 --insert values to table LOAIHH
 insert into LOAIHH
@@ -185,26 +158,27 @@ insert into LOAIHH
 values ('PKM', N'Phụ kiện và đồ chơi cho Mèo')
 insert into LOAIHH
 values ('YTT', N'Vật dụng Y tế và Thuốc')
-insert into LOAIHH
-values ('KH', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH1', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH2', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH3', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH4', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH5', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH6', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH7', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH8', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH9', N'Vật dụng khác')
-insert into LOAIHH
-values ('KH10', N'Vật dụng khác')
-
+--insert values to table NHACUNGCAP
+insert into NHACUNGCAP
+values ('NCC01', N'Pet Food', '0123456', N'Long Xuyên')
+insert into NHACUNGCAP
+values ('NCC02', N'Pet Cloth', '0123457', N'TPHCM')
+insert into NHACUNGCAP
+values ('NCC03', N'Pet Nội Thất', '0123458', N'Long Xuyên')
+insert into NHACUNGCAP
+values ('NCC04', N'Pet Phụ kiện', '0123459', N'Cần Thơ')
+insert into NHACUNGCAP
+values ('NCC05', N'Pet Vệ Sinh', '0123451', N'Long Xuyên')
+insert into NHACUNGCAP
+values ('NCC06', N'Pet Khác', '0123452', N'Long Xuyên')
+--insert values to table KHACHHANG
+insert into KHACHHANG
+values('KH01', N'Hoàng', 0, '01111111', N'Long Xuyên')
+insert into KHACHHANG
+values('KH02', N'Thanh', 0, '02222222', N'Long Xuyên')
+insert into KHACHHANG
+values('KH03', N'Khanh', 0, '03333333', N'Long Xuyên')
+insert into KHACHHANG
+values('KH04', N'An', 0, '04444444', N'Long Xuyên')
+insert into KHACHHANG
+values('KH05', N'Trâm', 1, '05555555', N'Long Xuyên')

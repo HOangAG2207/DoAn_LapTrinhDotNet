@@ -39,6 +39,7 @@ namespace petStore.FormChuongTrinh
             this.pnlCenter = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.chkbGioiTinh = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -51,7 +52,7 @@ namespace petStore.FormChuongTrinh
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -89,6 +90,7 @@ namespace petStore.FormChuongTrinh
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.Size = new System.Drawing.Size(309, 20);
             this.txtSDT.TabIndex = 1;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // tableLayoutPanel1
             // 
@@ -172,6 +174,7 @@ namespace petStore.FormChuongTrinh
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.chkbGioiTinh);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.txtDiaChi);
@@ -187,6 +190,17 @@ namespace petStore.FormChuongTrinh
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(473, 234);
             this.panel2.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(141, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "label4";
             // 
             // chkbGioiTinh
             // 
@@ -301,7 +315,7 @@ namespace petStore.FormChuongTrinh
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.txtTimKiem);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btnTimKiem);
             this.panel4.Location = new System.Drawing.Point(6, 19);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(336, 30);
@@ -319,17 +333,17 @@ namespace petStore.FormChuongTrinh
             this.txtTimKiem.TabIndex = 1;
             this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // button1
+            // btnTimKiem
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Image = global::petStore.Properties.Resources.view16;
-            this.button1.Location = new System.Drawing.Point(304, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 28);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTimKiem.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnTimKiem.Image = global::petStore.Properties.Resources.view16;
+            this.btnTimKiem.Location = new System.Drawing.Point(304, 0);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(30, 28);
+            this.btnTimKiem.TabIndex = 5;
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnHuyBo
             // 
@@ -478,6 +492,7 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.CheckBox chkbGioiTinh;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnHuyBo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.Label label4;
     }
 }

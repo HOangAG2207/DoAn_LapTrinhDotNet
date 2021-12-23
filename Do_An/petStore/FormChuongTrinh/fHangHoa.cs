@@ -24,6 +24,8 @@ namespace petStore.FormChuongTrinh
 
         private void fHangHoa_Load(object sender, EventArgs e)
         {
+            label11.Text = "";
+            label12.Text = "";
             // Kết nối với csdl
             dataHangHoa.OpenConnection();
             // đổ dữ liệu lên datagridview
@@ -35,9 +37,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.DataBindings.Clear();
             txtTenHH.DataBindings.Clear();
             cboLoai.DataBindings.Clear();
-            txtSoLuong.DataBindings.Clear();
-            txtDonGiaBan.DataBindings.Clear();
-            txtDonGiaNhap.DataBindings.Clear();
+            numSoLuong.DataBindings.Clear();
+            numDGB.DataBindings.Clear();
+            NumDGN.DataBindings.Clear();
             cboNhaCungCap.DataBindings.Clear();
             txtMoTa.DataBindings.Clear();
             pictHangHoa.DataBindings.Clear();
@@ -45,9 +47,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "MAHH", false, DataSourceUpdateMode.Never);
             txtTenHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "TENHH", false, DataSourceUpdateMode.Never);
             cboLoai.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
-            txtSoLuong.DataBindings.Add("Text", dgvHangHoa.DataSource, "SOLUONG", false, DataSourceUpdateMode.Never);
-            txtDonGiaBan.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIABAN", false, DataSourceUpdateMode.Never);
-            txtDonGiaNhap.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIANHAP", false, DataSourceUpdateMode.Never);
+            numSoLuong.DataBindings.Add("Text", dgvHangHoa.DataSource, "SOLUONG", false, DataSourceUpdateMode.Never);
+            numDGB.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIABAN", false, DataSourceUpdateMode.Never);
+            NumDGN.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIANHAP", false, DataSourceUpdateMode.Never);
             cboNhaCungCap.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
             txtMoTa.DataBindings.Add("Text", dgvHangHoa.DataSource, "MOTA", false, DataSourceUpdateMode.Never);
             pictHangHoa.DataBindings.Add("Image", dgvHangHoa.DataSource, "ANH", true, DataSourceUpdateMode.Never);
@@ -76,9 +78,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.Enabled = false;
             txtTenHH.Enabled = false;
             cboLoai.Enabled = false;
-            txtSoLuong.Enabled = false;
-            txtDonGiaBan.Enabled = false;
-            txtDonGiaNhap.Enabled = false;
+            numSoLuong.Enabled = false;
+            numDGB.Enabled = false;
+            NumDGN.Enabled = false;
             cboNhaCungCap.Enabled = false;
             txtMoTa.Enabled = false;
             // điều chỉnh lại cột ảnh trong datagridview
@@ -97,9 +99,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.Clear();
             txtTenHH.Clear();
             cboLoai.Text = "";
-            txtSoLuong.Clear();
-            txtDonGiaBan.Clear();
-            txtDonGiaNhap.Clear();
+            numSoLuong.Value = 0;
+            numDGB.Value = 0;
+            NumDGN.Value = 0;
             cboNhaCungCap.Text = "";
             txtMoTa.Clear();
             
@@ -113,9 +115,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.Enabled = true;
             txtTenHH.Enabled = true;
             cboLoai.Enabled = true;
-            txtSoLuong.Enabled = true;
-            txtDonGiaBan.Enabled = true;
-            txtDonGiaNhap.Enabled = true;
+            numSoLuong.Enabled = true;
+            numDGB.Enabled = true;
+            NumDGN.Enabled = true;
             cboNhaCungCap.Enabled = true;
             txtMoTa.Enabled = true;
             //làm sáng nút Lưu và Bỏ qua
@@ -147,9 +149,9 @@ namespace petStore.FormChuongTrinh
             txtMaHH.Enabled = true;
             txtTenHH.Enabled = true;
             cboLoai.Enabled = true;
-            txtSoLuong.Enabled = true;
-            txtDonGiaBan.Enabled = true;
-            txtDonGiaNhap.Enabled = true;
+            numSoLuong.Enabled = true;
+            numDGB.Enabled = true;
+            NumDGN.Enabled = true;
             cboNhaCungCap.Enabled = true;
             txtMoTa.Enabled = true;
         }
@@ -231,9 +233,9 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
                                 cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
                                 cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = numSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.Money).Value = numDGB.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.Money).Value = NumDGN.Text;
                                 cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
                                 cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
                                 cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictHangHoa));
@@ -245,9 +247,9 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
                                 cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
                                 cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = numSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.Money).Value = numDGB.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.Money).Value = NumDGN.Text;
                                 cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
                                 cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
                                 cmd.Parameters.Add("@mahhcu", SqlDbType.VarChar).Value = mahh;
@@ -267,9 +269,9 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
                                 cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
                                 cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = numSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.Money).Value = numDGB.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.Money).Value = NumDGN.Text;
                                 cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
                                 cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
                                 cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictHangHoa));
@@ -280,9 +282,9 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@mahh", SqlDbType.VarChar).Value = txtMaHH.Text;
                                 cmd.Parameters.Add("@tenhh", SqlDbType.NVarChar).Value = txtTenHH.Text;
                                 cmd.Parameters.Add("@maloai", SqlDbType.VarChar).Value = cboLoai.SelectedValue.ToString(); ;
-                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = txtSoLuong.Text;
-                                cmd.Parameters.Add("@dgb", SqlDbType.SmallMoney).Value = txtDonGiaBan.Text;
-                                cmd.Parameters.Add("@dgn", SqlDbType.SmallMoney).Value = txtDonGiaNhap.Text;
+                                cmd.Parameters.Add("@sl", SqlDbType.TinyInt).Value = numSoLuong.Text;
+                                cmd.Parameters.Add("@dgb", SqlDbType.Money).Value = numDGB.Text;
+                                cmd.Parameters.Add("@dgn", SqlDbType.Money).Value = NumDGN.Text;
                                 cmd.Parameters.Add("@ncc", SqlDbType.VarChar).Value = cboNhaCungCap.SelectedValue.ToString(); ;
                                 cmd.Parameters.Add("@mt", SqlDbType.NText).Value = txtMoTa.Text;
                             }
@@ -378,5 +380,47 @@ namespace petStore.FormChuongTrinh
             return img;
         }
         #endregion
+
+        private void numSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label11.Text = "";
+            }
+            else
+            {
+                label11.Text = "Số lượng chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
+
+        private void numDGB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label11.Text = "";
+            }
+            else
+            {
+                label11.Text = "Đơn giá bán chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
+
+        private void NumDGN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label12.Text = "";
+            }
+            else
+            {
+                label12.Text = "Đơn giá nhập chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
     }
 }

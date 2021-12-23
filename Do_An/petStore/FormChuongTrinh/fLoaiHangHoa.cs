@@ -35,8 +35,8 @@ namespace petStore.FormChuongTrinh
             txtMaLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
             txtTenLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "TENLOAI", false, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvNhanVien
-            dgvLoaiHangHoa.Columns["MALOAI"].HeaderText = "Mã loại hàng";
-            dgvLoaiHangHoa.Columns["TENLOAI"].HeaderText = "Tên loại hàng";
+            dgvLoaiHangHoa.Columns["MALOAI"].HeaderText = "MÃ LOẠI HÀNG";
+            dgvLoaiHangHoa.Columns["TENLOAI"].HeaderText = "TÊN LOẠI HÀNG";
             // Làm sáng nút Thêm mới, Sửa và Xóa
             btnThem.Enabled = true;
             btnSua.Enabled = true;

@@ -20,11 +20,12 @@ namespace petStore.FormChuongTrinh
 
         private void fHoaDonBan_Load(object sender, EventArgs e)
         {
+            label16.Text = "";
             // lấy dữ liệu đổ vào combobox TENHH
+            txtNhanVien.Text = fQuanLyChinh.HovaTen;
             LayDuLieu_HoaDon(cboTenHH, "SELECT * FROM HANGHOA", "MAHH", "MAHH");
 
             txtMaHD.Clear();
-            txtNhanVien.Clear();
             txtTongTien.Text = "0";
             cboMaKH.Text = "";
             txtTenKH.Clear();
@@ -33,13 +34,13 @@ namespace petStore.FormChuongTrinh
 
             cboTenHH.Text = "";
             txtTenHH.Clear();
-            txtSoLuong.Text = "0";
+            numSoLuong.Value = 0;
             txtThanhTien.Text = "0";
             txtDGB.Text = "0";
             //Làm mờ 1 vài trường dữ liệu
             txtTenHH.Enabled = false;
             cboTenHH.Enabled = false;
-            txtSoLuong.Enabled = false;
+            numSoLuong.Enabled = false;
             dtpHoaDon.Enabled = false;
             cboMaKH.Enabled = false;
             txtMaHD.Enabled = false;
@@ -132,9 +133,104 @@ namespace petStore.FormChuongTrinh
 
 
         #region các Sự kiện khi của các nút
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
+            ConnectData data = new ConnectData();
+            data.OpenConnection();
+            string sql;
+            double sl, SLcon, tong, Tongmoi;
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM NHANVIEN WHERE TENNV = @tennv");
+            cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtNhanVien.Text;
+            data.Fill(cmd);
+            string manv = data.Rows[0]["MANV"].ToString();
+            sql = @"SELECT MAHDBAN FROM HOADONBAN WHERE MAHDBAN = N'" + txtMaHD.Text + "'";
+            if (!CheckKey(sql))
+            {
+                // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
+                // Mã HDBan được sinh tự động do đó không có trường hợp trùng khóa
+                
+                if (cboMaKH.Text.Length == 0)
+                {
+                    MessageBox.Show("Bạn phải nhập khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cboMaKH.Focus();
+                    return;
+                }
+                sql = @"INSERT INTO HOADONBAN(MAHDBAN, MANV, MAKH, NGAYLAP, THANHTIEN)
+                        VALUES (@mahd, @manv, @makh, @ngay, @thanhtien)";
+                SqlCommand cmd1 = new SqlCommand(sql);
+                cmd1.Parameters.Add("@mahd", SqlDbType.VarChar).Value = txtMaHD.Text;
+                cmd1.Parameters.Add("@manv", SqlDbType.VarChar).Value = manv;
+                cmd1.Parameters.Add("@makh", SqlDbType.VarChar).Value = cboMaKH.SelectedValue.ToString();
+                cmd1.Parameters.Add("@ngay", SqlDbType.DateTime).Value = dtpHoaDon.Value;
+                cmd1.Parameters.Add("@thanhtien", SqlDbType.Money).Value = txtTongTien.Text;
+                data.Update(cmd1);
+            }
+            // Lưu thông tin của các mặt hàng
+            if (cboTenHH.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập mã hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cboTenHH.Focus();
+                return;
+            }
+            if ((numSoLuong.Text.Trim().Length == 0) || (numSoLuong.Value == 0))
+            {
+                MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                numSoLuong.Value = 0;
+                numSoLuong.Focus();
+                return;
+            }
+            sql = @"SELECT MaHH FROM HOADONBAN_CHITIET 
+                    WHERE MaHH = N'" + cboTenHH.SelectedValue + "' AND MaHDBan = N'" + txtMaHD.Text.Trim() + "'";
+            if (CheckKey(sql))
+            {
+                MessageBox.Show("Mã hàng này đã có, bạn phải chọn mã khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cboTenHH.Text = "";
+                numSoLuong.Value = 0;
+                txtThanhTien.Text = "0";
+                cboTenHH.Focus();
+                return;
+            }
+            // Kiểm tra xem số lượng hàng trong kho còn đủ để cung cấp không?
+            sl = Convert.ToDouble(LayMienDuLieu("SELECT SOLUONG FROM HANGHOA WHERE MAHH = N'" + cboTenHH.SelectedValue + "'"));
+            if (Convert.ToDouble(numSoLuong.Value) > sl)
+            {
+                MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                numSoLuong.Value = 0;
+                numSoLuong.Focus();
+                return;
+            }
+            sql = @"INSERT INTO HOADONBAN_CHITIET(MaHDban, MaHH, SoLuong, DGban, ThanhTien)
+                    VALUES(@mahd, @mahh, @sl, @dgb, @tt)";
+            SqlCommand cmd2 = new SqlCommand(sql);
+            cmd2.Parameters.Add("@mahd", SqlDbType.VarChar).Value = txtMaHD.Text;
+            cmd2.Parameters.Add("@mahh", SqlDbType.VarChar).Value = cboTenHH.SelectedValue.ToString();
+            cmd2.Parameters.Add("@sl", SqlDbType.TinyInt).Value = (double)numSoLuong.Value;
+            cmd2.Parameters.Add("@dgb", SqlDbType.Money).Value = txtDGB.Text;
+            cmd2.Parameters.Add("@tt", SqlDbType.Money).Value = txtThanhTien.Text;
+            data.Update(cmd2);
+            Load_DuLieu_LenDGV();
+            // Cập nhật lại số lượng của mặt hàng vào bảng tblHang
+            SLcon = sl - Convert.ToDouble(numSoLuong.Value);
+            sql = @"UPDATE HANGHOA 
+                    SET SOLUONG = @sl
+                    WHERE MAHH = @mahh";
+            SqlCommand cmd3 = new SqlCommand(sql);
+            cmd3.Parameters.Add("@sl", SqlDbType.TinyInt).Value = SLcon;
+            cmd3.Parameters.Add("@mahh", SqlDbType.VarChar).Value = cboTenHH.SelectedValue.ToString();
+            data.Update(cmd3);
+            // Cập nhật lại tổng tiền cho hóa đơn bán
+            tong = Convert.ToDouble(LayMienDuLieu("SELECT THANHTIEN FROM HOADONBAN WHERE MaHDBan = N'" + txtMaHD.Text + "'"));
+            Tongmoi = tong + Convert.ToDouble(txtThanhTien.Text);
+            sql = "UPDATE HOADONBAN SET THANHTIEN =" + Tongmoi + " WHERE MaHDBan = N'" + txtMaHD.Text + "'";
+            SqlCommand cmd4 = new SqlCommand(sql);
+            data.Update(cmd4);
+            txtTongTien.Text = Tongmoi.ToString();
 
+            cboTenHH.Text = "";
+            numSoLuong.Value = 0;
+            txtThanhTien.Text = "0";
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
         }
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {   // lấy dữ liệu đổ vào combobox MaKH
@@ -151,7 +247,7 @@ namespace petStore.FormChuongTrinh
             txtSDT.Clear();
 
             cboTenHH.Text = "";
-            txtSoLuong.Text = "0";
+            numSoLuong.Value = 0;
             txtThanhTien.Text = "0";
             txtDGB.Text = "0";
 
@@ -161,7 +257,7 @@ namespace petStore.FormChuongTrinh
             dtpHoaDon.Enabled = true;
             cboMaKH.Enabled = true;
             cboTenHH.Enabled = true;
-            txtSoLuong.Enabled = true;
+            numSoLuong.Enabled = true;
             // làm sáng lại các button
             btnHuyThem.Enabled = true;
             btnThem.Enabled = true;
@@ -199,8 +295,9 @@ namespace petStore.FormChuongTrinh
                 sql = "DELETE HOADONBAN WHERE MAHDBAN=N'" + txtMaHD.Text + "'";
                 SqlCommand cmd2 = new SqlCommand(sql);
                 data.Update(cmd2);
+                fHoaDonBan_Load(sender, e);
             }
-            fHoaDonBan_Load(sender, e);
+            
         }
         #endregion
         #region Lấy dữ liệu
@@ -241,6 +338,20 @@ namespace petStore.FormChuongTrinh
             dap.Fill(table); //Đổ kết quả từ câu lệnh sql vào table
             return table;
         }
+        private void Load_DuLieu_LenDGV()
+        {
+            string sql;
+            sql = @"SELECT a.MaHH, b.TENHH, a.SoLuong, b.DONGIABAN, a.ThanhTien 
+                    FROM HOADONBAN_CHITIET AS a, HANGHOA AS b 
+                    WHERE a.MaHDban = N'" + txtMaHD.Text + "' AND a.MaHH = b.MAHH";
+            DataTable tblCTHDB = GetDataToTable(sql);
+            dgvChiTietHD.DataSource = tblCTHDB;
+            dgvChiTietHD.Columns[0].HeaderText = "Mã hàng";
+            dgvChiTietHD.Columns[1].HeaderText = "Tên hàng";
+            dgvChiTietHD.Columns[2].HeaderText = "Số lượng";
+            dgvChiTietHD.Columns[3].HeaderText = "Đơn giá";
+            dgvChiTietHD.Columns[4].HeaderText = "Thành tiền";
+        }
         #endregion
         #region Các sự kiện
         private void cboMaKH_SelectedIndexChanged(object sender, EventArgs e)
@@ -274,15 +385,15 @@ namespace petStore.FormChuongTrinh
             str = "SELECT DonGiaBan FROM HANGHOA WHERE MAHH =N'" + cboTenHH.SelectedValue + "'";
             txtDGB.Text = LayMienDuLieu(str);
         }
-
-        private void txtSoLuong_TextChanged(object sender, EventArgs e)
+        //Khi thay đổi số lượng thì thực hiện tính lại thành tiền
+        private void numSoLuong_ValueChanged(object sender, EventArgs e)
         {
-            //Khi thay đổi số lượng thì thực hiện tính lại thành tiền
+            
             double tt, sl, dg;
-            if (txtSoLuong.Text == "")
+            if (numSoLuong.Value == 0)
                 sl = 0;
             else
-                sl = Convert.ToDouble(txtSoLuong.Text);
+                sl = (Double)numSoLuong.Value;
             if (txtDGB.Text == "")
                 dg = 0;
             else
@@ -290,13 +401,51 @@ namespace petStore.FormChuongTrinh
             tt = sl * dg;
             txtThanhTien.Text = tt.ToString();
         }
-        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        //Khi thay đổi Đơn giá bán thì thực hiện tính lại thành tiền
+        private void txtDGB_TextChanged(object sender, EventArgs e)
+        {
+
+            double tt, sl, dg;
+            if (numSoLuong.Value == 0)
+                sl = 0;
+            else
+                sl = (Double)numSoLuong.Value;
+            if (txtDGB.Text == "")
+                dg = 0;
+            else
+                dg = Convert.ToDouble(txtDGB.Text);
+            tt = sl * dg;
+            txtThanhTien.Text = tt.ToString();
+        }
+        //Kiểm tra và thông báo nếu nhập số lượng không phải là số
+        private void numSoLuong_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
                 e.Handled = false;
-            else e.Handled = true;
+                label16.Text = "";
+            }
+            else
+            {
+                label16.Text = "Số lượng chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
         }
+        
         #endregion
 
+
+        //Hàm kiểm tra tồn tại khóa
+        public static bool CheckKey(string sql)
+        {
+            ConnectData dataTable = new ConnectData();
+            dataTable.OpenConnection();
+            SqlCommand cmd = new SqlCommand(sql);
+            dataTable.Fill(cmd);
+            if (dataTable.Rows.Count > 0)
+                return true;
+            else return false;
+        }
+        
     }
 }

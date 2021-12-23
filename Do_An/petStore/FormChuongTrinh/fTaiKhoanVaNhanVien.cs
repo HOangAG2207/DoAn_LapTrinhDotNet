@@ -29,6 +29,8 @@ namespace petStore.FormChuongTrinh
         // Form load
         private void fTaiKhoanVaNhanVien_Load(object sender, EventArgs e)
         {
+            label12.Text = "";
+            label13.Text = "";
             // Kết nối với csdl
             dataTable1.OpenConnection();
             dataTable2.OpenConnection();
@@ -528,7 +530,35 @@ namespace petStore.FormChuongTrinh
             }
         }
 
-        
+        private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label12.Text = "";
+            }
+            else
+            {
+                label12.Text = "CCCD chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label13.Text = "";
+            }
+            else
+            {
+                label13.Text = "Số điện thoại chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
+
+
         /*Hàm kiểm tra dữ liệu trên DataGridView:
 public bool KiemTra(string columnName)
 {

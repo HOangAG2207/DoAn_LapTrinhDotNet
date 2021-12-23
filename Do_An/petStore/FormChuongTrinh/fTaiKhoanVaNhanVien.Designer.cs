@@ -41,6 +41,7 @@ namespace petStore.FormChuongTrinh
             this.gbNhanVien = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pnl1 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtCCCD = new System.Windows.Forms.TextBox();
             this.txtTenNV = new System.Windows.Forms.TextBox();
             this.txtMaNV = new System.Windows.Forms.TextBox();
@@ -48,7 +49,7 @@ namespace petStore.FormChuongTrinh
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnl2 = new System.Windows.Forms.Panel();
-            this.btnXoaAnh = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtLocationIMG = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
@@ -57,6 +58,7 @@ namespace petStore.FormChuongTrinh
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnl6 = new System.Windows.Forms.Panel();
+            this.btnXoaAnh = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnUpAnh = new System.Windows.Forms.Button();
             this.pnl3 = new System.Windows.Forms.Panel();
@@ -156,7 +158,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31507F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68493F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
             this.tableLayoutPanel1.Controls.Add(this.pnl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl6, 2, 0);
@@ -171,6 +173,7 @@ namespace petStore.FormChuongTrinh
             // pnl1
             // 
             this.pnl1.BackColor = System.Drawing.Color.Transparent;
+            this.pnl1.Controls.Add(this.label12);
             this.pnl1.Controls.Add(this.txtCCCD);
             this.pnl1.Controls.Add(this.txtTenNV);
             this.pnl1.Controls.Add(this.txtMaNV);
@@ -180,8 +183,19 @@ namespace petStore.FormChuongTrinh
             this.pnl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl1.Location = new System.Drawing.Point(3, 3);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(215, 139);
+            this.pnl1.Size = new System.Drawing.Size(213, 139);
             this.pnl1.TabIndex = 0;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(108, 102);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 13);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Label12";
             // 
             // txtCCCD
             // 
@@ -191,8 +205,9 @@ namespace petStore.FormChuongTrinh
             this.txtCCCD.ForeColor = System.Drawing.Color.Black;
             this.txtCCCD.Location = new System.Drawing.Point(109, 78);
             this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(91, 21);
+            this.txtCCCD.Size = new System.Drawing.Size(89, 21);
             this.txtCCCD.TabIndex = 3;
+            this.txtCCCD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCCD_KeyPress);
             // 
             // txtTenNV
             // 
@@ -202,7 +217,7 @@ namespace petStore.FormChuongTrinh
             this.txtTenNV.ForeColor = System.Drawing.Color.Black;
             this.txtTenNV.Location = new System.Drawing.Point(109, 46);
             this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(91, 21);
+            this.txtTenNV.Size = new System.Drawing.Size(89, 21);
             this.txtTenNV.TabIndex = 2;
             // 
             // txtMaNV
@@ -213,7 +228,7 @@ namespace petStore.FormChuongTrinh
             this.txtMaNV.ForeColor = System.Drawing.Color.Black;
             this.txtMaNV.Location = new System.Drawing.Point(109, 14);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(91, 21);
+            this.txtMaNV.Size = new System.Drawing.Size(89, 21);
             this.txtMaNV.TabIndex = 1;
             // 
             // label4
@@ -252,6 +267,7 @@ namespace petStore.FormChuongTrinh
             // pnl2
             // 
             this.pnl2.BackColor = System.Drawing.Color.Transparent;
+            this.pnl2.Controls.Add(this.label13);
             this.pnl2.Controls.Add(this.txtLocationIMG);
             this.pnl2.Controls.Add(this.txtSDT);
             this.pnl2.Controls.Add(this.dtpNgaySinh);
@@ -260,29 +276,27 @@ namespace petStore.FormChuongTrinh
             this.pnl2.Controls.Add(this.label5);
             this.pnl2.Controls.Add(this.label2);
             this.pnl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl2.Location = new System.Drawing.Point(224, 3);
+            this.pnl2.Location = new System.Drawing.Point(222, 3);
             this.pnl2.Name = "pnl2";
-            this.pnl2.Size = new System.Drawing.Size(221, 139);
+            this.pnl2.Size = new System.Drawing.Size(219, 139);
             this.pnl2.TabIndex = 1;
             // 
-            // btnXoaAnh
+            // label13
             // 
-            this.btnXoaAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaAnh.ForeColor = System.Drawing.Color.Black;
-            this.btnXoaAnh.Image = global::petStore.Properties.Resources.delete16;
-            this.btnXoaAnh.Location = new System.Drawing.Point(90, 111);
-            this.btnXoaAnh.Name = "btnXoaAnh";
-            this.btnXoaAnh.Size = new System.Drawing.Size(27, 23);
-            this.btnXoaAnh.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.btnXoaAnh, "Xóa ảnh");
-            this.btnXoaAnh.UseVisualStyleBackColor = true;
-            this.btnXoaAnh.Click += new System.EventHandler(this.btnXoaAnh_Click);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(120, 106);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(48, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "label13";
             // 
             // txtLocationIMG
             // 
             this.txtLocationIMG.Location = new System.Drawing.Point(3, 115);
             this.txtLocationIMG.Name = "txtLocationIMG";
-            this.txtLocationIMG.Size = new System.Drawing.Size(215, 22);
+            this.txtLocationIMG.Size = new System.Drawing.Size(23, 22);
             this.txtLocationIMG.TabIndex = 5;
             this.txtLocationIMG.Visible = false;
             // 
@@ -294,8 +308,9 @@ namespace petStore.FormChuongTrinh
             this.txtSDT.ForeColor = System.Drawing.Color.Black;
             this.txtSDT.Location = new System.Drawing.Point(117, 78);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(93, 21);
+            this.txtSDT.Size = new System.Drawing.Size(91, 21);
             this.txtSDT.TabIndex = 3;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // dtpNgaySinh
             // 
@@ -306,7 +321,7 @@ namespace petStore.FormChuongTrinh
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(117, 46);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(93, 21);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(91, 21);
             this.dtpNgaySinh.TabIndex = 2;
             // 
             // chkbNu
@@ -363,10 +378,23 @@ namespace petStore.FormChuongTrinh
             this.pnl6.Controls.Add(this.pictureBox1);
             this.pnl6.Controls.Add(this.btnUpAnh);
             this.pnl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl6.Location = new System.Drawing.Point(451, 3);
+            this.pnl6.Location = new System.Drawing.Point(447, 3);
             this.pnl6.Name = "pnl6";
-            this.pnl6.Size = new System.Drawing.Size(117, 139);
+            this.pnl6.Size = new System.Drawing.Size(121, 139);
             this.pnl6.TabIndex = 2;
+            // 
+            // btnXoaAnh
+            // 
+            this.btnXoaAnh.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoaAnh.ForeColor = System.Drawing.Color.Black;
+            this.btnXoaAnh.Image = global::petStore.Properties.Resources.delete16;
+            this.btnXoaAnh.Location = new System.Drawing.Point(90, 111);
+            this.btnXoaAnh.Name = "btnXoaAnh";
+            this.btnXoaAnh.Size = new System.Drawing.Size(27, 23);
+            this.btnXoaAnh.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnXoaAnh, "Xóa ảnh");
+            this.btnXoaAnh.UseVisualStyleBackColor = true;
+            this.btnXoaAnh.Click += new System.EventHandler(this.btnXoaAnh_Click);
             // 
             // pictureBox1
             // 
@@ -380,6 +408,7 @@ namespace petStore.FormChuongTrinh
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Ảnh đại diện");
             // 
             // btnUpAnh
             // 
@@ -750,8 +779,9 @@ namespace petStore.FormChuongTrinh
             this.btnHuyBo2.Name = "btnHuyBo2";
             this.btnHuyBo2.Size = new System.Drawing.Size(141, 30);
             this.btnHuyBo2.TabIndex = 4;
-            this.btnHuyBo2.Text = "  Hủy bỏ";
+            this.btnHuyBo2.Text = "    Hủy bỏ";
             this.btnHuyBo2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnHuyBo2, "Hủy bỏ thao tác");
             this.btnHuyBo2.UseVisualStyleBackColor = true;
             this.btnHuyBo2.Click += new System.EventHandler(this.btnHuyBo2_Click);
             // 
@@ -766,6 +796,7 @@ namespace petStore.FormChuongTrinh
             this.btnXoa2.TabIndex = 0;
             this.btnXoa2.Text = "  Xóa";
             this.btnXoa2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnXoa2, "Xóa 1 tài khoản");
             this.btnXoa2.UseVisualStyleBackColor = true;
             this.btnXoa2.Click += new System.EventHandler(this.btnXoa2_Click);
             // 
@@ -778,8 +809,9 @@ namespace petStore.FormChuongTrinh
             this.btnLuu2.Name = "btnLuu2";
             this.btnLuu2.Size = new System.Drawing.Size(141, 30);
             this.btnLuu2.TabIndex = 0;
-            this.btnLuu2.Text = "  Lưu vào CSDL";
+            this.btnLuu2.Text = "     Lưu";
             this.btnLuu2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnLuu2, "Lưu vào Cơ sở dữ liệu");
             this.btnLuu2.UseVisualStyleBackColor = true;
             this.btnLuu2.Click += new System.EventHandler(this.btnLuu2_Click);
             // 
@@ -794,6 +826,7 @@ namespace petStore.FormChuongTrinh
             this.btnSua2.TabIndex = 0;
             this.btnSua2.Text = "  Sửa";
             this.btnSua2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnSua2, "Sửa 1 tài khoản");
             this.btnSua2.UseVisualStyleBackColor = true;
             this.btnSua2.Click += new System.EventHandler(this.btnSua2_Click);
             // 
@@ -808,6 +841,7 @@ namespace petStore.FormChuongTrinh
             this.btnThem2.TabIndex = 0;
             this.btnThem2.Text = " Thêm mới";
             this.btnThem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnThem2, "Thêm 1 tài khoản mới");
             this.btnThem2.UseVisualStyleBackColor = true;
             this.btnThem2.Click += new System.EventHandler(this.btnThem2_Click);
             // 
@@ -953,5 +987,7 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.TextBox txtLocationIMG;
         private System.Windows.Forms.Button btnXoaAnh;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

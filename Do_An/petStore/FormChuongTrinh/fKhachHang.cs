@@ -23,6 +23,7 @@ namespace petStore.FormChuongTrinh
         // Form Load
         private void fKhachHang_Load(object sender, EventArgs e)
         {
+            label4.Text = "";
             // kết nối đến csdl
             datakhachhang.OpenConnection();
             // Đổ dữ liệu lên datagridview
@@ -225,9 +226,25 @@ namespace petStore.FormChuongTrinh
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LayDuLieu_TimKiem(txtTimKiem.Text);
         }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
+            {
+                e.Handled = false;
+                label4.Text = "";
+            }
+            else
+            {
+                label4.Text = "Số điện thoại chỉ được nhập giá trị là số!";
+                e.Handled = true;
+            }
+        }
+
+
     }
 }
