@@ -27,10 +27,10 @@ namespace petStore.FormChuongTrinh
             // Đổ dữ liệu lên datagridview
             LayDuLieu_NhaCungCap();
             // Việt hóa tiêu đề dgvKhachHang
-            dgvNhaCungCap.Columns["MANCC"].HeaderText = "Mã nhà cung cấp";
-            dgvNhaCungCap.Columns["TENNCC"].HeaderText = "Tên nhà cung cấp";
-            dgvNhaCungCap.Columns["DIACHI"].HeaderText = "Địa chỉ";
-            dgvNhaCungCap.Columns["SDT"].HeaderText = "Số điện thoại";
+            dgvNhaCungCap.Columns["MANCC"].HeaderText = "MÃ NHÀ CUNG CẤP";
+            dgvNhaCungCap.Columns["TENNCC"].HeaderText = "TÊN NHÀ CUNG CẤP";
+            dgvNhaCungCap.Columns["DIACHI"].HeaderText = "ĐỊA CHỈ";
+            dgvNhaCungCap.Columns["SDT"].HeaderText = "SỐ ĐIỆN THOẠI";
         }
         public void LayDuLieu_NhaCungCap()
         {

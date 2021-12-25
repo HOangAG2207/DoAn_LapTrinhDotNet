@@ -29,8 +29,10 @@ namespace petStore.FormChuongTrinh
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +60,7 @@ namespace petStore.FormChuongTrinh
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvNhaCungCap = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             this.pnlTop.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -92,6 +95,7 @@ namespace petStore.FormChuongTrinh
             this.txtTimKiem.Size = new System.Drawing.Size(230, 28);
             this.txtTimKiem.TabIndex = 1;
             this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtTimKiem, "Nhập từ khóa để tìm");
             // 
             // label2
             // 
@@ -143,6 +147,7 @@ namespace petStore.FormChuongTrinh
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 28);
             this.button1.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.button1, "Tìm kiếm");
             this.button1.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -270,10 +275,11 @@ namespace petStore.FormChuongTrinh
             this.btnHuyBo.Image = global::petStore.Properties.Resources.refresh16;
             this.btnHuyBo.Location = new System.Drawing.Point(127, 35);
             this.btnHuyBo.Name = "btnHuyBo";
-            this.btnHuyBo.Size = new System.Drawing.Size(145, 53);
+            this.btnHuyBo.Size = new System.Drawing.Size(145, 36);
             this.btnHuyBo.TabIndex = 5;
             this.btnHuyBo.Text = "    Hủy bỏ";
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnHuyBo, "Hủy bỏ thao tác");
             this.btnHuyBo.UseVisualStyleBackColor = true;
             this.btnHuyBo.Click += new System.EventHandler(this.btnHuyBo_Click);
             // 
@@ -284,10 +290,11 @@ namespace petStore.FormChuongTrinh
             this.btnXoa.Image = global::petStore.Properties.Resources.delete16;
             this.btnXoa.Location = new System.Drawing.Point(31, 99);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(90, 53);
+            this.btnXoa.Size = new System.Drawing.Size(90, 36);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "   Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnXoa, "Xóa nhà cung cấp");
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -298,10 +305,11 @@ namespace petStore.FormChuongTrinh
             this.btnLuu.Image = global::petStore.Properties.Resources.save16;
             this.btnLuu.Location = new System.Drawing.Point(127, 78);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(145, 53);
+            this.btnLuu.Size = new System.Drawing.Size(145, 36);
             this.btnLuu.TabIndex = 3;
-            this.btnLuu.Text = "  lưu vào CSDL";
+            this.btnLuu.Text = "      Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnLuu, "Lưu vào Cơ sở dữ liệu");
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
@@ -312,10 +320,11 @@ namespace petStore.FormChuongTrinh
             this.btnSua.Image = global::petStore.Properties.Resources.edit16;
             this.btnSua.Location = new System.Drawing.Point(31, 57);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(90, 53);
+            this.btnSua.Size = new System.Drawing.Size(90, 36);
             this.btnSua.TabIndex = 3;
             this.btnSua.Text = "   Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnSua, "Sửa thông tin nhà cung cấp");
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -326,10 +335,11 @@ namespace petStore.FormChuongTrinh
             this.btnThem.Image = global::petStore.Properties.Resources.add16;
             this.btnThem.Location = new System.Drawing.Point(31, 15);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(90, 53);
+            this.btnThem.Size = new System.Drawing.Size(90, 36);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnThem, "Thêm nhà cung cấp mới");
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -386,25 +396,39 @@ namespace petStore.FormChuongTrinh
             this.dgvNhaCungCap.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvNhaCungCap.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSeaGreen;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Gray;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvNhaCungCap.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvNhaCungCap.ColumnHeadersHeight = 30;
+            this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvNhaCungCap.EnableHeadersVisualStyles = false;
             this.dgvNhaCungCap.Location = new System.Drawing.Point(3, 259);
             this.dgvNhaCungCap.MultiSelect = false;
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumTurquoise;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvNhaCungCap.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNhaCungCap.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Salmon;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvNhaCungCap.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNhaCungCap.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhaCungCap.Size = new System.Drawing.Size(692, 144);
             this.dgvNhaCungCap.TabIndex = 2;
+            this.dgvNhaCungCap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhaCungCap_CellClick);
             // 
             // fNhaCungCap
             // 
@@ -417,6 +441,7 @@ namespace petStore.FormChuongTrinh
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fNhaCungCap";
             this.Load += new System.EventHandler(this.fNhaCungCap_Load);
+            this.Shown += new System.EventHandler(this.fNhaCungCap_Shown);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.pnlTop.ResumeLayout(false);
@@ -463,5 +488,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.DataGridView dgvNhaCungCap;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

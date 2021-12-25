@@ -39,24 +39,9 @@ namespace petStore.FormChuongTrinh
             LayDuLieu_TaiKhoan();
             LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
             LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
-
-            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
-            txtMaNV.DataBindings.Clear();
-            txtTenNV.DataBindings.Clear();
-            txtCCCD.DataBindings.Clear();
-            chkbNu.DataBindings.Clear();
-            dtpNgaySinh.DataBindings.Clear();
-            txtSDT.DataBindings.Clear();
-            pictureBox1.DataBindings.Clear();
-            
-
-            txtMaNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "MANV", false, DataSourceUpdateMode.Never);
-            txtTenNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "TENNV", false, DataSourceUpdateMode.Never);
-            txtCCCD.DataBindings.Add("Text", dgvNhanVien.DataSource, "CCCD", false, DataSourceUpdateMode.Never);
-            chkbNu.DataBindings.Add("Checked", dgvNhanVien.DataSource, "GIOITINH", false, DataSourceUpdateMode.Never);
-            dtpNgaySinh.DataBindings.Add("Value", dgvNhanVien.DataSource, "NGAYSINH", false, DataSourceUpdateMode.Never);
-            txtSDT.DataBindings.Add("Text", dgvNhanVien.DataSource, "SDT", false, DataSourceUpdateMode.Never);
-            pictureBox1.DataBindings.Add("Image", dgvNhanVien.DataSource, "ANH", true, DataSourceUpdateMode.Never);
+            // format lại datagridview khi chưa selection
+            dgvNhanVien.ClearSelection();
+            dgvTaiKhoan.ClearSelection();
             // Việt hóa tiêu đề dgvNhanVien
             dgvNhanVien.Columns["MANV"].HeaderText = "MÃ NHÂN VIÊN";
             dgvNhanVien.Columns["TENNV"].HeaderText = "TÊN NHÂN VIÊN";
@@ -66,17 +51,6 @@ namespace petStore.FormChuongTrinh
             dgvNhanVien.Columns["SDT"].HeaderText = "SỐ ĐIỆN THOẠI";
             dgvNhanVien.Columns["ANH"].HeaderText = "ẢNH";
 
-            // Khi click vào dgvTaiKhoan thì hiển thị dữ liệu của dòng được chọn lên các control
-            cboMaNV.DataBindings.Clear();
-            txtUser.DataBindings.Clear();
-            txtPass.DataBindings.Clear();
-            cboQuyen.DataBindings.Clear();
-            txtGhiChu.DataBindings.Clear();
-            cboMaNV.DataBindings.Add("SelectedValue", dgvTaiKhoan.DataSource, "MANV", false, DataSourceUpdateMode.Never);
-            txtUser.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "TENDANGNHAP", false, DataSourceUpdateMode.Never);
-            txtPass.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "MATKHAU", false, DataSourceUpdateMode.Never);
-            cboQuyen.DataBindings.Add("SelectedValue", dgvTaiKhoan.DataSource, "QUYENHAN", false, DataSourceUpdateMode.Never);
-            txtGhiChu.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "GHICHU", false, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvTaiKhoan
             dgvTaiKhoan.Columns["MANV"].HeaderText = "MÃ NV";
             dgvTaiKhoan.Columns["TENDANGNHAP"].HeaderText = "TÊN ĐĂNG NHẬP";
@@ -105,7 +79,8 @@ namespace petStore.FormChuongTrinh
             txtMaNV.Enabled = false;
             txtTenNV.Enabled = false;
             txtCCCD.Enabled = false;
-            chkbNu.Enabled = false;
+            rdNam.Enabled = false;
+            rdNu.Enabled = false;
             dtpNgaySinh.Enabled = false;
             txtSDT.Enabled = false;
             //TAIKHOAN
@@ -123,7 +98,8 @@ namespace petStore.FormChuongTrinh
         // lấy dữ liệu nhân viên
         public void LayDuLieu_NhanVien()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM NHANVIEN");
+            SqlCommand cmd = new SqlCommand(@"SELECT MANV, TENNV, CCCD, (CASE WHEN GIOITINH = '0' THEN N'Nam' ELSE N'Nữ' END) AS GIOITINH, NGAYSINH, SDT, ANH
+                                                FROM NHANVIEN");
             dataTable1.Fill(cmd);
             BindingSource binding1 = new BindingSource();
             binding1.DataSource = dataTable1;
@@ -131,7 +107,7 @@ namespace petStore.FormChuongTrinh
         }
         public void LayDuLieu_TaiKhoan()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM TAIKHOAN");
+            SqlCommand cmd = new SqlCommand(@"SELECT * FROM TAIKHOAN");
             dataTable2.Fill(cmd);
             BindingSource binding2 = new BindingSource();
             binding2.DataSource = dataTable2;
@@ -158,15 +134,7 @@ namespace petStore.FormChuongTrinh
             LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
             LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
             // làm trống các trường nhập dữ liệu
-            txtMaNV.Clear();
-            txtTenNV.Clear();
-            txtCCCD.Clear();
-            chkbNu.Checked = false;
-            dtpNgaySinh.Value = DateTime.Today;
-            txtSDT.Text = "";
-            txtLocationIMG.Clear();
-            
-            pictureBox1.Image = null;
+            XoaTrangTruongDuLieu();
             txtMaNV.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem1.Enabled = false;
@@ -176,7 +144,8 @@ namespace petStore.FormChuongTrinh
             txtMaNV.Enabled = true;
             txtTenNV.Enabled = true;
             txtCCCD.Enabled = true;
-            chkbNu.Enabled = true;
+            rdNam.Enabled = true;
+            rdNu.Enabled = true;
             dtpNgaySinh.Enabled = true;
             txtSDT.Enabled = true;
             //làm sáng nút Lưu và Bỏ qua
@@ -188,44 +157,63 @@ namespace petStore.FormChuongTrinh
         // Sự kiện Click của nút Xóa:
         private void btnSua1_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat1 = true;
-            maNV = txtMaNV.Text;
-            LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
-            LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem1.Enabled = false;
-            btnSua1.Enabled = false;
-            btnXoa1.Enabled = false;
+            if (dgvNhanVien.SelectedRows.Count > 0)
+            {
+                // Đánh dấu là Cập nhật
+                capNhat1 = true;
+                maNV = txtMaNV.Text;
+                LayDuLieu_TaiKhoan(cboMaNV, "SELECT * FROM NHANVIEN", "MANV", "MANV");
+                LayDuLieu_TaiKhoan(cboQuyen, "SELECT * FROM TAIKHOAN", "QUYENHAN", "QUYENHAN");
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem1.Enabled = false;
+                btnSua1.Enabled = false;
+                btnXoa1.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu1.Enabled = true;
-            btnHuyBo1.Enabled = true;
-            btnUpAnh.Enabled = true;
-            btnXoaAnh.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu1.Enabled = true;
+                btnHuyBo1.Enabled = true;
+                btnUpAnh.Enabled = true;
+                btnXoaAnh.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            txtMaNV.Enabled = true;
-            txtTenNV.Enabled = true;
-            txtCCCD.Enabled = true;
-            chkbNu.Enabled = true;
-            dtpNgaySinh.Enabled = true;
-            txtSDT.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                txtMaNV.Enabled = true;
+                txtTenNV.Enabled = true;
+                txtCCCD.Enabled = true;
+                rdNam.Enabled = true;
+                rdNu.Enabled = true;
+                dtpNgaySinh.Enabled = true;
+                txtSDT.Enabled = true;
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 nhân viên để sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         // Sự kiện Click của nút Xóa:
         private void btnXoa1_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa Mã nhân viên " + txtMaNV.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvNhanVien.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM NHANVIEN WHERE MANV = @manv";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@manv", SqlDbType.NVarChar, 5).Value = txtMaNV.Text;
-                dataTable1.Update(cmd);
+                DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa Mã nhân viên " + txtMaNV.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM NHANVIEN WHERE MANV = @manv";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@manv", SqlDbType.NVarChar, 5).Value = txtMaNV.Text;
+                    dataTable1.Update(cmd);
+
+                }
 
                 // Tải lại form
                 fTaiKhoanVaNhanVien_Load(sender, e);
+                XoaTrangTruongDuLieu();
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 nhân viên để Xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         // Sự kiện Click của nút Lưu dữ liệu:
@@ -281,7 +269,7 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
                                 cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
                                 cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0;
                                 cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
                                 cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                                 cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictureBox1));
@@ -293,7 +281,7 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
                                 cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
                                 cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0;
                                 cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
                                 cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                                 cmd.Parameters.Add("@manvcu", SqlDbType.VarChar).Value = maNV;
@@ -313,7 +301,7 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
                                 cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
                                 cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0;
                                 cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
                                 cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                                 cmd.Parameters.AddWithValue("@anh", chuyenAnhthanhByte(pictureBox1));
@@ -324,7 +312,7 @@ namespace petStore.FormChuongTrinh
                                 cmd.Parameters.Add("@manv", SqlDbType.VarChar).Value = txtMaNV.Text;
                                 cmd.Parameters.Add("@tennv", SqlDbType.NVarChar).Value = txtTenNV.Text;
                                 cmd.Parameters.Add("@cccd", SqlDbType.VarChar).Value = txtCCCD.Text;
-                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = chkbNu.Checked ? 1 : 0;
+                                cmd.Parameters.Add("@gioitinh", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0;
                                 cmd.Parameters.Add("@ngaysinh", SqlDbType.Date).Value = dtpNgaySinh.Value;
                                 cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                             }
@@ -334,6 +322,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fTaiKhoanVaNhanVien_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -345,6 +334,7 @@ namespace petStore.FormChuongTrinh
         private void btnHuyBo1_Click(object sender, EventArgs e)
         {
             fTaiKhoanVaNhanVien_Load(sender, e);
+            XoaTrangTruongDuLieu();
         }
         #endregion
         #region button của dgvTaiKhoan
@@ -352,11 +342,7 @@ namespace petStore.FormChuongTrinh
         {
             capNhat2 = false;
             // làm trống các trường nhập dữ liệu
-            cboMaNV.Text = "";
-            txtUser.Clear();
-            txtPass.Clear();
-            cboQuyen.Text = "";
-            txtGhiChu.Clear();
+            XoaTrangTruongDuLieu();
             cboMaNV.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem2.Enabled = false;
@@ -375,40 +361,58 @@ namespace petStore.FormChuongTrinh
 
         private void btnSua2_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat2 = true;
-            user = txtUser.Text;
+            if (dgvTaiKhoan.SelectedRows.Count > 0)
+            {
+                // Đánh dấu là Cập nhật
+                capNhat2 = true;
+                user = txtUser.Text;
 
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem2.Enabled = false;
-            btnSua2.Enabled = false;
-            btnXoa2.Enabled = false;
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem2.Enabled = false;
+                btnSua2.Enabled = false;
+                btnXoa2.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu2.Enabled = true;
-            btnHuyBo2.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu2.Enabled = true;
+                btnHuyBo2.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            cboMaNV.Enabled = true;
-            txtUser.Enabled = true;
-            txtPass.Enabled = true;
-            cboQuyen.Enabled = true;
-            txtGhiChu.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                cboMaNV.Enabled = true;
+                txtUser.Enabled = true;
+                txtPass.Enabled = true;
+                cboQuyen.Enabled = true;
+                txtGhiChu.Enabled = true;
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 tài khoản để sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnXoa2_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa Tài khoản " + txtUser.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvTaiKhoan.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM TAIKHOAN WHERE TENDANGNHAP = @tendangnhap";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@tendangnhap", SqlDbType.NVarChar).Value = txtUser.Text;
-                dataTable2.Update(cmd);
+                DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa Tài khoản " + txtUser.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM TAIKHOAN WHERE TENDANGNHAP = @tendangnhap";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@tendangnhap", SqlDbType.NVarChar).Value = txtUser.Text;
+                    dataTable2.Update(cmd);
+
+                }
 
                 // Tải lại form
                 fTaiKhoanVaNhanVien_Load(sender, e);
+                XoaTrangTruongDuLieu();
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 tài khoản để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -470,6 +474,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fTaiKhoanVaNhanVien_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -481,6 +486,7 @@ namespace petStore.FormChuongTrinh
         private void btnHuyBo2_Click(object sender, EventArgs e)
         {
             fTaiKhoanVaNhanVien_Load(sender, e);
+            XoaTrangTruongDuLieu();
         }
         #endregion
         #region Xử lý ảnh
@@ -558,21 +564,98 @@ namespace petStore.FormChuongTrinh
             }
         }
 
+        private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
+            XoaCacDataBingdings();
 
+            txtMaNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "MANV", false, DataSourceUpdateMode.Never);
+            txtTenNV.DataBindings.Add("Text", dgvNhanVien.DataSource, "TENNV", false, DataSourceUpdateMode.Never);
+            txtCCCD.DataBindings.Add("Text", dgvNhanVien.DataSource, "CCCD", false, DataSourceUpdateMode.Never);
+            dtpNgaySinh.DataBindings.Add("Value", dgvNhanVien.DataSource, "NGAYSINH", false, DataSourceUpdateMode.Never);
+            txtSDT.DataBindings.Add("Text", dgvNhanVien.DataSource, "SDT", false, DataSourceUpdateMode.Never);
+            pictureBox1.DataBindings.Add("Image", dgvNhanVien.DataSource, "ANH", true, DataSourceUpdateMode.Never);
+            string GioiTinh;
+            GioiTinh = dgvNhanVien.CurrentRow.Cells["GIOITINH"].Value.ToString();
+            if (GioiTinh == "Nam")
+            {
+                rdNam.Checked = true;
+            }
+            else if (GioiTinh == "Nữ")
+            {
+                rdNu.Checked = true;
+            }
+        }
+        private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Khi click vào dgvTaiKhoan thì hiển thị dữ liệu của dòng được chọn lên các control
+            XoaCacDataBingdings();
+
+            cboMaNV.DataBindings.Add("SelectedValue", dgvTaiKhoan.DataSource, "MANV", false, DataSourceUpdateMode.Never);
+            txtUser.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "TENDANGNHAP", false, DataSourceUpdateMode.Never);
+            txtPass.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "MATKHAU", false, DataSourceUpdateMode.Never);
+            cboQuyen.DataBindings.Add("SelectedValue", dgvTaiKhoan.DataSource, "QUYENHAN", false, DataSourceUpdateMode.Never);
+            txtGhiChu.DataBindings.Add("Text", dgvTaiKhoan.DataSource, "GHICHU", false, DataSourceUpdateMode.Never);
+        }
+        private void XoaCacDataBingdings()
+        {
+            //NHANVIEN
+            txtMaNV.DataBindings.Clear();
+            txtTenNV.DataBindings.Clear();
+            txtCCCD.DataBindings.Clear();
+            rdNam.DataBindings.Clear();
+            rdNu.DataBindings.Clear();
+            dtpNgaySinh.DataBindings.Clear();
+            txtSDT.DataBindings.Clear();
+            pictureBox1.DataBindings.Clear();
+            //TAIKHOAN
+            cboMaNV.DataBindings.Clear();
+            txtUser.DataBindings.Clear();
+            txtPass.DataBindings.Clear();
+            cboQuyen.DataBindings.Clear();
+            txtGhiChu.DataBindings.Clear();
+        }
+        private void XoaTrangTruongDuLieu()
+        {
+            //NHANVIEN
+            txtMaNV.Clear();
+            txtTenNV.Clear();
+            txtCCCD.Clear();
+            rdNam.Checked = false;
+            rdNu.Checked = false;
+            dtpNgaySinh.Value = DateTime.Today;
+            txtSDT.Text = "";
+            txtLocationIMG.Clear();
+            pictureBox1.Image = null;
+            //TAIKHOAN
+            cboMaNV.Text = "";
+            txtUser.Clear();
+            txtPass.Clear();
+            cboQuyen.Text = "";
+            txtGhiChu.Clear();
+        }
+
+        private void fTaiKhoanVaNhanVien_Shown(object sender, EventArgs e)
+        {
+            dgvNhanVien.ClearSelection();
+            dgvTaiKhoan.ClearSelection();
+        }
+
+        
         /*Hàm kiểm tra dữ liệu trên DataGridView:
 public bool KiemTra(string columnName)
 {
-   foreach (DataGridViewRow row in dgvTaiKhoan.Rows)
-   {
-       string value = row.Cells[columnName].Value.ToString();
-       if (string.IsNullOrEmpty(value))
-       {
-           MessageBox.Show("Giá trị của ô không được rỗng!", "Lỗi",
-           MessageBoxButtons.OK, MessageBoxIcon.Error);
-           return false;
-       }
-   }
-   return true;
+foreach (DataGridViewRow row in dgvTaiKhoan.Rows)
+{
+string value = row.Cells[columnName].Value.ToString();
+if (string.IsNullOrEmpty(value))
+{
+MessageBox.Show("Giá trị của ô không được rỗng!", "Lỗi",
+MessageBoxButtons.OK, MessageBoxIcon.Error);
+return false;
+}
+}
+return true;
 }*/
     }
 }

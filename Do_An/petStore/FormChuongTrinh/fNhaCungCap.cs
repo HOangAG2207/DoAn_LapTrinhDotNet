@@ -28,21 +28,13 @@ namespace petStore.FormChuongTrinh
             datanhacungcap.OpenConnection();
             // Đổ dữ liệu lên datagridview
             LayDuLieu_KhachHang();
-            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
-            txtMaNhaCungCap.DataBindings.Clear();
-            txtTenNhaCungCap.DataBindings.Clear();
-            txtDiaChi.DataBindings.Clear();
-            txtSDT.DataBindings.Clear();
-
-            txtMaNhaCungCap.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
-            txtTenNhaCungCap.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "TENNCC", false, DataSourceUpdateMode.Never);
-            txtDiaChi.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "DIACHI", false, DataSourceUpdateMode.Never);
-            txtSDT.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "SDT", false, DataSourceUpdateMode.Never);
+            // format lại datagridview khi chưa selection
+            dgvNhaCungCap.ClearSelection();
             // Việt hóa tiêu đề dgvKhachHang
-            dgvNhaCungCap.Columns["MANCC"].HeaderText = "Mã nhà cung cấp";
-            dgvNhaCungCap.Columns["TENNCC"].HeaderText = "Tên nhà cung cấp";
-            dgvNhaCungCap.Columns["DIACHI"].HeaderText = "Địa chỉ";
-            dgvNhaCungCap.Columns["SDT"].HeaderText = "Số điện thoại";
+            dgvNhaCungCap.Columns["MANCC"].HeaderText = "MÃ NHÀ CUNG CẤP";
+            dgvNhaCungCap.Columns["TENNCC"].HeaderText = "TÊN NHÀ CUNG CẤP";
+            dgvNhaCungCap.Columns["DIACHI"].HeaderText = "ĐỊA CHỈ";
+            dgvNhaCungCap.Columns["SDT"].HeaderText = "SỐ ĐIỆN THOẠI";
             // Làm sáng nút Thêm mới, Sửa và Xóa
             btnThem.Enabled = true;
             btnSua.Enabled = true;
@@ -89,11 +81,8 @@ namespace petStore.FormChuongTrinh
         private void btnThem_Click(object sender, EventArgs e)
         {
             capNhat = false;
-            // làm trống các trường nhập dữ liệu
-            txtMaNhaCungCap.Clear();
-            txtTenNhaCungCap.Clear();
-            txtDiaChi.Clear();
-            txtSDT.Clear();
+            XoaTrangTruongDuLieu();
+            txtMaNhaCungCap.Text = "NCC";
             txtMaNhaCungCap.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem.Enabled = false;
@@ -111,45 +100,61 @@ namespace petStore.FormChuongTrinh
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat = true;
-            mancc = txtMaNhaCungCap.Text;
+            if (dgvNhaCungCap.SelectedRows.Count > 0) 
+            {
+                // Đánh dấu là Cập nhật
+                capNhat = true;
+                mancc = txtMaNhaCungCap.Text;
 
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu.Enabled = true;
-            btnHuyBo.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu.Enabled = true;
+                btnHuyBo.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            txtMaNhaCungCap.Enabled = true;
-            txtTenNhaCungCap.Enabled = true;
-            txtDiaChi.Enabled = true;
-            txtSDT.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                txtMaNhaCungCap.Enabled = true;
+                txtTenNhaCungCap.Enabled = true;
+                txtDiaChi.Enabled = true;
+                txtSDT.Enabled = true;
         }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 Nhà cung cấp để sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+}
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa Nhà cung cấp có mã là" + txtMaNhaCungCap.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvNhaCungCap.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM NHACUNGCAP WHERE MANCC = @ncc";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@ncc", SqlDbType.NVarChar).Value = txtMaNhaCungCap.Text;
-                datanhacungcap.Update(cmd);
-
-                // Tải lại form
+                DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa Nhà cung cấp có mã là" + txtMaNhaCungCap.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM NHACUNGCAP WHERE MANCC = @ncc";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@ncc", SqlDbType.NVarChar).Value = txtMaNhaCungCap.Text;
+                    datanhacungcap.Update(cmd);
+                }
                 fNhaCungCap_Load(sender, e);
+                XoaTrangTruongDuLieu();
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 nhà cung cấp để Xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             fNhaCungCap_Load(sender, e);
+            XoaTrangTruongDuLieu();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -207,6 +212,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fNhaCungCap_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -229,6 +235,32 @@ namespace petStore.FormChuongTrinh
                 label7.Text = "Số điện thoại chỉ được nhập giá trị là số!";
                 e.Handled = true;
             }
+        }
+
+        private void fNhaCungCap_Shown(object sender, EventArgs e)
+        {
+            dgvNhaCungCap.ClearSelection();
+        }
+        private void XoaTrangTruongDuLieu()
+        {
+            // làm trống các trường nhập dữ liệu
+            txtMaNhaCungCap.Clear();
+            txtTenNhaCungCap.Clear();
+            txtDiaChi.Clear();
+            txtSDT.Clear();
+        }
+        private void dgvNhaCungCap_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
+            txtMaNhaCungCap.DataBindings.Clear();
+            txtTenNhaCungCap.DataBindings.Clear();
+            txtDiaChi.DataBindings.Clear();
+            txtSDT.DataBindings.Clear();
+
+            txtMaNhaCungCap.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
+            txtTenNhaCungCap.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "TENNCC", false, DataSourceUpdateMode.Never);
+            txtDiaChi.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "DIACHI", false, DataSourceUpdateMode.Never);
+            txtSDT.DataBindings.Add("Text", dgvNhaCungCap.DataSource, "SDT", false, DataSourceUpdateMode.Never);
         }
     }
 }

@@ -32,27 +32,9 @@ namespace petStore.FormChuongTrinh
             LayDuLieu_HangHoa();
             LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
             LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
-
-            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
-            txtMaHH.DataBindings.Clear();
-            txtTenHH.DataBindings.Clear();
-            cboLoai.DataBindings.Clear();
-            numSoLuong.DataBindings.Clear();
-            numDGB.DataBindings.Clear();
-            NumDGN.DataBindings.Clear();
-            cboNhaCungCap.DataBindings.Clear();
-            txtMoTa.DataBindings.Clear();
-            pictHangHoa.DataBindings.Clear();
-
-            txtMaHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "MAHH", false, DataSourceUpdateMode.Never);
-            txtTenHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "TENHH", false, DataSourceUpdateMode.Never);
-            cboLoai.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
-            numSoLuong.DataBindings.Add("Text", dgvHangHoa.DataSource, "SOLUONG", false, DataSourceUpdateMode.Never);
-            numDGB.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIABAN", false, DataSourceUpdateMode.Never);
-            NumDGN.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIANHAP", false, DataSourceUpdateMode.Never);
-            cboNhaCungCap.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
-            txtMoTa.DataBindings.Add("Text", dgvHangHoa.DataSource, "MOTA", false, DataSourceUpdateMode.Never);
-            pictHangHoa.DataBindings.Add("Image", dgvHangHoa.DataSource, "ANH", true, DataSourceUpdateMode.Never);
+            // format lại datagridview khi chưa selection
+            dgvHangHoa.ClearSelection();
+            
             // Việt hóa tiêu đề dgvHangHoa
             dgvHangHoa.Columns["MAHH"].HeaderText = "MÃ HÀNG HÓA";
             dgvHangHoa.Columns["TENHH"].HeaderText = "TÊN HÀNG HÓA";
@@ -95,17 +77,8 @@ namespace petStore.FormChuongTrinh
             capNhat = false;
             LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
             LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
-            // làm trống các trường nhập dữ liệu
-            txtMaHH.Clear();
-            txtTenHH.Clear();
-            cboLoai.Text = "";
-            numSoLuong.Value = 0;
-            numDGB.Value = 0;
-            NumDGN.Value = 0;
-            cboNhaCungCap.Text = "";
-            txtMoTa.Clear();
-            
-            pictHangHoa.Image = null;
+            XoaTrangTruongDuLieu();
+            txtMaHH.Text = "HH";
             txtMaHH.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem.Enabled = false;
@@ -129,52 +102,71 @@ namespace petStore.FormChuongTrinh
         // Sự kiện nút sửa
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat = true;
-            mahh = txtMaHH.Text;
-            LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
-            LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+            if (dgvHangHoa.SelectedRows.Count > 0)
+            {
+                // Đánh dấu là Cập nhật
+                capNhat = true;
+                mahh = txtMaHH.Text;
+                LayDuLieu_HangHoa(cboLoai, "SELECT * FROM LOAIHH", "TENLOAI", "MALOAI");
+                LayDuLieu_HangHoa(cboNhaCungCap, "SELECT * FROM NHACUNGCAP", "TENNCC", "MANCC");
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu.Enabled = true;
-            btnHuyBo.Enabled = true;
-            btnChonAnh.Enabled = true;
-            btnXoaAnh.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu.Enabled = true;
+                btnHuyBo.Enabled = true;
+                btnChonAnh.Enabled = true;
+                btnXoaAnh.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            txtMaHH.Enabled = true;
-            txtTenHH.Enabled = true;
-            cboLoai.Enabled = true;
-            numSoLuong.Enabled = true;
-            numDGB.Enabled = true;
-            NumDGN.Enabled = true;
-            cboNhaCungCap.Enabled = true;
-            txtMoTa.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                txtMaHH.Enabled = true;
+                txtTenHH.Enabled = true;
+                cboLoai.Enabled = true;
+                numSoLuong.Enabled = true;
+                numDGB.Enabled = true;
+                NumDGN.Enabled = true;
+                cboNhaCungCap.Enabled = true;
+                txtMoTa.Enabled = true;
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 mặt hàng để Sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         // Sự kiện nút Xóa
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa Hàng hóa " + txtTenHH.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvHangHoa.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM HANGHOA WHERE MAHH = @mhh";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@mhh", SqlDbType.NVarChar).Value = txtMaHH.Text;
-                dataHangHoa.Update(cmd);
+                DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa Hàng hóa " + txtTenHH.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM HANGHOA WHERE MAHH = @mhh";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@mhh", SqlDbType.NVarChar).Value = txtMaHH.Text;
+                    dataHangHoa.Update(cmd);
+
+                }
 
                 // Tải lại form
                 fHangHoa_Load(sender, e);
+                XoaTrangTruongDuLieu();
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 mặt hàng để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         // Sự kiện nút Hủy bỏ
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             fHangHoa_Load(sender, e);
+            XoaTrangTruongDuLieu();
         }
         // Sự kiện nút Lưu
         private void btnLuu_Click(object sender, EventArgs e)
@@ -293,6 +285,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fHangHoa_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -421,6 +414,47 @@ namespace petStore.FormChuongTrinh
                 label12.Text = "Đơn giá nhập chỉ được nhập giá trị là số!";
                 e.Handled = true;
             }
+        }
+        private void XoaTrangTruongDuLieu()
+        {
+            // làm trống các trường nhập dữ liệu
+            txtMaHH.Clear();
+            txtTenHH.Clear();
+            cboLoai.Text = "";
+            numSoLuong.Value = 0;
+            numDGB.Value = 0;
+            NumDGN.Value = 0;
+            cboNhaCungCap.Text = "";
+            txtMoTa.Clear();
+            pictHangHoa.Image = null;
+        }
+        private void dgvHangHoa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
+            txtMaHH.DataBindings.Clear();
+            txtTenHH.DataBindings.Clear();
+            cboLoai.DataBindings.Clear();
+            numSoLuong.DataBindings.Clear();
+            numDGB.DataBindings.Clear();
+            NumDGN.DataBindings.Clear();
+            cboNhaCungCap.DataBindings.Clear();
+            txtMoTa.DataBindings.Clear();
+            pictHangHoa.DataBindings.Clear();
+
+            txtMaHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "MAHH", false, DataSourceUpdateMode.Never);
+            txtTenHH.DataBindings.Add("Text", dgvHangHoa.DataSource, "TENHH", false, DataSourceUpdateMode.Never);
+            cboLoai.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
+            numSoLuong.DataBindings.Add("Text", dgvHangHoa.DataSource, "SOLUONG", false, DataSourceUpdateMode.Never);
+            numDGB.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIABAN", false, DataSourceUpdateMode.Never);
+            NumDGN.DataBindings.Add("Text", dgvHangHoa.DataSource, "DONGIANHAP", false, DataSourceUpdateMode.Never);
+            cboNhaCungCap.DataBindings.Add("SelectedValue", dgvHangHoa.DataSource, "MANCC", false, DataSourceUpdateMode.Never);
+            txtMoTa.DataBindings.Add("Text", dgvHangHoa.DataSource, "MOTA", false, DataSourceUpdateMode.Never);
+            pictHangHoa.DataBindings.Add("Image", dgvHangHoa.DataSource, "ANH", true, DataSourceUpdateMode.Never);
+        }
+
+        private void fHangHoa_Shown(object sender, EventArgs e)
+        {
+            dgvHangHoa.ClearSelection();
         }
     }
 }

@@ -53,7 +53,6 @@ namespace petStore.FormChuongTrinh
             this.txtLocationIMG = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
-            this.chkbNu = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -93,6 +92,8 @@ namespace petStore.FormChuongTrinh
             this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.rdNam = new System.Windows.Forms.RadioButton();
+            this.rdNu = new System.Windows.Forms.RadioButton();
             this.pnlTop1.SuspendLayout();
             this.tlpNhanVien.SuspendLayout();
             this.gbNhanVien.SuspendLayout();
@@ -158,7 +159,7 @@ namespace petStore.FormChuongTrinh
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.31507F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.68493F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 126F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
             this.tableLayoutPanel1.Controls.Add(this.pnl1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pnl6, 2, 0);
@@ -183,7 +184,7 @@ namespace petStore.FormChuongTrinh
             this.pnl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl1.Location = new System.Drawing.Point(3, 3);
             this.pnl1.Name = "pnl1";
-            this.pnl1.Size = new System.Drawing.Size(213, 139);
+            this.pnl1.Size = new System.Drawing.Size(212, 139);
             this.pnl1.TabIndex = 0;
             // 
             // label12
@@ -205,7 +206,7 @@ namespace petStore.FormChuongTrinh
             this.txtCCCD.ForeColor = System.Drawing.Color.Black;
             this.txtCCCD.Location = new System.Drawing.Point(109, 78);
             this.txtCCCD.Name = "txtCCCD";
-            this.txtCCCD.Size = new System.Drawing.Size(89, 21);
+            this.txtCCCD.Size = new System.Drawing.Size(88, 21);
             this.txtCCCD.TabIndex = 3;
             this.txtCCCD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCCD_KeyPress);
             // 
@@ -217,7 +218,7 @@ namespace petStore.FormChuongTrinh
             this.txtTenNV.ForeColor = System.Drawing.Color.Black;
             this.txtTenNV.Location = new System.Drawing.Point(109, 46);
             this.txtTenNV.Name = "txtTenNV";
-            this.txtTenNV.Size = new System.Drawing.Size(89, 21);
+            this.txtTenNV.Size = new System.Drawing.Size(88, 21);
             this.txtTenNV.TabIndex = 2;
             // 
             // txtMaNV
@@ -228,7 +229,7 @@ namespace petStore.FormChuongTrinh
             this.txtMaNV.ForeColor = System.Drawing.Color.Black;
             this.txtMaNV.Location = new System.Drawing.Point(109, 14);
             this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(89, 21);
+            this.txtMaNV.Size = new System.Drawing.Size(88, 21);
             this.txtMaNV.TabIndex = 1;
             // 
             // label4
@@ -267,18 +268,19 @@ namespace petStore.FormChuongTrinh
             // pnl2
             // 
             this.pnl2.BackColor = System.Drawing.Color.Transparent;
+            this.pnl2.Controls.Add(this.rdNu);
+            this.pnl2.Controls.Add(this.rdNam);
             this.pnl2.Controls.Add(this.label13);
             this.pnl2.Controls.Add(this.txtLocationIMG);
             this.pnl2.Controls.Add(this.txtSDT);
             this.pnl2.Controls.Add(this.dtpNgaySinh);
-            this.pnl2.Controls.Add(this.chkbNu);
             this.pnl2.Controls.Add(this.label6);
             this.pnl2.Controls.Add(this.label5);
             this.pnl2.Controls.Add(this.label2);
             this.pnl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl2.Location = new System.Drawing.Point(222, 3);
+            this.pnl2.Location = new System.Drawing.Point(221, 3);
             this.pnl2.Name = "pnl2";
-            this.pnl2.Size = new System.Drawing.Size(219, 139);
+            this.pnl2.Size = new System.Drawing.Size(218, 139);
             this.pnl2.TabIndex = 1;
             // 
             // label13
@@ -308,7 +310,7 @@ namespace petStore.FormChuongTrinh
             this.txtSDT.ForeColor = System.Drawing.Color.Black;
             this.txtSDT.Location = new System.Drawing.Point(117, 78);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(91, 21);
+            this.txtSDT.Size = new System.Drawing.Size(90, 21);
             this.txtSDT.TabIndex = 3;
             this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
@@ -321,22 +323,8 @@ namespace petStore.FormChuongTrinh
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinh.Location = new System.Drawing.Point(117, 46);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(91, 21);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(90, 21);
             this.dtpNgaySinh.TabIndex = 2;
-            // 
-            // chkbNu
-            // 
-            this.chkbNu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkbNu.AutoSize = true;
-            this.chkbNu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkbNu.ForeColor = System.Drawing.Color.Black;
-            this.chkbNu.Location = new System.Drawing.Point(117, 16);
-            this.chkbNu.Name = "chkbNu";
-            this.chkbNu.Size = new System.Drawing.Size(42, 19);
-            this.chkbNu.TabIndex = 1;
-            this.chkbNu.Text = "Nữ";
-            this.chkbNu.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -378,9 +366,9 @@ namespace petStore.FormChuongTrinh
             this.pnl6.Controls.Add(this.pictureBox1);
             this.pnl6.Controls.Add(this.btnUpAnh);
             this.pnl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl6.Location = new System.Drawing.Point(447, 3);
+            this.pnl6.Location = new System.Drawing.Point(445, 3);
             this.pnl6.Name = "pnl6";
-            this.pnl6.Size = new System.Drawing.Size(121, 139);
+            this.pnl6.Size = new System.Drawing.Size(123, 139);
             this.pnl6.TabIndex = 2;
             // 
             // btnXoaAnh
@@ -542,7 +530,7 @@ namespace petStore.FormChuongTrinh
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvNhanVien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvNhanVien.ColumnHeadersHeight = 25;
+            this.dgvNhanVien.ColumnHeadersHeight = 30;
             this.dgvNhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvNhanVien.EnableHeadersVisualStyles = false;
             this.dgvNhanVien.Location = new System.Drawing.Point(3, 3);
@@ -566,6 +554,7 @@ namespace petStore.FormChuongTrinh
             this.dgvNhanVien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNhanVien.Size = new System.Drawing.Size(722, 97);
             this.dgvNhanVien.TabIndex = 0;
+            this.dgvNhanVien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNhanVien_CellClick);
             // 
             // pnlTop3
             // 
@@ -862,6 +851,7 @@ namespace petStore.FormChuongTrinh
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTaiKhoan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTaiKhoan.ColumnHeadersHeight = 30;
             this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvTaiKhoan.EnableHeadersVisualStyles = false;
             this.dgvTaiKhoan.Location = new System.Drawing.Point(340, 4);
@@ -886,11 +876,38 @@ namespace petStore.FormChuongTrinh
             this.dgvTaiKhoan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTaiKhoan.Size = new System.Drawing.Size(384, 268);
             this.dgvTaiKhoan.TabIndex = 0;
+            this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
             this.dgvTaiKhoan.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTaiKhoan_CellFormatting);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // rdNam
+            // 
+            this.rdNam.AutoSize = true;
+            this.rdNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdNam.ForeColor = System.Drawing.Color.Black;
+            this.rdNam.Location = new System.Drawing.Point(117, 15);
+            this.rdNam.Name = "rdNam";
+            this.rdNam.Size = new System.Drawing.Size(47, 17);
+            this.rdNam.TabIndex = 7;
+            this.rdNam.TabStop = true;
+            this.rdNam.Text = "Nam";
+            this.rdNam.UseVisualStyleBackColor = true;
+            // 
+            // rdNu
+            // 
+            this.rdNu.AutoSize = true;
+            this.rdNu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdNu.ForeColor = System.Drawing.Color.Black;
+            this.rdNu.Location = new System.Drawing.Point(170, 15);
+            this.rdNu.Name = "rdNu";
+            this.rdNu.Size = new System.Drawing.Size(39, 17);
+            this.rdNu.TabIndex = 8;
+            this.rdNu.TabStop = true;
+            this.rdNu.Text = "Nữ";
+            this.rdNu.UseVisualStyleBackColor = true;
             // 
             // fTaiKhoanVaNhanVien
             // 
@@ -905,6 +922,7 @@ namespace petStore.FormChuongTrinh
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhân viên và Tài khoản";
             this.Load += new System.EventHandler(this.fTaiKhoanVaNhanVien_Load);
+            this.Shown += new System.EventHandler(this.fTaiKhoanVaNhanVien_Shown);
             this.pnlTop1.ResumeLayout(false);
             this.tlpNhanVien.ResumeLayout(false);
             this.gbNhanVien.ResumeLayout(false);
@@ -958,7 +976,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
-        private System.Windows.Forms.CheckBox chkbNu;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox gbTaiKhoan;
         private System.Windows.Forms.Label label10;
@@ -989,5 +1006,7 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.RadioButton rdNu;
+        private System.Windows.Forms.RadioButton rdNam;
     }
 }

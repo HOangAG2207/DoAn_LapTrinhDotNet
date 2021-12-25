@@ -28,25 +28,20 @@ namespace petStore.FormChuongTrinh
             datakhachhang.OpenConnection();
             // Đổ dữ liệu lên datagridview
             LayDuLieu_KhachHang();
-            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
-            txtMaKhachHang.DataBindings.Clear();
-            txtTenKhachHang.DataBindings.Clear();
-            chkbGioiTinh.DataBindings.Clear();
-            txtDiaChi.DataBindings.Clear();
-            txtSDT.DataBindings.Clear();
+            // format lại datagridview khi chưa selection
+            dgvKhachHang.ClearSelection();
+            //dgvKhachHang.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.LightSeaGreen;
+            //dgvKhachHang.RowHeadersDefaultCellStyle.SelectionBackColor = Color.MediumTurquoise;
+            //dgvKhachHang.RowsDefaultCellStyle.SelectionBackColor = Color.White;
+            //dgvKhachHang.RowsDefaultCellStyle.SelectionForeColor = Color.Black;
 
-            txtMaKhachHang.DataBindings.Add("Text", dgvKhachHang.DataSource, "MAKH", false, DataSourceUpdateMode.Never);
-            txtTenKhachHang.DataBindings.Add("Text", dgvKhachHang.DataSource, "TENKH", false, DataSourceUpdateMode.Never);
-            chkbGioiTinh.DataBindings.Add("Checked", dgvKhachHang.DataSource, "GIOITINH", false, DataSourceUpdateMode.Never);
-            txtDiaChi.DataBindings.Add("Text", dgvKhachHang.DataSource, "DIACHI", false, DataSourceUpdateMode.Never);
-            txtSDT.DataBindings.Add("Text", dgvKhachHang.DataSource, "SDT", false, DataSourceUpdateMode.Never);
             // Việt hóa tiêu đề dgvKhachHang
-            dgvKhachHang.Columns["MAKH"].HeaderText = "Mã khách hàng";
-            dgvKhachHang.Columns["TENKH"].HeaderText = "Tên khách hàng";
-            dgvKhachHang.Columns["GIOITINH"].HeaderText = "Giới tính";
-            dgvKhachHang.Columns["DIACHI"].HeaderText = "Địa chỉ";
-            dgvKhachHang.Columns["SDT"].HeaderText = "Số điện thoại";
-            // Làm sáng nút Thêm mới, Sửa và Xóa
+            dgvKhachHang.Columns["MAKH"].HeaderText = "MÃ KHÁCH HÀNG";
+            dgvKhachHang.Columns["TENKH"].HeaderText = "TÊN KHÁCH HÀNG";
+            dgvKhachHang.Columns["GIOITINH"].HeaderText = "GIỚI TÍNH";
+            dgvKhachHang.Columns["DIACHI"].HeaderText = "ĐỊA CHỈ";
+            dgvKhachHang.Columns["SDT"].HeaderText = "SỐ ĐIỆN THOẠI";
+        // Làm sáng nút Thêm mới, Sửa và Xóa
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
@@ -56,7 +51,8 @@ namespace petStore.FormChuongTrinh
             // làm mờ các trường nhập dữ liệu
             txtMaKhachHang.Enabled = false;
             txtTenKhachHang.Enabled = false;
-            chkbGioiTinh.Enabled = false;
+            rdNu.Enabled = false;
+            rdNam.Enabled = false;
             txtDiaChi.Enabled = false;
             txtSDT.Enabled = false;
         }
@@ -64,7 +60,7 @@ namespace petStore.FormChuongTrinh
         #region Lấy dữ liệu
         public void LayDuLieu_KhachHang()
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM KHACHHANG");
+            SqlCommand cmd = new SqlCommand("SELECT MAKH, TENKH, (CASE WHEN GIOITINH='0' THEN N'Nam' ELSE N'Nữ' END) AS GIOITINH, SDT, DIACHI FROM KHACHHANG");
             datakhachhang.Fill(cmd);
             BindingSource binding1 = new BindingSource();
             binding1.DataSource = datakhachhang;
@@ -73,7 +69,7 @@ namespace petStore.FormChuongTrinh
         // Lấy dữ liệu theo từ khóa
         public void LayDuLieu_TimKiem(string TuKhoa)
         {
-            SqlCommand cmd = new SqlCommand(@"SELECT * 
+            SqlCommand cmd = new SqlCommand(@"SELECT MAKH, TENKH, (CASE WHEN GIOITINH = '0' THEN N'Nam' ELSE N'Nữ' END) AS GIOITINH, SDT, DIACHI 
                                             FROM KHACHHANG
                                             WHERE MAKH LIKE N'%" + TuKhoa + "%'" +
                                             " or TENKH LIKE N'%" + TuKhoa + "%'" +
@@ -92,11 +88,8 @@ namespace petStore.FormChuongTrinh
         {
             capNhat = false;
             // làm trống các trường nhập dữ liệu
-            txtMaKhachHang.Clear();
-            txtTenKhachHang.Clear();
-            chkbGioiTinh.Checked = false;
-            txtDiaChi.Clear();
-            txtSDT.Clear();
+            XoaTrangTruongDuLieu();
+            txtMaKhachHang.Text = "KH";
             txtMaKhachHang.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem.Enabled = false;
@@ -108,53 +101,75 @@ namespace petStore.FormChuongTrinh
             // làm sáng các trường nhập dữ liệu
             txtMaKhachHang.Enabled = true;
             txtTenKhachHang.Enabled = true;
-            chkbGioiTinh.Enabled = true;
+            rdNam.Enabled = true;
+            rdNu.Enabled = true;
             txtDiaChi.Enabled = true;
             txtSDT.Enabled = true;
         }
         // nút sửa
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat = true;
-            makh = txtMaKhachHang.Text;
+            if (dgvKhachHang.SelectedRows.Count > 0)
+            {
+                // Đánh dấu là Cập nhật
+                capNhat = true;
+                makh = txtMaKhachHang.Text;
 
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu.Enabled = true;
-            btnHuyBo.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu.Enabled = true;
+                btnHuyBo.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            txtMaKhachHang.Enabled = true;
-            txtTenKhachHang.Enabled = true;
-            chkbGioiTinh.Enabled = true;
-            txtDiaChi.Enabled = true;
-            txtSDT.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                txtMaKhachHang.Enabled = true;
+                txtTenKhachHang.Enabled = true;
+                rdNam.Enabled = true;
+                rdNu.Enabled = true;
+                txtDiaChi.Enabled = true;
+                txtSDT.Enabled = true;
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 khách hàng để sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         // nút xóa
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa khách hàng có mã là" + txtMaKhachHang.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvKhachHang.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM KHACHHANG WHERE MAKH = @kh";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@kh", SqlDbType.NVarChar).Value = txtMaKhachHang.Text;
-                datakhachhang.Update(cmd);
+                DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa khách hàng có mã là" + txtMaKhachHang.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM KHACHHANG WHERE MAKH = @kh";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@kh", SqlDbType.NVarChar).Value = txtMaKhachHang.Text;
+                    datakhachhang.Update(cmd);
 
+                }
                 // Tải lại form
                 fKhachHang_Load(sender, e);
+                XoaTrangTruongDuLieu();
             }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 khách hàng để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
         // nút hủy bỏ
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             fKhachHang_Load(sender, e);
+
+            XoaTrangTruongDuLieu();
         }
         // nút lưu vào csdl
         private void btnLuu_Click(object sender, EventArgs e)
@@ -194,7 +209,7 @@ namespace petStore.FormChuongTrinh
                             SqlCommand cmd = new SqlCommand(sql);
                             cmd.Parameters.Add("@maKH", SqlDbType.VarChar).Value = txtMaKhachHang.Text;
                             cmd.Parameters.Add("@tenKH", SqlDbType.NVarChar).Value = txtTenKhachHang.Text;
-                            cmd.Parameters.Add("@gt", SqlDbType.Bit).Value = chkbGioiTinh.Checked ? 1 : 0; ;
+                            cmd.Parameters.Add("@gt", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0; ;
                             cmd.Parameters.Add("@dc", SqlDbType.NVarChar).Value = txtDiaChi.Text;
                             cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                             cmd.Parameters.Add("@maKHcu", SqlDbType.VarChar).Value = makh;
@@ -207,7 +222,7 @@ namespace petStore.FormChuongTrinh
                             SqlCommand cmd = new SqlCommand(sql);
                             cmd.Parameters.Add("@maKH", SqlDbType.VarChar).Value = txtMaKhachHang.Text;
                             cmd.Parameters.Add("@tenKH", SqlDbType.NVarChar).Value = txtTenKhachHang.Text;
-                            cmd.Parameters.Add("@gt", SqlDbType.Bit).Value = chkbGioiTinh.Checked ? 1 : 0; ;
+                            cmd.Parameters.Add("@gt", SqlDbType.Bit).Value = rdNu.Checked ? 1 : 0; ;
                             cmd.Parameters.Add("@dc", SqlDbType.NVarChar).Value = txtDiaChi.Text;
                             cmd.Parameters.Add("@sdt", SqlDbType.NVarChar).Value = txtSDT.Text;
                             datakhachhang.Update(cmd);
@@ -215,6 +230,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fKhachHang_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -244,7 +260,50 @@ namespace petStore.FormChuongTrinh
                 e.Handled = true;
             }
         }
+        private void XoaCacDataBingdings()
+        { 
+            txtMaKhachHang.DataBindings.Clear();
+            txtTenKhachHang.DataBindings.Clear();
+            rdNam.DataBindings.Clear();
+            rdNu.DataBindings.Clear();
+            txtDiaChi.DataBindings.Clear();
+            txtSDT.DataBindings.Clear();
+        }
+        private void XoaTrangTruongDuLieu()
+        {
+            txtMaKhachHang.Clear();
+            txtTenKhachHang.Text = "";
+            rdNam.Checked = false;
+            rdNu.Checked = false;
+            txtDiaChi.Text = "";
+            txtSDT.Text = "";
+        }
+        private void dgvKhachHang_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //dgvKhachHang.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.Gray;
+            //dgvKhachHang.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Gray;
+            //dgvKhachHang.RowsDefaultCellStyle.SelectionBackColor = Color.Salmon;
+            //dgvKhachHang.RowsDefaultCellStyle.SelectionForeColor = Color.White;
+            XoaCacDataBingdings();
+            txtMaKhachHang.DataBindings.Add("Text", dgvKhachHang.DataSource, "MAKH", false, DataSourceUpdateMode.Never);
+            txtTenKhachHang.DataBindings.Add("Text", dgvKhachHang.DataSource, "TENKH", false, DataSourceUpdateMode.Never);
+            txtDiaChi.DataBindings.Add("Text", dgvKhachHang.DataSource, "DIACHI", false, DataSourceUpdateMode.Never);
+            txtSDT.DataBindings.Add("Text", dgvKhachHang.DataSource, "SDT", false, DataSourceUpdateMode.Never);
+            string GioiTinh;
+            GioiTinh = dgvKhachHang.CurrentRow.Cells["GIOITINH"].Value.ToString();
+            if (GioiTinh == "Nam")
+            {
+                rdNam.Checked = true;
+            }
+            else if (GioiTinh == "Nữ")
+            {
+                rdNu.Checked = true;
+            }
+        }
 
-
+        private void fKhachHang_Shown(object sender, EventArgs e)
+        {
+            dgvKhachHang.ClearSelection();
+        }
     }
 }

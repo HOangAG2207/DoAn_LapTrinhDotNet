@@ -9,20 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
+using System.Windows.Forms.VisualStyles;
+
 
 namespace petStore
 {
     public partial class fQuanLyChinh : Form
     {
-        string userDisplay = fDangNhap.user;
+        
         ConnectData dataTable = new ConnectData();
-        public static string HovaTen = "";
+        
         public fQuanLyChinh()
         {
             InitializeComponent();
-            pnlLeft.Width = 50;
         }
         #region Biến toàn cục
+        public static string HovaTen = "";
+        string userDisplay = fDangNhap.user;
         bool flag = true;
         bool maximum = false;
         FormChuongTrinh.fTaiKhoanVaNhanVien TKvaNV = null;
@@ -38,9 +41,16 @@ namespace petStore
 
         FormChuongTrinh.fHoaDonBan HDban = null;
         #endregion
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToString("T");
+        }
         private void fQuanLyChinh_Load(object sender, EventArgs e)
         {
             DangNhap();
+            //Application.VisualStyleState = VisualStyleState.NonClientAreaEnabled;
+            timer1.Start();
+            pnlLeft.Width = 250;
         }
         public void QuanTriVien()
         {
@@ -211,13 +221,15 @@ namespace petStore
         // button ẩn hiện panel Trái
         private void btnPnlShowHide_Click(object sender, EventArgs e)
         {
-            if (flag)
+            if (!flag)
             {
                 pnlLeft.Width = 250;
+                monthCalendar1.Visible = true;
             }
             else
             {
                 pnlLeft.Width = 50;
+                monthCalendar1.Visible = false;
             }
             flag = !flag;
         }

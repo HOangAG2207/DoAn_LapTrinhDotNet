@@ -28,12 +28,8 @@ namespace petStore.FormChuongTrinh
             datahanghoa.OpenConnection();
             // Đổ dữ liệu lên datagridview
             LayDuLieu_HangHoa();
-            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
-            txtMaLoai.DataBindings.Clear();
-            txtTenLoai.DataBindings.Clear();
-
-            txtMaLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
-            txtTenLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "TENLOAI", false, DataSourceUpdateMode.Never);
+            // format lại datagridview khi chưa selection
+            dgvLoaiHangHoa.ClearSelection();
             // Việt hóa tiêu đề dgvNhanVien
             dgvLoaiHangHoa.Columns["MALOAI"].HeaderText = "MÃ LOẠI HÀNG";
             dgvLoaiHangHoa.Columns["TENLOAI"].HeaderText = "TÊN LOẠI HÀNG";
@@ -75,9 +71,7 @@ namespace petStore.FormChuongTrinh
         private void btnThem_Click(object sender, EventArgs e)
         {
             capNhat = false;
-            // làm trống các trường nhập dữ liệu
-            txtMaLoai.Clear();
-            txtTenLoai.Clear();
+            XoaTrangTruongDuLieu();
             txtMaLoai.Focus();
             // làm mờ nút Thêm, Sửa, Xóa
             btnThem.Enabled = false;
@@ -93,43 +87,62 @@ namespace petStore.FormChuongTrinh
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Đánh dấu là Cập nhật
-            capNhat = true;
-            maloai = txtMaLoai.Text;
+            if (dgvLoaiHangHoa.SelectedRows.Count > 0)
+            {
+                // Đánh dấu là Cập nhật
+                capNhat = true;
+                maloai = txtMaLoai.Text;
 
-            // Làm mờ nút Thêm mới, Sửa và Xóa
-            btnThem.Enabled = false;
-            btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+                // Làm mờ nút Thêm mới, Sửa và Xóa
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
 
-            // Làm sáng nút Lưu và Bỏ qua
-            btnLuu.Enabled = true;
-            btnHuyBo.Enabled = true;
+                // Làm sáng nút Lưu và Bỏ qua
+                btnLuu.Enabled = true;
+                btnHuyBo.Enabled = true;
 
-            // làm sáng các trường nhập dữ liệu
-            txtMaLoai.Enabled = true;
-            txtTenLoai.Enabled = true;
+                // làm sáng các trường nhập dữ liệu
+                txtMaLoai.Enabled = true;
+                txtTenLoai.Enabled = true;
+            }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 loại hàng hóa để sửa thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult kq;
-            kq = MessageBox.Show("Bạn có muốn xóa Loại hàng tên là" + txtTenLoai.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (dgvLoaiHangHoa.SelectedRows.Count > 0)
             {
-                string sql = @"DELETE FROM LOAIHH WHERE MALOAI = @ml";
-                SqlCommand cmd = new SqlCommand(sql);
-                cmd.Parameters.Add("@ml", SqlDbType.NVarChar).Value = txtMaLoai.Text;
-                datahanghoa.Update(cmd);
+                    DialogResult kq;
+                kq = MessageBox.Show("Bạn có muốn xóa Loại hàng tên là" + txtTenLoai.Text + " không?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kq == DialogResult.Yes)
+                {
+                    string sql = @"DELETE FROM LOAIHH WHERE MALOAI = @ml";
+                    SqlCommand cmd = new SqlCommand(sql);
+                    cmd.Parameters.Add("@ml", SqlDbType.NVarChar).Value = txtMaLoai.Text;
+                    datahanghoa.Update(cmd);
+
+                }
 
                 // Tải lại form
                 fLoaiHangHoa_Load(sender, e);
+                XoaTrangTruongDuLieu();
             }
-        }
+            else
+            {
+                DialogResult kq1;
+                kq1 = MessageBox.Show("Bạn cần chọn 1 loại hàng hóa để Xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+}
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             fLoaiHangHoa_Load(sender, e);
+            XoaTrangTruongDuLieu();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -181,6 +194,7 @@ namespace petStore.FormChuongTrinh
 
                         // Tải lại form
                         fLoaiHangHoa_Load(sender, e);
+                        XoaTrangTruongDuLieu();
                     }
                     catch (Exception ex)
                     {
@@ -194,6 +208,25 @@ namespace petStore.FormChuongTrinh
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LayDuLieu_TimKiem(txtTimKiem.Text);
+        }
+
+        private void fLoaiHangHoa_Shown(object sender, EventArgs e)
+        {
+            dgvLoaiHangHoa.ClearSelection();
+        }
+        private void XoaTrangTruongDuLieu()
+        {
+            // làm trống các trường nhập dữ liệu
+            txtMaLoai.Clear();
+            txtTenLoai.Clear();
+        }
+        private void dgvLoaiHangHoa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaLoai.DataBindings.Clear();
+            txtTenLoai.DataBindings.Clear();
+            // Khi click vào dgvNhanVien thì hiển thị dữ liệu của dòng được chọn lên các control
+            txtMaLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "MALOAI", false, DataSourceUpdateMode.Never);
+            txtTenLoai.DataBindings.Add("Text", dgvLoaiHangHoa.DataSource, "TENLOAI", false, DataSourceUpdateMode.Never);
         }
     }
 }

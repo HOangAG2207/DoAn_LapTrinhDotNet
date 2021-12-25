@@ -29,6 +29,7 @@ namespace petStore.FormChuongTrinh
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,6 +55,7 @@ namespace petStore.FormChuongTrinh
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiHangHoa)).BeginInit();
             this.panel1.SuspendLayout();
@@ -121,6 +123,7 @@ namespace petStore.FormChuongTrinh
             this.dgvLoaiHangHoa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoaiHangHoa.Size = new System.Drawing.Size(589, 154);
             this.dgvLoaiHangHoa.TabIndex = 0;
+            this.dgvLoaiHangHoa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoaiHangHoa_CellClick);
             // 
             // panel1
             // 
@@ -233,6 +236,7 @@ namespace petStore.FormChuongTrinh
             this.btnHuyBo.TabIndex = 5;
             this.btnHuyBo.Text = "   Hủy bỏ";
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnHuyBo, "Hủy  bỏ thao tác");
             this.btnHuyBo.UseVisualStyleBackColor = true;
             this.btnHuyBo.Click += new System.EventHandler(this.btnHuyBo_Click);
             // 
@@ -260,6 +264,7 @@ namespace petStore.FormChuongTrinh
             this.txtTimKiem.Size = new System.Drawing.Size(220, 28);
             this.txtTimKiem.TabIndex = 1;
             this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtTimKiem, "Nhập từ khóa để tìm");
             // 
             // btnTimKiem
             // 
@@ -270,6 +275,7 @@ namespace petStore.FormChuongTrinh
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(30, 28);
             this.btnTimKiem.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.btnTimKiem, "Tìm kiếm");
             this.btnTimKiem.UseVisualStyleBackColor = true;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
@@ -284,6 +290,7 @@ namespace petStore.FormChuongTrinh
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "   Xóa";
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnXoa, "Xóa 1 loại hàng");
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -296,8 +303,9 @@ namespace petStore.FormChuongTrinh
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(145, 36);
             this.btnLuu.TabIndex = 3;
-            this.btnLuu.Text = "  lưu vào CSDL";
+            this.btnLuu.Text = "      Lưu";
             this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnLuu, "Lưu vào Cơ sở dữ liệu");
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
@@ -312,6 +320,7 @@ namespace petStore.FormChuongTrinh
             this.btnSua.TabIndex = 3;
             this.btnSua.Text = "   Sửa";
             this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnSua, "Sửa thông tin loại hàng");
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -326,6 +335,7 @@ namespace petStore.FormChuongTrinh
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm mới";
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnThem, "Thêm loại hàng mới");
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -373,6 +383,7 @@ namespace petStore.FormChuongTrinh
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Loại hàng hóa";
             this.Load += new System.EventHandler(this.fLoaiHangHoa_Load);
+            this.Shown += new System.EventHandler(this.fLoaiHangHoa_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiHangHoa)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -414,5 +425,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.TextBox txtTenLoai;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

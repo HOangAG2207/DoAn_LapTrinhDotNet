@@ -29,6 +29,7 @@ namespace petStore
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanLyChinh));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -37,6 +38,8 @@ namespace petStore
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPnlShowHide = new System.Windows.Forms.Button();
@@ -65,6 +68,8 @@ namespace petStore
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlTop1 = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.vbtnDangXuat = new petStore.VBbutton();
             this.vbtnMinimize = new petStore.VBbutton();
             this.vbtnMaximum = new petStore.VBbutton();
@@ -89,7 +94,7 @@ namespace petStore
             this.toolStripButton5});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(916, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(858, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -141,6 +146,8 @@ namespace petStore
             // pnlLeft
             // 
             this.pnlLeft.BackColor = System.Drawing.Color.PeachPuff;
+            this.pnlLeft.Controls.Add(this.monthCalendar1);
+            this.pnlLeft.Controls.Add(this.label1);
             this.pnlLeft.Controls.Add(this.vbtnDangXuat);
             this.pnlLeft.Controls.Add(this.label2);
             this.pnlLeft.Controls.Add(this.pictureBox1);
@@ -149,15 +156,40 @@ namespace petStore
             this.pnlLeft.Location = new System.Drawing.Point(0, 31);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(192, 648);
+            this.pnlLeft.Size = new System.Drawing.Size(250, 648);
             this.pnlLeft.TabIndex = 4;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.BackColor = System.Drawing.Color.PeachPuff;
+            this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendar1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 63);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(0);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.ShowToday = false;
+            this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.TitleBackColor = System.Drawing.Color.Salmon;
+            this.monthCalendar1.TitleForeColor = System.Drawing.Color.White;
+            this.monthCalendar1.TrailingForeColor = System.Drawing.Color.Silver;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label1.Location = new System.Drawing.Point(48, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(154, 31);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "00:00:00 tt";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Crimson;
-            this.label2.Location = new System.Drawing.Point(50, 201);
+            this.label2.Location = new System.Drawing.Point(64, 402);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 16);
@@ -170,7 +202,7 @@ namespace petStore
             this.pictureBox1.BackgroundImage = global::petStore.Properties.Resources.imageNV;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(53, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(67, 261);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(116, 138);
@@ -354,7 +386,7 @@ namespace petStore
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(916, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(858, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -363,10 +395,10 @@ namespace petStore
             this.pnlTop2.Controls.Add(this.toolStrip1);
             this.pnlTop2.Controls.Add(this.menuStrip1);
             this.pnlTop2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTop2.Location = new System.Drawing.Point(192, 31);
+            this.pnlTop2.Location = new System.Drawing.Point(250, 31);
             this.pnlTop2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlTop2.Name = "pnlTop2";
-            this.pnlTop2.Size = new System.Drawing.Size(916, 51);
+            this.pnlTop2.Size = new System.Drawing.Size(858, 51);
             this.pnlTop2.TabIndex = 6;
             // 
             // tabControl1
@@ -374,10 +406,10 @@ namespace petStore
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.Location = new System.Drawing.Point(192, 82);
+            this.tabControl1.Location = new System.Drawing.Point(250, 82);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(916, 597);
+            this.tabControl1.Size = new System.Drawing.Size(858, 597);
             this.tabControl1.TabIndex = 8;
             this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
@@ -389,7 +421,7 @@ namespace petStore
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(908, 571);
+            this.tabPage1.Size = new System.Drawing.Size(850, 571);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -405,6 +437,11 @@ namespace petStore
             this.pnlTop1.Name = "pnlTop1";
             this.pnlTop1.Size = new System.Drawing.Size(1108, 31);
             this.pnlTop1.TabIndex = 5;
+            this.pnlTop1.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // vbtnDangXuat
             // 
@@ -417,7 +454,7 @@ namespace petStore
             this.vbtnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.vbtnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vbtnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.vbtnDangXuat.Location = new System.Drawing.Point(53, 596);
+            this.vbtnDangXuat.Location = new System.Drawing.Point(67, 596);
             this.vbtnDangXuat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.vbtnDangXuat.Name = "vbtnDangXuat";
             this.vbtnDangXuat.Size = new System.Drawing.Size(116, 30);
@@ -444,6 +481,7 @@ namespace petStore
             this.vbtnMinimize.TabIndex = 1;
             this.vbtnMinimize.Text = "--";
             this.vbtnMinimize.UseVisualStyleBackColor = false;
+            this.vbtnMinimize.Visible = false;
             this.vbtnMinimize.Click += new System.EventHandler(this.vbtnMinimize_Click);
             // 
             // vbtnMaximum
@@ -464,6 +502,7 @@ namespace petStore
             this.vbtnMaximum.Size = new System.Drawing.Size(30, 25);
             this.vbtnMaximum.TabIndex = 1;
             this.vbtnMaximum.UseVisualStyleBackColor = false;
+            this.vbtnMaximum.Visible = false;
             this.vbtnMaximum.Click += new System.EventHandler(this.vbtnMaximum_Click);
             // 
             // vbtnExit
@@ -484,6 +523,7 @@ namespace petStore
             this.vbtnExit.TabIndex = 0;
             this.vbtnExit.Text = "X";
             this.vbtnExit.UseVisualStyleBackColor = false;
+            this.vbtnExit.Visible = false;
             this.vbtnExit.Click += new System.EventHandler(this.vbtnExit_Click);
             // 
             // fQuanLyChinh
@@ -562,5 +602,9 @@ namespace petStore
         private System.Windows.Forms.ToolStripMenuItem mnuShowNCC;
         private System.Windows.Forms.ToolStripMenuItem mnuShowNhanVien;
         private System.Windows.Forms.ToolStripMenuItem mnuBanHang;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

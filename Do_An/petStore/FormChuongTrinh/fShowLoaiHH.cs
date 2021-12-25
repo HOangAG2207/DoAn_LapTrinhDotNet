@@ -27,8 +27,8 @@ namespace petStore.FormChuongTrinh
             // Đổ dữ liệu lên datagridview
             LayDuLieu_HangHoa();
             // Việt hóa tiêu đề dgvNhanVien
-            dgvLoaiHH.Columns["MALOAI"].HeaderText = "Mã loại hàng";
-            dgvLoaiHH.Columns["TENLOAI"].HeaderText = "Tên loại hàng";
+            dgvLoaiHH.Columns["MALOAI"].HeaderText = "MÃ LOẠI HÀNG";
+            dgvLoaiHH.Columns["TENLOAI"].HeaderText = "TÊN LOẠI HÀNG";
         }
         public void LayDuLieu_HangHoa()
         {
