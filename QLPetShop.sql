@@ -87,7 +87,6 @@ create table HOADONBAN(
 )
 go
 create table HOADONBAN_CHITIET(
-	STT smallint,
 	MaHDban varchar(20),
 	MaHH varchar(5),
 	SoLuong tinyint,

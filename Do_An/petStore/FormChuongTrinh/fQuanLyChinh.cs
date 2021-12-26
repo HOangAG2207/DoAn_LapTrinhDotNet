@@ -38,6 +38,7 @@ namespace petStore
         FormChuongTrinh.fShowLoaiHH showloaihh = null;
         FormChuongTrinh.fShowNhaCungCap showncc = null;
         FormChuongTrinh.fShowNhanVien shownv = null;
+        FormChuongTrinh.fShowHoaDonBan showhdb = null;
 
         FormChuongTrinh.fHoaDonBan HDban = null;
         #endregion
@@ -199,6 +200,11 @@ namespace petStore
             shownv = new FormChuongTrinh.fShowNhanVien();
             TabCreating(tabControl1, "Tra cứu Nhân viên", shownv);
         }
+        private void mnuShowHDB_Click(object sender, EventArgs e)
+        {
+            showhdb = new FormChuongTrinh.fShowHoaDonBan();
+            TabCreating(tabControl1, "Tra cứu Hóa đơn bán", showhdb);
+        }
         #endregion
         #region Thao tác với Menu Trợ giúp
         private void mnuThongTinPM_Click(object sender, EventArgs e)
@@ -326,7 +332,9 @@ namespace petStore
             }
         }
 
+
         #endregion
 
+        
     }
 }

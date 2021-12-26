@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -121,11 +139,31 @@
     <Compile Include="FormChuongTrinh\fTaiKhoanVaNhanVien.Designer.cs">
       <DependentUpon>fTaiKhoanVaNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fShowHoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowHoaDonBan.Designer.cs">
+      <DependentUpon>fShowHoaDonBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DieuChinhForm\VBbutton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Report\fInHoaDonBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\fInHoaDonBan.Designer.cs">
+      <DependentUpon>fInHoaDonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\HANGHOA_INFO.cs" />
+    <Compile Include="Report\HOADONBAN_CHITIET_INFO.cs" />
+    <Compile Include="Report\HOADONBAN_INFO.cs" />
+    <Compile Include="Report\KHACHHANG_INFO.cs" />
+    <Compile Include="Report\LOAIHANGHOA_INFO.cs" />
+    <Compile Include="Report\NHACUNGCAP_INFO.cs" />
+    <Compile Include="Report\NHANVIEN_INFO.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="FormChuongTrinh\fAbout.resx">
       <DependentUpon>fAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +200,9 @@
     <EmbeddedResource Include="FormChuongTrinh\fTaiKhoanVaNhanVien.resx">
       <DependentUpon>fTaiKhoanVaNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fShowHoaDonBan.resx">
+      <DependentUpon>fShowHoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -172,6 +213,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\fInHoaDonBan.resx">
+      <DependentUpon>fInHoaDonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\petStore.Report.fInHoaDonBan.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.HANGHOA_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.HOADONBAN_CHITIET_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.HOADONBAN_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.KHACHHANG_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.LOAIHANGHOA_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.NHACUNGCAP_INFO.datasource" />
+    <None Include="Properties\DataSources\petStore.Report.NHANVIEN_INFO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -189,6 +242,19 @@
     <None Include="Resources\loginBG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\imageNV.png" />
     <None Include="Resources\refresh16.png" />
     <None Include="Resources\view16.png" />

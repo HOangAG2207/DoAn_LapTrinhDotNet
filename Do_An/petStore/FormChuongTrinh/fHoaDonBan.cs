@@ -58,7 +58,7 @@ namespace petStore.FormChuongTrinh
             btnThem.Enabled = false;
             btnXoa.Enabled = false;
 
-            btnLuu.Enabled = false;
+            btnKetThuc.Enabled = false;
             btnThanhToan.Enabled = false;
         }
         //Hàm tạo khóa có dạng: TientoNgaythangnam_giophutgiay
@@ -133,7 +133,7 @@ namespace petStore.FormChuongTrinh
 
 
         #region các Sự kiện khi của các nút
-        private void btnLuu_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             ConnectData data = new ConnectData();
             data.OpenConnection();
@@ -148,7 +148,7 @@ namespace petStore.FormChuongTrinh
             {
                 // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
                 // Mã HDBan được sinh tự động do đó không có trường hợp trùng khóa
-                
+
                 if (cboMaKH.Text.Length == 0)
                 {
                     MessageBox.Show("Bạn phải nhập khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -229,8 +229,14 @@ namespace petStore.FormChuongTrinh
             cboTenHH.Text = "";
             numSoLuong.Value = 0;
             txtThanhTien.Text = "0";
+            txtTenHH.Text = "";
+            txtDGB.Text = "";
             btnXoa.Enabled = true;
-            btnThem.Enabled = true;
+            btnKetThuc.Enabled = true;
+        }
+        private void btnKetThuc_Click(object sender, EventArgs e)
+        {
+            fHoaDonBan_Load(sender, e);
         }
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {   // lấy dữ liệu đổ vào combobox MaKH
@@ -263,7 +269,7 @@ namespace petStore.FormChuongTrinh
             btnThem.Enabled = true;
             btnXoa.Enabled = true;
 
-            btnLuu.Enabled = true;
+            btnKetThuc.Enabled = true;
             btnThanhToan.Enabled = true;
         }
         private void btnHuyThem_Click(object sender, EventArgs e)
@@ -446,6 +452,7 @@ namespace petStore.FormChuongTrinh
                 return true;
             else return false;
         }
+
         
     }
 }

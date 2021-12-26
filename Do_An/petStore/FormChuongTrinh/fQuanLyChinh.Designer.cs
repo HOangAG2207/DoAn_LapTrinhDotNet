@@ -40,6 +40,7 @@ namespace petStore
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
+            this.vbtnDangXuat = new petStore.VBbutton();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPnlShowHide = new System.Windows.Forms.Button();
@@ -52,7 +53,7 @@ namespace petStore
             this.mnuShowLoaiHH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowNCC = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowNhanVien = new System.Windows.Forms.ToolStripMenuItem();
-            this.hóaĐơnBánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuShowHDB = new System.Windows.Forms.ToolStripMenuItem();
             this.hóaĐơnNhậpHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,12 +69,11 @@ namespace petStore
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlTop1 = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.vbtnDangXuat = new petStore.VBbutton();
             this.vbtnMinimize = new petStore.VBbutton();
             this.vbtnMaximum = new petStore.VBbutton();
             this.vbtnExit = new petStore.VBbutton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -184,6 +184,26 @@ namespace petStore
             this.label1.TabIndex = 5;
             this.label1.Text = "00:00:00 tt";
             // 
+            // vbtnDangXuat
+            // 
+            this.vbtnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.vbtnDangXuat.BackColor = System.Drawing.Color.SlateBlue;
+            this.vbtnDangXuat.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.vbtnDangXuat.BorderRadius = 15;
+            this.vbtnDangXuat.BorderSize = 0;
+            this.vbtnDangXuat.FlatAppearance.BorderSize = 0;
+            this.vbtnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.vbtnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vbtnDangXuat.ForeColor = System.Drawing.Color.White;
+            this.vbtnDangXuat.Location = new System.Drawing.Point(67, 596);
+            this.vbtnDangXuat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.vbtnDangXuat.Name = "vbtnDangXuat";
+            this.vbtnDangXuat.Size = new System.Drawing.Size(116, 30);
+            this.vbtnDangXuat.TabIndex = 4;
+            this.vbtnDangXuat.Text = "ĐĂNG XUẤT";
+            this.vbtnDangXuat.UseVisualStyleBackColor = false;
+            this.vbtnDangXuat.Click += new System.EventHandler(this.vbtnDangXuat_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -192,7 +212,7 @@ namespace petStore
             this.label2.Location = new System.Drawing.Point(64, 402);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 16);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 3;
             this.label2.Text = "label2";
             // 
@@ -268,7 +288,7 @@ namespace petStore
             this.mnuShowLoaiHH,
             this.mnuShowNCC,
             this.mnuShowNhanVien,
-            this.hóaĐơnBánHàngToolStripMenuItem,
+            this.mnuShowHDB,
             this.hóaĐơnNhậpHàngToolStripMenuItem});
             this.mnuTraCuu.Name = "mnuTraCuu";
             this.mnuTraCuu.Size = new System.Drawing.Size(64, 21);
@@ -295,11 +315,12 @@ namespace petStore
             this.mnuShowNhanVien.Text = "&3. Thông tin Nhân viên";
             this.mnuShowNhanVien.Click += new System.EventHandler(this.mnuShowNhanVien_Click);
             // 
-            // hóaĐơnBánHàngToolStripMenuItem
+            // mnuShowHDB
             // 
-            this.hóaĐơnBánHàngToolStripMenuItem.Name = "hóaĐơnBánHàngToolStripMenuItem";
-            this.hóaĐơnBánHàngToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.hóaĐơnBánHàngToolStripMenuItem.Text = "Hóa đơn bán hàng";
+            this.mnuShowHDB.Name = "mnuShowHDB";
+            this.mnuShowHDB.Size = new System.Drawing.Size(237, 22);
+            this.mnuShowHDB.Text = "&4. Hóa đơn bán hàng";
+            this.mnuShowHDB.Click += new System.EventHandler(this.mnuShowHDB_Click);
             // 
             // hóaĐơnNhậpHàngToolStripMenuItem
             // 
@@ -319,13 +340,13 @@ namespace petStore
             // mnuBaoCao
             // 
             this.mnuBaoCao.Name = "mnuBaoCao";
-            this.mnuBaoCao.Size = new System.Drawing.Size(133, 22);
+            this.mnuBaoCao.Size = new System.Drawing.Size(180, 22);
             this.mnuBaoCao.Text = "Báo cáo";
             // 
             // mnuThongKe
             // 
             this.mnuThongKe.Name = "mnuThongKe";
-            this.mnuThongKe.Size = new System.Drawing.Size(133, 22);
+            this.mnuThongKe.Size = new System.Drawing.Size(180, 22);
             this.mnuThongKe.Text = "Thống kê";
             // 
             // mnuTroGiup
@@ -439,30 +460,6 @@ namespace petStore
             this.pnlTop1.TabIndex = 5;
             this.pnlTop1.Visible = false;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // vbtnDangXuat
-            // 
-            this.vbtnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.vbtnDangXuat.BackColor = System.Drawing.Color.SlateBlue;
-            this.vbtnDangXuat.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.vbtnDangXuat.BorderRadius = 15;
-            this.vbtnDangXuat.BorderSize = 0;
-            this.vbtnDangXuat.FlatAppearance.BorderSize = 0;
-            this.vbtnDangXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vbtnDangXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vbtnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.vbtnDangXuat.Location = new System.Drawing.Point(67, 596);
-            this.vbtnDangXuat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.vbtnDangXuat.Name = "vbtnDangXuat";
-            this.vbtnDangXuat.Size = new System.Drawing.Size(116, 30);
-            this.vbtnDangXuat.TabIndex = 4;
-            this.vbtnDangXuat.Text = "ĐĂNG XUẤT";
-            this.vbtnDangXuat.UseVisualStyleBackColor = false;
-            this.vbtnDangXuat.Click += new System.EventHandler(this.vbtnDangXuat_Click);
-            // 
             // vbtnMinimize
             // 
             this.vbtnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -525,6 +522,10 @@ namespace petStore
             this.vbtnExit.UseVisualStyleBackColor = false;
             this.vbtnExit.Visible = false;
             this.vbtnExit.Click += new System.EventHandler(this.vbtnExit_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // fQuanLyChinh
             // 
@@ -597,7 +598,7 @@ namespace petStore
         private VBbutton vbtnMinimize;
         private System.Windows.Forms.Panel pnlTop1;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnNhậpHàngToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hóaĐơnBánHàngToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuShowHDB;
         private System.Windows.Forms.ToolStripMenuItem mnuShowLoaiHH;
         private System.Windows.Forms.ToolStripMenuItem mnuShowNCC;
         private System.Windows.Forms.ToolStripMenuItem mnuShowNhanVien;
