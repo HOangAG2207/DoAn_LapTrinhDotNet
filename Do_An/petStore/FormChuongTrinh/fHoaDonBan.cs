@@ -238,6 +238,10 @@ namespace petStore.FormChuongTrinh
         {
             fHoaDonBan_Load(sender, e);
         }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
         private void btnTaoHoaDon_Click(object sender, EventArgs e)
         {   // lấy dữ liệu đổ vào combobox MaKH
             LayDuLieu_HoaDon(cboMaKH, "SELECT * FROM KHACHHANG", "MAKH", "MAKH");
@@ -303,7 +307,8 @@ namespace petStore.FormChuongTrinh
                 data.Update(cmd2);
                 fHoaDonBan_Load(sender, e);
             }
-            
+            Load_DuLieu_LenDGV();
+
         }
         #endregion
         #region Lấy dữ liệu
