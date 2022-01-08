@@ -29,13 +29,21 @@ namespace petStore.Report
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.HOADONBAN_CHITIET_INFOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            ((System.ComponentModel.ISupportInitialize)(this.HOADONBAN_CHITIET_INFOBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // HOADONBAN_CHITIET_INFOBindingSource
+            // 
+            this.HOADONBAN_CHITIET_INFOBindingSource.DataSource = typeof(petStore.Report.HOADONBAN_CHITIET_INFO);
             // 
             // panel1
             // 
@@ -46,6 +54,19 @@ namespace petStore.Report
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(643, 450);
             this.panel1.TabIndex = 0;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "datahdb";
+            reportDataSource1.Value = this.HOADONBAN_CHITIET_INFOBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "petStore.Report.rpHoaDon.rdlc";
+            this.reportViewer1.Location = new System.Drawing.Point(0, 53);
+            this.reportViewer1.Name = "reportViewer1";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(643, 397);
+            this.reportViewer1.TabIndex = 2;
             // 
             // panel2
             // 
@@ -69,15 +90,6 @@ namespace petStore.Report
             this.label1.TabIndex = 0;
             this.label1.Text = "IN HÓA ĐƠN";
             // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.Location = new System.Drawing.Point(0, 53);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(643, 397);
-            this.reportViewer1.TabIndex = 2;
-            // 
             // fInHoaDonBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -86,8 +98,11 @@ namespace petStore.Report
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "fInHoaDonBan";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "fInHoaDonBan";
             this.Load += new System.EventHandler(this.fInHoaDonBan_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.HOADONBAN_CHITIET_INFOBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -101,5 +116,6 @@ namespace petStore.Report
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource HOADONBAN_CHITIET_INFOBindingSource;
     }
 }

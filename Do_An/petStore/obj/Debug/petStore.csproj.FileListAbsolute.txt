@@ -6,7 +6,6 @@ D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.cspro
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.CoreCompileInputs.cache
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.exe
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.pdb
-D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.AssemblyReference.cache
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fDangNhap.resources
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.fQuanLyChinh.resources
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fTaiKhoanVaNhanVien.resources
@@ -80,3 +79,7 @@ D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\bin\Debug\zh-CHS\Microso
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.CopyComplete
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fShowHoaDonBan.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fFlash.resources
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\RdlCompile.cache
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\RdlCompile.compiled
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.AssemblyReference.cache

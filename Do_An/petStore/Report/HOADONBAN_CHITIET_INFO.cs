@@ -8,9 +8,10 @@ namespace petStore.Report
 {
     public class HOADONBAN_CHITIET_INFO
     {
-        HOADONBAN_CHITIET_INFO() { }
+        public HOADONBAN_CHITIET_INFO() { }
         private HOADONBAN_INFO hoadonban;
-        private HANGHOA_INFO hanghoa;
+        private HANGHOA_INFO hanghoa = new HANGHOA_INFO();
+        
         private int soluong;
         private double dongiaban;
         private double thanhtien;

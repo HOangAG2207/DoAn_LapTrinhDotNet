@@ -79,6 +79,12 @@
     <Compile Include="FormChuongTrinh\fDangNhap.Designer.cs">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fFlash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fFlash.Designer.cs">
+      <DependentUpon>fFlash.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh\fHangHoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     <EmbeddedResource Include="FormChuongTrinh\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fFlash.resx">
+      <DependentUpon>fFlash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fHangHoa.resx">
       <DependentUpon>fHangHoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +225,8 @@
     <EmbeddedResource Include="Report\fInHoaDonBan.resx">
       <DependentUpon>fInHoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportHoaDon.rdlc" />
+    <EmbeddedResource Include="Report\rpHoaDon.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\petStore.Report.fInHoaDonBan.datasource" />
     <None Include="Properties\DataSources\petStore.Report.HANGHOA_INFO.datasource" />
@@ -242,6 +253,10 @@
     <None Include="Resources\loginBG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\flash.jpg" />
+    <None Include="Resources\flash1.jpg" />
+    <None Include="Resources\flash2.jpg" />
+    <None Include="Resources\printer.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

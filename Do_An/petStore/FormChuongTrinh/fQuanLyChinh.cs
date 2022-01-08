@@ -21,6 +21,8 @@ namespace petStore
         
         public fQuanLyChinh()
         {
+            FormChuongTrinh.fFlash flash = new FormChuongTrinh.fFlash();
+            flash.ShowDialog();
             InitializeComponent();
         }
         #region Biến toàn cục
@@ -53,6 +55,7 @@ namespace petStore
             timer1.Start();
             pnlLeft.Width = 250;
         }
+        #region Đăng nhập và Đăng xuất
         public void QuanTriVien()
         {
             label2.Text = "Quản trị viên: \n( " + HovaTen + " )";
@@ -81,6 +84,12 @@ namespace petStore
                 else if (quyenHan == "nv")
                     NhanVien();
         }
+        //button Đăng xuất
+        private void vbtnDangXuat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
         #region Thao tác với Menu admin
         private void mnuNhanVien_Click(object sender, EventArgs e)
         {
@@ -262,14 +271,10 @@ namespace petStore
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        //button Đăng xuất
-        private void vbtnDangXuat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         #endregion
         #region tabcontrol
+        
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -332,9 +337,6 @@ namespace petStore
             }
         }
 
-
         #endregion
-
-        
     }
 }

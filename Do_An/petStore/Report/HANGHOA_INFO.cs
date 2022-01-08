@@ -8,7 +8,7 @@ namespace petStore.Report
 {
     public class HANGHOA_INFO
     {
-        HANGHOA_INFO(){ }
+        public HANGHOA_INFO(){ }
         private string mahh;
         private string tenhh;
         private LOAIHANGHOA_INFO loaihanghoa;

@@ -60,6 +60,7 @@ namespace petStore.FormChuongTrinh
             this.btnHDTimKiem = new System.Windows.Forms.ToolStripButton();
             this.tsbtnXoa = new System.Windows.Forms.ToolStripButton();
             this.tsbtnLoadHD = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnPrint = new System.Windows.Forms.ToolStripButton();
             this.dgvHoaDonBan = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@ namespace petStore.FormChuongTrinh
             this.bindingNavigatorMoveLastItem1 = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnXoaChiTiet = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnLoadCT = new System.Windows.Forms.ToolStripButton();
             this.dgvChiTiet = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -127,31 +127,34 @@ namespace petStore.FormChuongTrinh
             // 
             this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoad.Image = global::petStore.Properties.Resources.view16;
-            this.btnLoad.Location = new System.Drawing.Point(509, 3);
+            this.btnLoad.Location = new System.Drawing.Point(595, 3);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(120, 49);
             this.btnLoad.TabIndex = 4;
             this.btnLoad.Text = "Liệt kê Hóa Đơn";
             this.btnLoad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // dtpTo
             // 
-            this.dtpTo.CustomFormat = "dd/MM/yyyy";
+            this.dtpTo.CustomFormat = "dd-MM-yyyy";
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTo.Location = new System.Drawing.Point(358, 17);
+            this.dtpTo.Location = new System.Drawing.Point(404, 17);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(135, 20);
+            this.dtpTo.Size = new System.Drawing.Size(155, 20);
             this.dtpTo.TabIndex = 3;
+            this.dtpTo.Value = new System.DateTime(2022, 1, 8, 0, 0, 0, 0);
             // 
             // dtpFrom
             // 
-            this.dtpFrom.CustomFormat = "dd/MM/yyyy";
+            this.dtpFrom.CustomFormat = "dd-MM-yyyy";
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFrom.Location = new System.Drawing.Point(118, 17);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(135, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(155, 20);
             this.dtpFrom.TabIndex = 2;
+            this.dtpFrom.Value = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             // 
             // label5
             // 
@@ -159,7 +162,7 @@ namespace petStore.FormChuongTrinh
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label5.Location = new System.Drawing.Point(273, 21);
+            this.label5.Location = new System.Drawing.Point(319, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 16);
             this.label5.TabIndex = 1;
@@ -256,7 +259,8 @@ namespace petStore.FormChuongTrinh
             this.txtHDTimKiem,
             this.btnHDTimKiem,
             this.tsbtnXoa,
-            this.tsbtnLoadHD});
+            this.tsbtnLoadHD,
+            this.tsbtnPrint});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -340,7 +344,7 @@ namespace petStore.FormChuongTrinh
             // 
             this.txtHDTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtHDTimKiem.Name = "txtHDTimKiem";
-            this.txtHDTimKiem.Size = new System.Drawing.Size(150, 25);
+            this.txtHDTimKiem.Size = new System.Drawing.Size(100, 25);
             this.txtHDTimKiem.ToolTipText = "Nhập từ khóa để tìm kiếm";
             // 
             // btnHDTimKiem
@@ -362,6 +366,7 @@ namespace petStore.FormChuongTrinh
             this.tsbtnXoa.Name = "tsbtnXoa";
             this.tsbtnXoa.Size = new System.Drawing.Size(23, 22);
             this.tsbtnXoa.Text = "Xóa 1 Hóa đơn";
+            this.tsbtnXoa.Click += new System.EventHandler(this.tsbtnXoa_Click);
             // 
             // tsbtnLoadHD
             // 
@@ -371,6 +376,19 @@ namespace petStore.FormChuongTrinh
             this.tsbtnLoadHD.Name = "tsbtnLoadHD";
             this.tsbtnLoadHD.Size = new System.Drawing.Size(23, 22);
             this.tsbtnLoadHD.Text = "Tải lại Danh sách đầy đủ";
+            this.tsbtnLoadHD.Click += new System.EventHandler(this.tsbtnLoadHD_Click);
+            // 
+            // tsbtnPrint
+            // 
+            this.tsbtnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tsbtnPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnPrint.Image = global::petStore.Properties.Resources.printer;
+            this.tsbtnPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnPrint.Name = "tsbtnPrint";
+            this.tsbtnPrint.Size = new System.Drawing.Size(23, 22);
+            this.tsbtnPrint.Text = "In";
+            this.tsbtnPrint.ToolTipText = "In hóa đơn";
+            this.tsbtnPrint.Click += new System.EventHandler(this.tsbtnPrint_Click);
             // 
             // dgvHoaDonBan
             // 
@@ -461,8 +479,7 @@ namespace petStore.FormChuongTrinh
             this.bindingNavigatorMoveNextItem1,
             this.bindingNavigatorMoveLastItem1,
             this.bindingNavigatorSeparator5,
-            this.tsbtnXoaChiTiet,
-            this.tsbtnLoadCT});
+            this.tsbtnXoaChiTiet});
             this.bindingNavigator2.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator2.MoveFirstItem = this.bindingNavigatorMoveFirstItem1;
             this.bindingNavigator2.MoveLastItem = this.bindingNavigatorMoveLastItem1;
@@ -550,16 +567,7 @@ namespace petStore.FormChuongTrinh
             this.tsbtnXoaChiTiet.Name = "tsbtnXoaChiTiet";
             this.tsbtnXoaChiTiet.Size = new System.Drawing.Size(23, 22);
             this.tsbtnXoaChiTiet.Text = "Xóa 1 mặt hàng";
-            // 
-            // tsbtnLoadCT
-            // 
-            this.tsbtnLoadCT.BackColor = System.Drawing.Color.PeachPuff;
-            this.tsbtnLoadCT.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtnLoadCT.Image = global::petStore.Properties.Resources.refresh16;
-            this.tsbtnLoadCT.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnLoadCT.Name = "tsbtnLoadCT";
-            this.tsbtnLoadCT.Size = new System.Drawing.Size(23, 22);
-            this.tsbtnLoadCT.Text = "Tải lại Danh sách đầy đủ";
+            this.tsbtnXoaChiTiet.Click += new System.EventHandler(this.tsbtnXoaChiTiet_Click);
             // 
             // dgvChiTiet
             // 
@@ -699,7 +707,7 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.ToolStripButton tsbtnXoa;
         private System.Windows.Forms.ToolStripButton tsbtnLoadHD;
         private System.Windows.Forms.ToolStripButton tsbtnXoaChiTiet;
-        private System.Windows.Forms.ToolStripButton tsbtnLoadCT;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.ToolStripButton tsbtnPrint;
     }
 }
