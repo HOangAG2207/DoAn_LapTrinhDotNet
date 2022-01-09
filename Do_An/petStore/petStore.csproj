@@ -121,6 +121,12 @@
     <Compile Include="FormChuongTrinh\fQuanLyChinh.Designer.cs">
       <DependentUpon>fQuanLyChinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormChuongTrinh\fShowHangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChuongTrinh\fShowHangHoa.Designer.cs">
+      <DependentUpon>fShowHangHoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormChuongTrinh\fShowLoaiHH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     <EmbeddedResource Include="FormChuongTrinh\fQuanLyChinh.resx">
       <DependentUpon>fQuanLyChinh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormChuongTrinh\fShowHangHoa.resx">
+      <DependentUpon>fShowHangHoa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormChuongTrinh\fShowLoaiHH.resx">
       <DependentUpon>fShowLoaiHH.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +266,19 @@
     <None Include="Resources\flash1.jpg" />
     <None Include="Resources\flash2.jpg" />
     <None Include="Resources\printer.png" />
+    <None Include="Resources\sale.png" />
+    <None Include="Resources\product.png" />
+    <None Include="Resources\Customer.png" />
+    <None Include="Resources\customer %281%29.png" />
+    <None Include="Resources\productSearch.png" />
+    <None Include="Resources\typeProduct.png" />
+    <None Include="Resources\productSearch1.png" />
+    <None Include="Resources\customerList.png" />
+    <None Include="Resources\man.png" />
+    <None Include="Resources\bill.png" />
+    <None Include="Resources\baocao.png" />
+    <None Include="Resources\customer %281%291.png" />
+    <None Include="Resources\Customer1.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

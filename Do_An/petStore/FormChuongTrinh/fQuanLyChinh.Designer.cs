@@ -32,11 +32,15 @@ namespace petStore
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuanLyChinh));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnBanHang = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnHangHoa = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnThemKhachHang = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnThemNhaCungCap = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnShowHoaDon = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnThongKe = new System.Windows.Forms.ToolStripButton();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,18 +49,17 @@ namespace petStore
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnPnlShowHide = new System.Windows.Forms.Button();
             this.mnuDanhMuc = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuHangHoa = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThemKhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThemNhaCungCap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBanHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHangHoa = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTraCuu = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowLoaiHH = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuShowHangHoa = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowNCC = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowNhanVien = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuShowHDB = new System.Windows.Forms.ToolStripMenuItem();
-            this.hóaĐơnNhậpHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBaocaoThongKe = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTroGiup = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHuongDan = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +70,7 @@ namespace petStore
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pnlTop2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.page1 = new System.Windows.Forms.TabPage();
             this.pnlTop1 = new System.Windows.Forms.Panel();
             this.vbtnMinimize = new petStore.VBbutton();
             this.vbtnMaximum = new petStore.VBbutton();
@@ -87,61 +90,89 @@ namespace petStore
             // 
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton4,
-            this.toolStripButton5});
+            this.tsbtnBanHang,
+            this.toolStripSeparator1,
+            this.tsbtnHangHoa,
+            this.tsbtnThemKhachHang,
+            this.tsbtnThemNhaCungCap,
+            this.toolStripSeparator2,
+            this.tsbtnShowHoaDon,
+            this.toolStripSeparator3,
+            this.tsbtnThongKe});
             this.toolStrip1.Location = new System.Drawing.Point(0, 25);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(858, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // tsbtnBanHang
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.tsbtnBanHang.Image = global::petStore.Properties.Resources.sale;
+            this.tsbtnBanHang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnBanHang.Name = "tsbtnBanHang";
+            this.tsbtnBanHang.Size = new System.Drawing.Size(76, 22);
+            this.tsbtnBanHang.Text = "Bán hàng";
+            this.tsbtnBanHang.Click += new System.EventHandler(this.tsbtnBanHang_Click);
             // 
-            // toolStripButton2
+            // toolStripSeparator1
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton3
+            // tsbtnHangHoa
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.tsbtnHangHoa.Image = global::petStore.Properties.Resources.product;
+            this.tsbtnHangHoa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnHangHoa.Name = "tsbtnHangHoa";
+            this.tsbtnHangHoa.Size = new System.Drawing.Size(78, 22);
+            this.tsbtnHangHoa.Text = "Hàng hóa";
+            this.tsbtnHangHoa.Click += new System.EventHandler(this.tsbtnHangHoa_Click);
             // 
-            // toolStripButton4
+            // tsbtnThemKhachHang
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.tsbtnThemKhachHang.Image = global::petStore.Properties.Resources.customer__1_1;
+            this.tsbtnThemKhachHang.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnThemKhachHang.Name = "tsbtnThemKhachHang";
+            this.tsbtnThemKhachHang.Size = new System.Drawing.Size(119, 22);
+            this.tsbtnThemKhachHang.Text = "Thêm khách hàng";
+            this.tsbtnThemKhachHang.Click += new System.EventHandler(this.tsbtnThemKhachHang_Click);
             // 
-            // toolStripButton5
+            // tsbtnThemNhaCungCap
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.tsbtnThemNhaCungCap.Image = global::petStore.Properties.Resources.Customer1;
+            this.tsbtnThemNhaCungCap.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnThemNhaCungCap.Name = "tsbtnThemNhaCungCap";
+            this.tsbtnThemNhaCungCap.Size = new System.Drawing.Size(128, 22);
+            this.tsbtnThemNhaCungCap.Text = "Thêm nhà cung cấp";
+            this.tsbtnThemNhaCungCap.Click += new System.EventHandler(this.tsbtnThemNhaCungCap_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnShowHoaDon
+            // 
+            this.tsbtnShowHoaDon.Image = global::petStore.Properties.Resources.bill;
+            this.tsbtnShowHoaDon.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnShowHoaDon.Name = "tsbtnShowHoaDon";
+            this.tsbtnShowHoaDon.Size = new System.Drawing.Size(114, 22);
+            this.tsbtnShowHoaDon.Text = "Xem các hóa đơn";
+            this.tsbtnShowHoaDon.Click += new System.EventHandler(this.tsbtnShowHoaDon_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbtnThongKe
+            // 
+            this.tsbtnThongKe.Image = global::petStore.Properties.Resources.baocao;
+            this.tsbtnThongKe.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnThongKe.Name = "tsbtnThongKe";
+            this.tsbtnThongKe.Size = new System.Drawing.Size(134, 22);
+            this.tsbtnThongKe.Text = "Thống kê doanh thu";
+            this.tsbtnThongKe.Click += new System.EventHandler(this.tsbtnThongKe_Click);
             // 
             // pnlLeft
             // 
@@ -246,108 +277,113 @@ namespace petStore
             // mnuDanhMuc
             // 
             this.mnuDanhMuc.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuHangHoa,
             this.mnuThemKhachHang,
             this.mnuThemNhaCungCap,
-            this.mnuBanHang});
+            this.mnuBanHang,
+            this.mnuHangHoa});
             this.mnuDanhMuc.Name = "mnuDanhMuc";
             this.mnuDanhMuc.Size = new System.Drawing.Size(82, 21);
             this.mnuDanhMuc.Text = "&Danh mục";
             // 
-            // mnuHangHoa
-            // 
-            this.mnuHangHoa.Name = "mnuHangHoa";
-            this.mnuHangHoa.Size = new System.Drawing.Size(212, 22);
-            this.mnuHangHoa.Text = "&1. Hàng hóa";
-            this.mnuHangHoa.Click += new System.EventHandler(this.mnuHangHoa_Click);
-            // 
             // mnuThemKhachHang
             // 
+            this.mnuThemKhachHang.Image = global::petStore.Properties.Resources.customer__1_;
             this.mnuThemKhachHang.Name = "mnuThemKhachHang";
             this.mnuThemKhachHang.Size = new System.Drawing.Size(212, 22);
-            this.mnuThemKhachHang.Text = "&2. Thêm Khách hàng";
+            this.mnuThemKhachHang.Text = "&1. Thêm Khách hàng";
             this.mnuThemKhachHang.Click += new System.EventHandler(this.mnuThemKhachHang_Click);
             // 
             // mnuThemNhaCungCap
             // 
+            this.mnuThemNhaCungCap.Image = global::petStore.Properties.Resources.Customer;
             this.mnuThemNhaCungCap.Name = "mnuThemNhaCungCap";
             this.mnuThemNhaCungCap.Size = new System.Drawing.Size(212, 22);
-            this.mnuThemNhaCungCap.Text = "&3. Thêm Nhà cung cấp";
+            this.mnuThemNhaCungCap.Text = "&2. Thêm Nhà cung cấp";
             this.mnuThemNhaCungCap.Click += new System.EventHandler(this.mnuThemNhaCungCap_Click);
             // 
             // mnuBanHang
             // 
+            this.mnuBanHang.Image = global::petStore.Properties.Resources.sale;
             this.mnuBanHang.Name = "mnuBanHang";
             this.mnuBanHang.Size = new System.Drawing.Size(212, 22);
-            this.mnuBanHang.Text = "&4. Bán Hàng";
+            this.mnuBanHang.Text = "&3. Bán Hàng";
             this.mnuBanHang.Click += new System.EventHandler(this.mnuBanHang_Click);
+            // 
+            // mnuHangHoa
+            // 
+            this.mnuHangHoa.Image = global::petStore.Properties.Resources.product;
+            this.mnuHangHoa.Name = "mnuHangHoa";
+            this.mnuHangHoa.Size = new System.Drawing.Size(212, 22);
+            this.mnuHangHoa.Text = "&4. Hàng hóa";
+            this.mnuHangHoa.Click += new System.EventHandler(this.mnuHangHoa_Click);
             // 
             // mnuTraCuu
             // 
             this.mnuTraCuu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuShowLoaiHH,
+            this.mnuShowHangHoa,
             this.mnuShowNCC,
             this.mnuShowNhanVien,
-            this.mnuShowHDB,
-            this.hóaĐơnNhậpHàngToolStripMenuItem});
+            this.mnuShowHDB});
             this.mnuTraCuu.Name = "mnuTraCuu";
             this.mnuTraCuu.Size = new System.Drawing.Size(64, 21);
             this.mnuTraCuu.Text = "&Tra cứu";
             // 
             // mnuShowLoaiHH
             // 
+            this.mnuShowLoaiHH.Image = global::petStore.Properties.Resources.typeProduct;
             this.mnuShowLoaiHH.Name = "mnuShowLoaiHH";
             this.mnuShowLoaiHH.Size = new System.Drawing.Size(237, 22);
             this.mnuShowLoaiHH.Text = "&1. Loại hàng hóa";
             this.mnuShowLoaiHH.Click += new System.EventHandler(this.mnuShowLoaiHH_Click);
             // 
+            // mnuShowHangHoa
+            // 
+            this.mnuShowHangHoa.Image = global::petStore.Properties.Resources.productSearch1;
+            this.mnuShowHangHoa.Name = "mnuShowHangHoa";
+            this.mnuShowHangHoa.Size = new System.Drawing.Size(237, 22);
+            this.mnuShowHangHoa.Text = "&2. Thông tin Hàng hóa";
+            this.mnuShowHangHoa.Click += new System.EventHandler(this.mnuShowHangHoa_Click);
+            // 
             // mnuShowNCC
             // 
+            this.mnuShowNCC.Image = global::petStore.Properties.Resources.customerList;
             this.mnuShowNCC.Name = "mnuShowNCC";
             this.mnuShowNCC.Size = new System.Drawing.Size(237, 22);
-            this.mnuShowNCC.Text = "&2. Thông tin Nhà cung cấp";
+            this.mnuShowNCC.Text = "&3. Thông tin Nhà cung cấp";
             this.mnuShowNCC.Click += new System.EventHandler(this.mnuShowNCC_Click);
             // 
             // mnuShowNhanVien
             // 
+            this.mnuShowNhanVien.Image = global::petStore.Properties.Resources.man;
             this.mnuShowNhanVien.Name = "mnuShowNhanVien";
             this.mnuShowNhanVien.Size = new System.Drawing.Size(237, 22);
-            this.mnuShowNhanVien.Text = "&3. Thông tin Nhân viên";
+            this.mnuShowNhanVien.Text = "&4. Thông tin Nhân viên";
             this.mnuShowNhanVien.Click += new System.EventHandler(this.mnuShowNhanVien_Click);
             // 
             // mnuShowHDB
             // 
+            this.mnuShowHDB.Image = global::petStore.Properties.Resources.bill;
             this.mnuShowHDB.Name = "mnuShowHDB";
             this.mnuShowHDB.Size = new System.Drawing.Size(237, 22);
-            this.mnuShowHDB.Text = "&4. Hóa đơn bán hàng";
+            this.mnuShowHDB.Text = "&5. Hóa đơn bán hàng";
             this.mnuShowHDB.Click += new System.EventHandler(this.mnuShowHDB_Click);
-            // 
-            // hóaĐơnNhậpHàngToolStripMenuItem
-            // 
-            this.hóaĐơnNhậpHàngToolStripMenuItem.Name = "hóaĐơnNhậpHàngToolStripMenuItem";
-            this.hóaĐơnNhậpHàngToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
-            this.hóaĐơnNhậpHàngToolStripMenuItem.Text = "Hóa đơn nhập hàng";
             // 
             // mnuBaocaoThongKe
             // 
             this.mnuBaocaoThongKe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuBaoCao,
             this.mnuThongKe});
             this.mnuBaocaoThongKe.Name = "mnuBaocaoThongKe";
             this.mnuBaocaoThongKe.Size = new System.Drawing.Size(138, 21);
             this.mnuBaocaoThongKe.Text = "Báo cáo - Thống kê";
             // 
-            // mnuBaoCao
-            // 
-            this.mnuBaoCao.Name = "mnuBaoCao";
-            this.mnuBaoCao.Size = new System.Drawing.Size(180, 22);
-            this.mnuBaoCao.Text = "Báo cáo";
-            // 
             // mnuThongKe
             // 
+            this.mnuThongKe.Image = global::petStore.Properties.Resources.baocao;
             this.mnuThongKe.Name = "mnuThongKe";
-            this.mnuThongKe.Size = new System.Drawing.Size(180, 22);
+            this.mnuThongKe.Size = new System.Drawing.Size(133, 22);
             this.mnuThongKe.Text = "Thống kê";
+            this.mnuThongKe.Click += new System.EventHandler(this.mnuThongKe_Click);
             // 
             // mnuTroGiup
             // 
@@ -424,7 +460,7 @@ namespace petStore
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.page1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Location = new System.Drawing.Point(250, 82);
@@ -435,16 +471,16 @@ namespace petStore
             this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             this.tabControl1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDown);
             // 
-            // tabPage1
+            // page1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.ForeColor = System.Drawing.Color.Black;
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(850, 571);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Thông tin phần mềm";
+            this.page1.BackColor = System.Drawing.Color.White;
+            this.page1.ForeColor = System.Drawing.Color.Black;
+            this.page1.Location = new System.Drawing.Point(4, 22);
+            this.page1.Name = "page1";
+            this.page1.Padding = new System.Windows.Forms.Padding(3);
+            this.page1.Size = new System.Drawing.Size(850, 571);
+            this.page1.TabIndex = 0;
+            this.page1.Text = "Thông tin phần mềm";
             // 
             // pnlTop1
             // 
@@ -565,11 +601,11 @@ namespace petStore
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton tsbtnBanHang;
+        private System.Windows.Forms.ToolStripButton tsbtnHangHoa;
+        private System.Windows.Forms.ToolStripButton tsbtnThemKhachHang;
+        private System.Windows.Forms.ToolStripButton tsbtnThemNhaCungCap;
+        private System.Windows.Forms.ToolStripButton tsbtnShowHoaDon;
         private System.Windows.Forms.Panel pnlLeft;
         private System.Windows.Forms.ToolStripMenuItem mnuDanhMuc;
         private System.Windows.Forms.ToolStripMenuItem mnuTraCuu;
@@ -584,7 +620,6 @@ namespace petStore
         private VBbutton vbtnDangXuat;
         private System.Windows.Forms.Panel pnlTop2;
         private System.Windows.Forms.ToolStripMenuItem mnuHangHoa;
-        private System.Windows.Forms.ToolStripMenuItem mnuBaoCao;
         private System.Windows.Forms.ToolStripMenuItem mnuThongKe;
         private System.Windows.Forms.ToolStripMenuItem mnuHuongDan;
         private System.Windows.Forms.ToolStripMenuItem mnuThongTinPM;
@@ -592,12 +627,11 @@ namespace petStore
         private System.Windows.Forms.ToolStripMenuItem mnuThemNhaCungCap;
         private System.Windows.Forms.ToolStripMenuItem mnuLoaiHangHoa;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage page1;
         private VBbutton vbtnExit;
         private VBbutton vbtnMaximum;
         private VBbutton vbtnMinimize;
         private System.Windows.Forms.Panel pnlTop1;
-        private System.Windows.Forms.ToolStripMenuItem hóaĐơnNhậpHàngToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuShowHDB;
         private System.Windows.Forms.ToolStripMenuItem mnuShowLoaiHH;
         private System.Windows.Forms.ToolStripMenuItem mnuShowNCC;
@@ -607,5 +641,10 @@ namespace petStore
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuShowHangHoa;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbtnThongKe;
     }
 }

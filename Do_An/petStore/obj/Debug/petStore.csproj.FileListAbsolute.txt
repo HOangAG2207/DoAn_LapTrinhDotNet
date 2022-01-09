@@ -83,3 +83,4 @@ D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormC
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\RdlCompile.cache
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\RdlCompile.compiled
 D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.csproj.AssemblyReference.cache
+D:\TaiLieuHoc\LapTrinh(.)NET\DoAn_DotNet\Do_An\petStore\obj\Debug\petStore.FormChuongTrinh.fShowHangHoa.resources

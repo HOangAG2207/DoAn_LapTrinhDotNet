@@ -41,6 +41,7 @@ namespace petStore
         FormChuongTrinh.fShowNhaCungCap showncc = null;
         FormChuongTrinh.fShowNhanVien shownv = null;
         FormChuongTrinh.fShowHoaDonBan showhdb = null;
+        FormChuongTrinh.fShowHangHoa showhh = null;
 
         FormChuongTrinh.fHoaDonBan HDban = null;
         #endregion
@@ -214,6 +215,11 @@ namespace petStore
             showhdb = new FormChuongTrinh.fShowHoaDonBan();
             TabCreating(tabControl1, "Tra cứu Hóa đơn bán", showhdb);
         }
+        private void mnuShowHangHoa_Click(object sender, EventArgs e)
+        {
+            showhh = new FormChuongTrinh.fShowHangHoa();
+            TabCreating(tabControl1, "Tra cứu Hàng hóa", showhh);
+        }
         #endregion
         #region Thao tác với Menu Trợ giúp
         private void mnuThongTinPM_Click(object sender, EventArgs e)
@@ -230,6 +236,12 @@ namespace petStore
             else
                 about.Activate();
             */
+        }
+        #endregion
+        #region Thao tác với Menu Trợ giúp
+        private void mnuThongKe_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
         #region Thao tác với Form
@@ -338,5 +350,39 @@ namespace petStore
         }
 
         #endregion
+
+        #region toolstripbutton
+        private void tsbtnBanHang_Click(object sender, EventArgs e)
+        {
+            mnuBanHang_Click(sender, e);
+        }
+
+        private void tsbtnHangHoa_Click(object sender, EventArgs e)
+        {
+            mnuHangHoa_Click(sender, e);
+        }
+
+        private void tsbtnThemKhachHang_Click(object sender, EventArgs e)
+        {
+            mnuThemKhachHang_Click(sender, e);
+        }
+
+        private void tsbtnThemNhaCungCap_Click(object sender, EventArgs e)
+        {
+            mnuThemNhaCungCap_Click(sender, e);
+        }
+
+        private void tsbtnShowHoaDon_Click(object sender, EventArgs e)
+        {
+            mnuShowHDB_Click(sender, e);
+        }
+
+        private void tsbtnThongKe_Click(object sender, EventArgs e)
+        {
+            mnuThongKe_Click(sender, e);
+        }
+        #endregion
+
+        
     }
 }

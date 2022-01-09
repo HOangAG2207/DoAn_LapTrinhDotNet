@@ -69,7 +69,7 @@ namespace petStore.Report
             ConnectData dataTable = new ConnectData();
             dataTable.OpenConnection();
             /*hh.MAHH, hh.TENHH, hdbct.MaHH, hdbct.MaHDban, hdbct.SoLuong, hdbct.DGban, hdbct.ThanhTien */
-            SqlCommand cmd = new SqlCommand(@"SELECT *
+            SqlCommand cmd = new SqlCommand(@"SELECT hh.MAHH, hh.TENHH, hdbct.MaHH, hdbct.MaHDban, hdbct.SoLuong, hdbct.DGban, hdbct.ThanhTien
                                               FROM (HOADONBAN_CHITIET as hdbct
                                               inner join HANGHOA as hh on hh.MAHH = hdbct.MaHH)
                                               WHERE hdbct.MAHDBAN = N'" + maHD + "'");
