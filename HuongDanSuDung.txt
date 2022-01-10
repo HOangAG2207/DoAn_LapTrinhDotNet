@@ -1,0 +1,7 @@
+Tài khoản mặc định của hệ thống:
+Quản lý:
+- User: admin
+- Password: 123
+Nhân viên:
+- User: anhuynh
+- Password: 123

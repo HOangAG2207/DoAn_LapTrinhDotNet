@@ -456,5 +456,10 @@ namespace petStore.FormChuongTrinh
         {
             dgvHangHoa.ClearSelection();
         }
+
+        private void load_Click(object sender, EventArgs e)
+        {
+            fHangHoa_Load(sender, e);
+        }
     }
 }
