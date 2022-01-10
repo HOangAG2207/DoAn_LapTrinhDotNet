@@ -39,7 +39,9 @@ namespace petStore.FormChuongTrinh
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LoadingPanel = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -138,11 +140,23 @@ namespace petStore.FormChuongTrinh
             this.LoadingPanel.Size = new System.Drawing.Size(10, 19);
             this.LoadingPanel.TabIndex = 4;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::petStore.Properties.Resources.logoAgu;
+            this.pictureBox2.Location = new System.Drawing.Point(24, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // fFlash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(698, 450);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.LoadingPanel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -158,6 +172,7 @@ namespace petStore.FormChuongTrinh
             this.Text = "fFlash";
             this.Load += new System.EventHandler(this.fFlash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +189,6 @@ namespace petStore.FormChuongTrinh
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel LoadingPanel;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

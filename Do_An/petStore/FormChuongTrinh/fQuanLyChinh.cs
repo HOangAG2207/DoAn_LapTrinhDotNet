@@ -64,6 +64,8 @@ namespace petStore
         public void NhanVien()
         {
             mnuAdmin.Visible = false;
+            mnuHangHoa.Enabled = false;
+            tsbtnHangHoa.Enabled = false;
             label2.Text = "Nhân viên: \n( " + HovaTen + " )";
         }
         byte[] text;
